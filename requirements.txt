@@ -1,5 +1,7 @@
 tqdm
 openai
 tiktoken
+pytrec_eval
 pyserini
+vllm
 

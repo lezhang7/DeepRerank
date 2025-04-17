@@ -1,91 +1,8 @@
 import copy
 from tqdm import tqdm
-import time
 import json
-
-
-class OpenaiClient:
-    def __init__(self, keys=None, start_id=None, proxy=None):
-        from openai import OpenAI
-        import openai
-        if isinstance(keys, str):
-            keys = [keys]
-        if keys is None:
-            raise "Please provide OpenAI Key."
-
-        self.key = keys
-        self.key_id = start_id or 0
-        self.key_id = self.key_id % len(self.key)
-        self.api_key = self.key[self.key_id % len(self.key)]
-        self.client = OpenAI(api_key=self.api_key)
-
-    def chat(self, *args, return_text=False, reduce_length=False, **kwargs):
-        while True:
-            try:
-                completion = self.client.chat.completions.create(*args, **kwargs, timeout=30)
-                break
-            except Exception as e:
-                print(str(e))
-                if "This model's maximum context length is" in str(e):
-                    print('reduce_length')
-                    return 'ERROR::reduce_length'
-                time.sleep(0.1)
-        if return_text:
-            completion = completion.choices[0].message.content
-        return completion
-
-    def text(self, *args, return_text=False, reduce_length=False, **kwargs):
-        while True:
-            try:
-                completion = self.client.completions.create(
-                    *args, **kwargs
-                )
-                break
-            except Exception as e:
-                print(e)
-                if "This model's maximum context length is" in str(e):
-                    print('reduce_length')
-                    return 'ERROR::reduce_length'
-                time.sleep(0.1)
-        if return_text:
-            completion = completion.choices[0].text
-        return completion
-
-
-class ClaudeClient:
-    def __init__(self, keys):
-        from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
-        self.anthropic = Anthropic(api_key=keys)
-
-    def chat(self, messages, return_text=True, max_tokens=300, *args, **kwargs):
-        system = ' '.join([turn['content'] for turn in messages if turn['role'] == 'system'])
-        messages = [turn for turn in messages if turn['role'] != 'system']
-        if len(system) == 0:
-            system = None
-        completion = self.anthropic.beta.messages.create(messages=messages, system=system, max_tokens=max_tokens, *args, **kwargs)
-        if return_text:
-            completion = completion.content[0].text
-        return completion
-
-    def text(self, max_tokens=None, return_text=True, *args, **kwargs):
-        completion = self.anthropic.beta.messages.create(max_tokens_to_sample=max_tokens, *args, **kwargs)
-        if return_text:
-            completion = completion.completion
-        return completion
-
-
-class LitellmClient:
-    #  https://github.com/BerriAI/litellm
-    def __init__(self, keys=None):
-        self.api_key = keys
-
-    def chat(self, return_text=True, *args, **kwargs):
-        from litellm import completion
-        response = completion(api_key=self.api_key, *args, **kwargs)
-        if return_text:
-            response = response.choices[0].message.content
-        return response
-
+from agent import OpenaiClient, QwenClient
+import os
 
 def convert_messages_to_prompt(messages):
     #  convert chat message into a single prompt; used for completion model (eg davinci)
@@ -152,7 +69,7 @@ def get_post_prompt(query, num):
     return f"Search Query: {query}. \nRank the {num} passages above based on their relevance to the search query. The passages should be listed in descending order using identifiers. The most relevant passages should be listed first. The output format should be [] > [], e.g., [1] > [2]. Only response the ranking results, do not say any word or explain."
 
 
-def create_permutation_instruction(item=None, rank_start=0, rank_end=100, model_name='gpt-3.5-turbo'):
+def create_permutation_instruction(item=None, rank_start=0, rank_end=100):
     query = item['query']
     num = len(item['hits'][rank_start: rank_end])
 
@@ -174,18 +91,9 @@ def create_permutation_instruction(item=None, rank_start=0, rank_end=100, model_
     return messages
 
 
-def run_llm(messages, api_key=None, model_name="gpt-3.5-turbo"):
-    if 'gpt' in model_name:
-        Client = OpenaiClient
-    elif 'claude' in model_name:
-        Client = ClaudeClient
-    else:
-        Client = LitellmClient
-
-    agent = Client(api_key)
-    response = agent.chat(model=model_name, messages=messages, temperature=0, return_text=True)
+def run_llm(agent, messages):
+    response = agent.chat(messages=messages, temperature=0, return_text=True)
     return response
-
 
 def clean_response(response: str):
     new_response = ''
@@ -223,22 +131,20 @@ def receive_permutation(item, permutation, rank_start=0, rank_end=100):
     return item
 
 
-def permutation_pipeline(item=None, rank_start=0, rank_end=100, model_name='gpt-3.5-turbo', api_key=None):
-    messages = create_permutation_instruction(item=item, rank_start=rank_start, rank_end=rank_end,
-                                              model_name=model_name)  # chan
-    permutation = run_llm(messages, api_key=api_key, model_name=model_name)
+def permutation_pipeline(agent, item=None, rank_start=0, rank_end=100):
+    messages = create_permutation_instruction(item=item, rank_start=rank_start, rank_end=rank_end)  # chan
+    permutation = run_llm(agent, messages)
     item = receive_permutation(item, permutation, rank_start=rank_start, rank_end=rank_end)
     return item
 
 
-def sliding_windows(item=None, rank_start=0, rank_end=100, window_size=20, step=10, model_name='gpt-3.5-turbo',
-                    api_key=None):
+def sliding_windows(agent, item=None, rank_start=0, rank_end=100, window_size=20, step=10):
     item = copy.deepcopy(item)
     end_pos = rank_end
     start_pos = rank_end - window_size
     while start_pos >= rank_start:
         start_pos = max(start_pos, rank_start)
-        item = permutation_pipeline(item, start_pos, end_pos, model_name=model_name, api_key=api_key)
+        item = permutation_pipeline(agent, item, start_pos, end_pos)
         end_pos = end_pos - step
         start_pos = start_pos - step
     return item
@@ -254,31 +160,41 @@ def write_eval_file(rank_results, file):
                 rank += 1
     return True
 
+def get_agent(model_name, api_key=None):
+    if model_name == "Qwen/Qwen2.5-7B-Instruct":
+        agent = QwenClient(model_name=model_name, temperature=0)
+    else:
+        if api_key is None:
+            raise "Please provide OpenAI Key."
+        agent = OpenaiClient(api_key)
+    return agent
 
 def main():
-    from pyserini.search import LuceneSearcher
+    from pyserini.search.lucene import LuceneSearcher
     from pyserini.search import get_topics, get_qrels
+    from run_evaluation import THE_TOPICS
     import tempfile
-
-    api_key = None  # Your openai key
-
+    data = 'dl19'
+ 
     searcher = LuceneSearcher.from_prebuilt_index('msmarco-v1-passage')
     topics = get_topics('dl19-passage')
     qrels = get_qrels('dl19-passage')
-
     rank_results = run_retriever(topics, searcher, qrels, k=100)
 
+    model_name = "Qwen/Qwen2.5-7B-Instruct"
+    agent = get_agent(model_name=model_name, api_key=None)
+        
     new_results = []
-    for item in tqdm(rank_results):
-        new_item = permutation_pipeline(item, rank_start=0, rank_end=20, model_name='gpt-3.5-turbo',
-                                        api_key=api_key)
+    for idx, item in tqdm(enumerate(rank_results)):
+        print(f"Processing idx: {idx}/{len(rank_results)}")
+        new_item = sliding_windows(agent, item, rank_start=0, rank_end=100, window_size=50, step=25)
         new_results.append(new_item)
 
     temp_file = tempfile.NamedTemporaryFile(delete=False).name
     from trec_eval import EvalFunction
 
     EvalFunction.write_file(new_results, temp_file)
-    EvalFunction.main(THE_TOPICS[data], temp_file)
+    EvalFunction.main(data, temp_file)
 
 
 if __name__ == '__main__':

@@ -57,75 +57,78 @@ THE_TOPICS = {
 
 }
 
-from rank_gpt import run_retriever, sliding_windows, write_eval_file
-from pyserini.search import LuceneSearcher, get_topics, get_qrels
-from tqdm import tqdm
-import tempfile
-import os
-import json
-import shutil
-
-openai_key = os.environ.get("OPENAI_API_KEY", None)
-
-for data in ['dl19', 'dl20', 'covid', 'nfc', 'touche', 'dbpedia', 'scifact', 'signal', 'news', 'robust04']:
-    print('#' * 20)
-    print(f'Evaluation on {data}')
-    print('#' * 20)
-
-    
-    # Retrieve passages using pyserini BM25.
-    try:
-        searcher = LuceneSearcher.from_prebuilt_index(THE_INDEX[data])
-        topics = get_topics(THE_TOPICS[data] if data != 'dl20' else 'dl20')
-        qrels = get_qrels(THE_TOPICS[data])
-        rank_results = run_retriever(topics, searcher, qrels, k=100)
-    except:
-        print(f'Failed to retrieve passages for {data}')
-        continue
-    
-    # Run sliding window permutation generation
-    new_results = []
-    for item in tqdm(rank_results):
-        new_item = sliding_windows(item, rank_start=0, rank_end=100, window_size=20, step=10,
-                                   model_name='gpt-3.5-turbo', api_key=openai_key)
-        new_results.append(new_item)
-
-    # Evaluate nDCG@10
-    from trec_eval import EvalFunction
-
-    # Create an empty text file to write results, and pass the name to eval
-    temp_file = tempfile.NamedTemporaryFile(delete=False).name
-    EvalFunction.write_file(new_results, temp_file)
-    EvalFunction.main(THE_TOPICS[data], temp_file)
 
 
-for data in ['mrtydi-ar', 'mrtydi-bn', 'mrtydi-fi', 'mrtydi-id', 'mrtydi-ja', 'mrtydi-ko', 'mrtydi-ru', 'mrtydi-sw', 'mrtydi-te', 'mrtydi-th']:
-    print('#' * 20)
-    print(f'Evaluation on {data}')
-    print('#' * 20)
+if __name__ == '__main__':
+    from rank_gpt import run_retriever, sliding_windows, write_eval_file
+    from pyserini.search import get_topics, get_qrels
+    from pyserini.search.lucene import LuceneSearcher
+    from tqdm import tqdm
+    import tempfile
+    import os
+    import json
+    import shutil
+    openai_key = os.environ.get("OPENAI_API_KEY", None)
 
-    # Retrieve passages using pyserini BM25.
-    try:
-        searcher = LuceneSearcher.from_prebuilt_index(THE_INDEX[data])
-        topics = get_topics(THE_TOPICS[data] if data != 'dl20' else 'dl20')
-        qrels = get_qrels(THE_TOPICS[data])
-        rank_results = run_retriever(topics, searcher, qrels, k=100)
-        rank_results = rank_results[:100]
+    for data in ['dl19', 'dl20', 'covid', 'nfc', 'touche', 'dbpedia', 'scifact', 'signal', 'news', 'robust04']:
+        print('#' * 20)
+        print(f'Evaluation on {data}')
+        print('#' * 20)
 
-    except:
-        print(f'Failed to retrieve passages for {data}')
-        continue
+        
+        # Retrieve passages using pyserini BM25.
+        try:
+            searcher = LuceneSearcher.from_prebuilt_index(THE_INDEX[data])
+            topics = get_topics(THE_TOPICS[data] if data != 'dl20' else 'dl20')
+            qrels = get_qrels(THE_TOPICS[data])
+            rank_results = run_retriever(topics, searcher, qrels, k=100)
+        except:
+            print(f'Failed to retrieve passages for {data}')
+            continue
+        
+        # Run sliding window permutation generation
+        new_results = []
+        for item in tqdm(rank_results):
+            new_item = sliding_windows(item, rank_start=0, rank_end=100, window_size=20, step=10,
+                                    model_name='gpt-3.5-turbo', api_key=openai_key)
+            new_results.append(new_item)
 
-    # Run sliding window permutation generation
-    new_results = []
-    for item in tqdm(rank_results):
-        new_item = sliding_windows(item, rank_start=0, rank_end=100, window_size=20, step=10,
-                                   model_name='gpt-3.5-turbo', api_key=openai_key)
-        new_results.append(new_item)
+        # Evaluate nDCG@10
+        from trec_eval import EvalFunction
 
-    # Evaluate nDCG@10
-    from trec_eval import EvalFunction
+        # Create an empty text file to write results, and pass the name to eval
+        temp_file = tempfile.NamedTemporaryFile(delete=False).name
+        EvalFunction.write_file(new_results, temp_file)
+        EvalFunction.main(THE_TOPICS[data], temp_file)
 
-    temp_file = tempfile.NamedTemporaryFile(delete=False).name
-    EvalFunction.write_file(new_results, temp_file)
-    EvalFunction.main(THE_TOPICS[data], temp_file)
+
+    for data in ['mrtydi-ar', 'mrtydi-bn', 'mrtydi-fi', 'mrtydi-id', 'mrtydi-ja', 'mrtydi-ko', 'mrtydi-ru', 'mrtydi-sw', 'mrtydi-te', 'mrtydi-th']:
+        print('#' * 20)
+        print(f'Evaluation on {data}')
+        print('#' * 20)
+
+        # Retrieve passages using pyserini BM25.
+        try:
+            searcher = LuceneSearcher.from_prebuilt_index(THE_INDEX[data])
+            topics = get_topics(THE_TOPICS[data] if data != 'dl20' else 'dl20')
+            qrels = get_qrels(THE_TOPICS[data])
+            rank_results = run_retriever(topics, searcher, qrels, k=100)
+            rank_results = rank_results[:100]
+
+        except:
+            print(f'Failed to retrieve passages for {data}')
+            continue
+
+        # Run sliding window permutation generation
+        new_results = []
+        for item in tqdm(rank_results):
+            new_item = sliding_windows(item, rank_start=0, rank_end=100, window_size=20, step=10,
+                                    model_name='gpt-3.5-turbo', api_key=openai_key)
+            new_results.append(new_item)
+
+        # Evaluate nDCG@10
+        from trec_eval import EvalFunction
+
+        temp_file = tempfile.NamedTemporaryFile(delete=False).name
+        EvalFunction.write_file(new_results, temp_file)
+        EvalFunction.main(THE_TOPICS[data], temp_file)
