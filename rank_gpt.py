@@ -1,21 +1,13 @@
 import copy
-from tqdm import tqdm
 import json
-from agent import OpenaiClient, QwenClient
-import os
-
-def convert_messages_to_prompt(messages):
-    #  convert chat message into a single prompt; used for completion model (eg davinci)
-    prompt = ''
-    for turn in messages:
-        if turn['role'] == 'system':
-            prompt += f"{turn['content']}\n\n"
-        elif turn['role'] == 'user':
-            prompt += f"{turn['content']}\n\n"
-        else:  # 'assistant'
-            pass
-    prompt += "The ranking results of the 20 passages (only identifiers) is:"
-    return prompt
+import time
+from tqdm import tqdm
+from pyserini.search.lucene import LuceneSearcher
+from pyserini.search import get_topics, get_qrels
+from run_evaluation import THE_TOPICS, THE_INDEX, DLV2
+from agent import get_agent
+from trec_eval import eval_rerank
+from utils import set_seed
 
 
 def run_retriever(topics, searcher, qrels=None, k=100, qid=None):
@@ -48,12 +40,15 @@ def run_retriever(topics, searcher, qrels=None, k=100, qid=None):
                 content = json.loads(searcher.doc(hit.docid).raw())
                 if 'title' in content:
                     content = 'Title: ' + content['title'] + ' ' + 'Content: ' + content['text']
+                elif 'passage' in content:
+                    content = content['passage']
                 else:
                     content = content['contents']
                 content = ' '.join(content.split())
                 ranks[-1]['hits'].append({
                     'content': content,
                     'qid': qid, 'docid': hit.docid, 'rank': rank, 'score': hit.score})
+                    
     return ranks
 
 
@@ -85,15 +80,11 @@ def create_permutation_instruction(item=None, rank_start=0, rank_end=100):
         # For Japanese should cut by character: content = content[:int(max_length)]
         content = ' '.join(content.split()[:int(max_length)])
         messages.append({'role': 'user', 'content': f"[{rank}] {content}"})
-        messages.append({'role': 'assistant', 'content': f'Received passage [{rank}].'})
+        # messages.append({'role': 'assistant', 'content': f'Received passage [{rank}].'})
     messages.append({'role': 'user', 'content': get_post_prompt(query, num)})
 
     return messages
 
-
-def run_llm(agent, messages):
-    response = agent.chat(messages=messages, temperature=0, return_text=True)
-    return response
 
 def clean_response(response: str):
     new_response = ''
@@ -131,23 +122,56 @@ def receive_permutation(item, permutation, rank_start=0, rank_end=100):
     return item
 
 
-def permutation_pipeline(agent, item=None, rank_start=0, rank_end=100):
-    messages = create_permutation_instruction(item=item, rank_start=rank_start, rank_end=rank_end)  # chan
-    permutation = run_llm(agent, messages)
-    item = receive_permutation(item, permutation, rank_start=rank_start, rank_end=rank_end)
-    return item
-
-
-def sliding_windows(agent, item=None, rank_start=0, rank_end=100, window_size=20, step=10):
-    item = copy.deepcopy(item)
-    end_pos = rank_end
-    start_pos = rank_end - window_size
-    while start_pos >= rank_start:
-        start_pos = max(start_pos, rank_start)
-        item = permutation_pipeline(agent, item, start_pos, end_pos)
-        end_pos = end_pos - step
-        start_pos = start_pos - step
-    return item
+def sliding_windows_batch(agent, items, rank_start=0, rank_end=100, window_size=20, step=10):
+    """Process multiple items with sliding windows using batched inference."""
+    items = [copy.deepcopy(item) for item in items]
+    results = []
+    
+    # Initialize positions for all items
+    all_positions = []
+    for _ in items:
+        end_pos = rank_end
+        start_pos = rank_end - window_size
+        item_positions = []
+        
+        while start_pos >= rank_start:
+            start_pos = max(start_pos, rank_start)
+            item_positions.append((start_pos, end_pos))
+            end_pos = end_pos - step
+            start_pos = start_pos - step
+            
+        all_positions.append(item_positions)
+    
+    # Process each window position across all items in batches
+    max_windows = max(len(positions) for positions in all_positions)
+    
+    for window_idx in range(max_windows):
+        # Collect messages for this window position across all items
+        batch_messages = []
+        batch_metadata = []  # Store (item_idx, start_pos, end_pos) for each message
+        
+        for item_idx, (item, positions) in enumerate(zip(items, all_positions)):
+            if window_idx < len(positions):
+                start_pos, end_pos = positions[window_idx]
+                messages = create_permutation_instruction(item=item, rank_start=start_pos, rank_end=end_pos)
+                batch_messages.append(messages)
+                batch_metadata.append((item_idx, start_pos, end_pos))
+        
+        if not batch_messages:
+            continue
+            
+        # Process this batch of messages
+        batch_permutations = agent.batch_chat(batch_messages, temperature=0, return_text=True, seed=42)
+        
+        # Apply permutations to respective items
+        for (item_idx, start_pos, end_pos), permutation in zip(batch_metadata, batch_permutations):
+            if "ERROR::" in permutation:
+                print(f"Error in batch processing: {permutation}")
+                continue
+            items[item_idx] = receive_permutation(items[item_idx], permutation, 
+                                                 rank_start=start_pos, rank_end=end_pos)
+    
+    return items
 
 
 def write_eval_file(rank_results, file):
@@ -160,41 +184,63 @@ def write_eval_file(rank_results, file):
                 rank += 1
     return True
 
-def get_agent(model_name, api_key=None):
-    if model_name == "Qwen/Qwen2.5-7B-Instruct":
-        agent = QwenClient(model_name=model_name, temperature=0)
-    else:
-        if api_key is None:
-            raise "Please provide OpenAI Key."
-        agent = OpenaiClient(api_key)
-    return agent
+
+def process_rank_results_in_batches(agent, rank_results, batch_size=8, window_size=20, step=10):
+    """
+    Process ranking results in batches to improve throughput.
+    
+    Args:
+        agent: The LLM agent to use for reranking
+        rank_results: List of ranking results to process
+        batch_size: Number of items to process in each batch
+        window_size: Size of sliding window for reranking
+        step: Step size for sliding window
+        
+    Returns:
+        List of processed ranking results
+    """
+    new_results = []
+    total_start_time = time.time()
+    
+    for i in range(0, len(rank_results), batch_size):
+        batch_items = rank_results[i:i+batch_size]
+        print(f"Processing batch: {i//batch_size + 1}/{(len(rank_results) + batch_size - 1)//batch_size}")
+        
+        # Process entire batch at once
+        processed_items = sliding_windows_batch(agent, batch_items, 
+                                               rank_start=0, rank_end=100, 
+                                               window_size=window_size, step=step)
+        new_results.extend(processed_items)
+        
+        print(f"Completed {len(new_results)}/{len(rank_results)} items")
+    
+    total_end_time = time.time()
+    print(f"Total execution time: {total_end_time - total_start_time:.2f}s")
+    
+    return new_results
+
+def bm25_retrieve(data, top_k_retrieve=100):
+    assert data in THE_INDEX, f"Data {data} not found in THE_INDEX"
+    searcher = LuceneSearcher.from_prebuilt_index(THE_INDEX[data])
+    topics = get_topics(THE_TOPICS[data] if data not in DLV2 else data)
+    qrels = get_qrels(THE_TOPICS[data])
+    rank_results = run_retriever(topics, searcher, qrels, k=top_k_retrieve)
+    return rank_results
+
 
 def main():
-    from pyserini.search.lucene import LuceneSearcher
-    from pyserini.search import get_topics, get_qrels
-    from run_evaluation import THE_TOPICS
-    import tempfile
-    data = 'dl19'
- 
-    searcher = LuceneSearcher.from_prebuilt_index('msmarco-v1-passage')
-    topics = get_topics('dl19-passage')
-    qrels = get_qrels('dl19-passage')
-    rank_results = run_retriever(topics, searcher, qrels, k=100)
 
-    model_name = "Qwen/Qwen2.5-7B-Instruct"
-    agent = get_agent(model_name=model_name, api_key=None)
+    set_seed(42)
+    for data in ['dl21', 'dl22', 'dl23']:
+        rank_results = bm25_retrieve(data, top_k_retrieve=100)
+        # model_name = "Qwen/Qwen2.5-7B-Instruct"
+        # agent = get_agent(model_name=model_name, api_key=None)
+        # rank_results = process_rank_results_in_batches(agent, rank_results)
         
-    new_results = []
-    for idx, item in tqdm(enumerate(rank_results)):
-        print(f"Processing idx: {idx}/{len(rank_results)}")
-        new_item = sliding_windows(agent, item, rank_start=0, rank_end=100, window_size=50, step=25)
-        new_results.append(new_item)
-
-    temp_file = tempfile.NamedTemporaryFile(delete=False).name
-    from trec_eval import EvalFunction
-
-    EvalFunction.write_file(new_results, temp_file)
-    EvalFunction.main(data, temp_file)
+        # save rank_results
+        with open(f'/home/mila/l/le.zhang/scratch/DeepRerank/data/{data}_bm25_rank_results.json', 'w') as f:
+            json.dump(rank_results, f, indent=4)
+        all_metrics = eval_rerank(data, rank_results)
 
 
 if __name__ == '__main__':

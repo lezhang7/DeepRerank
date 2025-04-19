@@ -1,6 +1,9 @@
 THE_INDEX = {
     'dl19': 'msmarco-v1-passage',
     'dl20': 'msmarco-v1-passage',
+    'dl21': 'msmarco-v2-passage',
+    'dl22': 'msmarco-v2-passage',
+    'dl23': 'msmarco-v2-passage',
     'covid': 'beir-v1.0.0-trec-covid.flat',
     'arguana': 'beir-v1.0.0-arguana.flat',
     'touche': 'beir-v1.0.0-webis-touche2020.flat',
@@ -30,6 +33,9 @@ THE_INDEX = {
 THE_TOPICS = {
     'dl19': 'dl19-passage',
     'dl20': 'dl20-passage',
+    'dl21': 'dl21-passage',
+    'dl22': 'dl22-passage',
+    'dl23': 'dl23-passage',
     'covid': 'beir-v1.0.0-trec-covid-test',
     'arguana': 'beir-v1.0.0-arguana-test',
     'touche': 'beir-v1.0.0-webis-touche2020-test',
@@ -56,79 +62,71 @@ THE_TOPICS = {
     'mrtydi-th': 'mrtydi-v1.1-thai-test',
 
 }
-
+DLV2 = ['dl20', 'dl21', 'dl22', 'dl23']
 
 
 if __name__ == '__main__':
-    from rank_gpt import run_retriever, sliding_windows, write_eval_file
-    from pyserini.search import get_topics, get_qrels
-    from pyserini.search.lucene import LuceneSearcher
-    from tqdm import tqdm
-    import tempfile
-    import os
+    from rank_gpt import process_rank_results_in_batches, bm25_retrieve
     import json
-    import shutil
-    openai_key = os.environ.get("OPENAI_API_KEY", None)
+    from agent import get_agent
+    from trec_eval import eval_rerank
+    from utils import set_seed, get_results_file
+
+    set_seed(42)
+    model_name = "Qwen/Qwen2.5-7B-Instruct"
+    agent = get_agent(model_name=model_name)
+
+    results_file = f'results/{model_name.split("/")[-1]}.json'
+    all_results = get_results_file(results_file)
 
     for data in ['dl19', 'dl20', 'covid', 'nfc', 'touche', 'dbpedia', 'scifact', 'signal', 'news', 'robust04']:
+        # Skip if dataset already has results
+        if data in all_results:
+            print(f'Skipping {data} as results already exist')
+            continue
+            
         print('#' * 20)
         print(f'Evaluation on {data}')
         print('#' * 20)
-
         
-        # Retrieve passages using pyserini BM25.
-        try:
-            searcher = LuceneSearcher.from_prebuilt_index(THE_INDEX[data])
-            topics = get_topics(THE_TOPICS[data] if data != 'dl20' else 'dl20')
-            qrels = get_qrels(THE_TOPICS[data])
-            rank_results = run_retriever(topics, searcher, qrels, k=100)
-        except:
-            print(f'Failed to retrieve passages for {data}')
-            continue
-        
-        # Run sliding window permutation generation
-        new_results = []
-        for item in tqdm(rank_results):
-            new_item = sliding_windows(item, rank_start=0, rank_end=100, window_size=20, step=10,
-                                    model_name='gpt-3.5-turbo', api_key=openai_key)
-            new_results.append(new_item)
+        rank_results = bm25_retrieve(data, top_k_retrieve=100)
+        new_results = process_rank_results_in_batches(agent, rank_results, batch_size=16, window_size=20, step=10)
+        all_metrics = eval_rerank(data, new_results)
 
-        # Evaluate nDCG@10
-        from trec_eval import EvalFunction
-
-        # Create an empty text file to write results, and pass the name to eval
-        temp_file = tempfile.NamedTemporaryFile(delete=False).name
-        EvalFunction.write_file(new_results, temp_file)
-        EvalFunction.main(THE_TOPICS[data], temp_file)
+        all_results[data] = {
+            'metrics': all_metrics
+        }
+        with open(results_file, 'w') as f:
+            json.dump(all_results, f, indent=4)
 
 
-    for data in ['mrtydi-ar', 'mrtydi-bn', 'mrtydi-fi', 'mrtydi-id', 'mrtydi-ja', 'mrtydi-ko', 'mrtydi-ru', 'mrtydi-sw', 'mrtydi-te', 'mrtydi-th']:
-        print('#' * 20)
-        print(f'Evaluation on {data}')
-        print('#' * 20)
+    # for data in ['mrtydi-ar', 'mrtydi-bn', 'mrtydi-fi', 'mrtydi-id', 'mrtydi-ja', 'mrtydi-ko', 'mrtydi-ru', 'mrtydi-sw', 'mrtydi-te', 'mrtydi-th']:
+    #     print('#' * 20)
+    #     print(f'Evaluation on {data}')
+    #     print('#' * 20)
 
-        # Retrieve passages using pyserini BM25.
-        try:
-            searcher = LuceneSearcher.from_prebuilt_index(THE_INDEX[data])
-            topics = get_topics(THE_TOPICS[data] if data != 'dl20' else 'dl20')
-            qrels = get_qrels(THE_TOPICS[data])
-            rank_results = run_retriever(topics, searcher, qrels, k=100)
-            rank_results = rank_results[:100]
+    #     # Retrieve passages using pyserini BM25.
+    #     try:
+    #         searcher = LuceneSearcher.from_prebuilt_index(THE_INDEX[data])
+    #         topics = get_topics(THE_TOPICS[data] if data != 'dl20' else 'dl20')
+    #         qrels = get_qrels(THE_TOPICS[data])
+    #         rank_results = run_retriever(topics, searcher, qrels, k=100)
+    #         rank_results = rank_results[:100]
 
-        except:
-            print(f'Failed to retrieve passages for {data}')
-            continue
+    #     except:
+    #         print(f'Failed to retrieve passages for {data}')
+    #         continue
 
-        # Run sliding window permutation generation
-        new_results = []
-        for item in tqdm(rank_results):
-            new_item = sliding_windows(item, rank_start=0, rank_end=100, window_size=20, step=10,
-                                    model_name='gpt-3.5-turbo', api_key=openai_key)
-            new_results.append(new_item)
+    #     # Run sliding window permutation generation
+    #     new_results = []
+    #     for item in tqdm(rank_results):
+    #         new_item = sliding_windows(item, rank_start=0, rank_end=100, window_size=20, step=10,
+    #                                 model_name='gpt-3.5-turbo', api_key=openai_key)
+    #         new_results.append(new_item)
 
-        # Evaluate nDCG@10
-        from trec_eval import EvalFunction
+    #     # Evaluate nDCG@10
+    #     from trec_eval import EvalFunction
 
-        temp_file = tempfile.NamedTemporaryFile(delete=False).name
-        EvalFunction.write_file(new_results, temp_file)
-        EvalFunction.main(THE_TOPICS[data], temp_file)
+    #     temp_file = tempfile.NamedTemporaryFile(delete=False).name
+    #     EvalFunction.write_file(new_results, temp_file)
+    #     EvalFunction.main(THE_TOPICS[data], temp_file)

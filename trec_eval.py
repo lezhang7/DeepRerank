@@ -4,6 +4,7 @@ import os
 import copy
 from typing import Dict, Tuple
 import pytrec_eval
+from run_evaluation import THE_TOPICS, DLV2
 
 
 def trec_eval(qrels: Dict[str, Dict[str, int]],
@@ -44,29 +45,16 @@ def trec_eval(qrels: Dict[str, Dict[str, int]],
 
 
 def get_qrels_file(name):
-    THE_TOPICS = {
-        'dl19': 'dl19-passage',
-        'dl20': 'dl20-passage',
-        'covid': 'beir-v1.0.0-trec-covid-test',
-        'arguana': 'beir-v1.0.0-arguana-test',
-        'touche': 'beir-v1.0.0-webis-touche2020-test',
-        'news': 'beir-v1.0.0-trec-news-test',
-        'scifact': 'beir-v1.0.0-scifact-test',
-        'fiqa': 'beir-v1.0.0-fiqa-test',
-        'scidocs': 'beir-v1.0.0-scidocs-test',
-        'nfc': 'beir-v1.0.0-nfcorpus-test',
-        'quora': 'beir-v1.0.0-quora-test',
-        'dbpedia': 'beir-v1.0.0-dbpedia-entity-test',
-        'fever': 'beir-v1.0.0-fever-test',
-        'robust04': 'beir-v1.0.0-robust04-test',
-        'signal': 'beir-v1.0.0-signal1m-test',
-    }
-    split = THE_TOPICS.get(name, '')
-    split = split.replace('-test', '.test')
+    
+    split = name.replace('-test', '.test')
     path = 'data/label_file/qrels.' + split + '.txt'  # try to use cache
     if not os.path.exists(path):  # updated to check the correct path variable
         from pyserini.search import get_qrels_file
-        return get_qrels_file(THE_TOPICS.get(name, ''))  # download from pyserini using the correct path
+        try:
+            return get_qrels_file(name)  # download from pyserini using the correct path
+        except:
+            print(f'no qrels file for {name}')
+            return None
     return path  # return the correct path
 
 
@@ -130,11 +118,10 @@ class EvalFunction:
     def trunc(qrels, run):
         qrels = get_qrels_file(qrels)
         # print(qrels)
-        run = pd.read_csv(run, delim_whitespace=True, header=None)
-        qrels = pd.read_csv(qrels, delim_whitespace=True, header=None)
+        run = pd.read_csv(run, sep='\s+', header=None)
+        qrels = pd.read_csv(qrels, sep='\s+', header=None)
         run[0] = run[0].astype(str)
         qrels[0] = qrels[0].astype(str)
-
         qrels = qrels[qrels[0].isin(run[0])]
         temp_file = tempfile.NamedTemporaryFile(delete=False).name
         qrels.to_csv(temp_file, sep='\t', header=None, index=None)
@@ -142,7 +129,6 @@ class EvalFunction:
 
     @staticmethod
     def main(args_qrel, args_run):
-
         args_qrel = EvalFunction.trunc(args_qrel, args_run)
 
         assert os.path.exists(args_qrel)
@@ -158,6 +144,12 @@ class EvalFunction:
         print(all_metrics)
         return all_metrics
 
+def eval_rerank(name, results):
+    temp_file = tempfile.NamedTemporaryFile(delete=False).name
+    EvalFunction.write_file(results, temp_file)
+    return EvalFunction.main(THE_TOPICS[name], temp_file)
+
 
 if __name__ == '__main__':
     EvalFunction.main('dl19', 'ranking_results_file')
+

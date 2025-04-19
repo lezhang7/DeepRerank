@@ -1,0 +1,15 @@
+[=== Module cudatoolkit/12.6.0 loaded ===]
+[=== Module miniconda/3 loaded ===]
+[1;36m(VllmWorker rank=0 pid=3413797)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(VllmWorker rank=0 pid=3413797)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:02<00:07,  2.42s/it]
+[1;36m(VllmWorker rank=0 pid=3413797)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:04<00:04,  2.25s/it]
+[1;36m(VllmWorker rank=0 pid=3413797)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:06<00:02,  2.14s/it]
+[1;36m(VllmWorker rank=0 pid=3413797)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:09<00:00,  2.27s/it]
+[1;36m(VllmWorker rank=0 pid=3413797)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:09<00:00,  2.26s/it]
+[1;36m(VllmWorker rank=0 pid=3413797)[0;0m 
+Traceback (most recent call last):
+  File "/network/scratch/l/le.zhang/DeepRerank/run_evaluation.py", line 72, in <module>
+    all_results = get_results_file(model_name)
+  File "/network/scratch/l/le.zhang/DeepRerank/utils.py", line 15, in get_results_file
+    os.makedirs(os.path.dirname(results_file), exist_ok=True)
+NameError: name 'os' is not defined

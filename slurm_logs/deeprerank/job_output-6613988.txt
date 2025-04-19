@@ -1,0 +1,518 @@
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/condabin/conda
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/conda
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/conda-env
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/activate
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/deactivate
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/etc/profile.d/conda.sh
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/etc/fish/conf.d/conda.fish
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/shell/condabin/Conda.psm1
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/shell/condabin/conda-hook.ps1
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/lib/python3.7/site-packages/xontrib/conda.xsh
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/etc/profile.d/conda.csh
+no change     /home/mila/l/le.zhang/.bashrc
+No action taken.
+[2025-04-18 10:25:32,155] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-18 10:25:34 [__init__.py:239] Automatically detected platform cuda.
+Using 4 GPUs
+INFO 04-18 10:25:44 [config.py:689] This model supports multiple tasks: {'embed', 'classify', 'reward', 'score', 'generate'}. Defaulting to 'generate'.
+INFO 04-18 10:25:44 [config.py:1713] Defaulting to use mp for distributed inference
+INFO 04-18 10:25:44 [config.py:1901] Chunked prefill is enabled with max_num_batched_tokens=8192.
+WARNING 04-18 10:25:45 [utils.py:2304] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/getting_started/troubleshooting.html#python-multiprocessing for more information. Reason: CUDA is initialized
+INFO 04-18 10:25:50 [__init__.py:239] Automatically detected platform cuda.
+INFO 04-18 10:25:53 [core.py:61] Initializing a V1 LLM engine (v0.8.4) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=4, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=None, served_model_name=Qwen/Qwen2.5-7B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+WARNING 04-18 10:25:53 [multiproc_worker_utils.py:306] Reducing Torch parallelism from 24 threads to 1 to avoid unnecessary CPU contention. Set OMP_NUM_THREADS in the external environment to tune this value as needed.
+INFO 04-18 10:25:53 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1, 2, 3], buffer_handle=(4, 10485760, 10, 'psm_9008803a'), local_subscribe_addr='ipc:///tmp/0f0052ab-fb6a-4248-9842-f3cc0e1d4d04', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 04-18 10:25:58 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-18 10:26:02 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7ff5099851b0>
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:02 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_118b95d8'), local_subscribe_addr='ipc:///tmp/5fb67b2f-2c8a-4ac0-a564-36f4b8a2d6bc', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 04-18 10:26:07 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-18 10:26:10 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7fb8957a90f0>
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:10 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_9afddd51'), local_subscribe_addr='ipc:///tmp/09d5883f-5778-4960-9bc2-4199100fd489', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 04-18 10:26:16 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-18 10:26:19 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7fc4d2619180>
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:19 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_3faad32c'), local_subscribe_addr='ipc:///tmp/f1fb618c-9136-4947-af40-afa05aad9a2f', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 04-18 10:26:24 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-18 10:26:28 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f049c7a1150>
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:28 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_8b816dea'), local_subscribe_addr='ipc:///tmp/5ed18f09-c64d-4f5a-8a29-8645f22bd675', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:28 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:28 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:28 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:28 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:28 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:28 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:28 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:28 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:29 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:29 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:29 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:29 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:29 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3], buffer_handle=(3, 4194304, 6, 'psm_4033b463'), local_subscribe_addr='ipc:///tmp/958f0b08-bf65-40b8-9c3f-42999c93929d', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:29 [parallel_state.py:959] rank 2 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 2
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:29 [parallel_state.py:959] rank 0 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 0
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:29 [parallel_state.py:959] rank 1 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 1
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:29 [parallel_state.py:959] rank 3 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 3
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:29 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:29 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:29 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:29 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:29 [gpu_model_runner.py:1276] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:29 [gpu_model_runner.py:1276] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:29 [gpu_model_runner.py:1276] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:29 [gpu_model_runner.py:1276] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m WARNING 04-18 10:26:29 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m WARNING 04-18 10:26:29 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m WARNING 04-18 10:26:29 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m WARNING 04-18 10:26:29 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:29 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:29 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:29 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:31 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:38 [loader.py:458] Loading weights took 9.11 seconds
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:38 [loader.py:458] Loading weights took 9.09 seconds
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:38 [loader.py:458] Loading weights took 8.91 seconds
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:38 [loader.py:458] Loading weights took 7.44 seconds
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:39 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 9.753851 seconds
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:39 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 9.832581 seconds
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:39 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 9.835873 seconds
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:39 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 9.837724 seconds
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:45 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/41989a59cf/rank_3_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:45 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/41989a59cf/rank_1_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:45 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/41989a59cf/rank_0_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:45 [backends.py:426] Dynamo bytecode transform time: 6.31 s
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:45 [backends.py:426] Dynamo bytecode transform time: 6.31 s
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:45 [backends.py:426] Dynamo bytecode transform time: 6.31 s
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:45 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/41989a59cf/rank_2_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:45 [backends.py:426] Dynamo bytecode transform time: 6.38 s
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:45 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:45 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:45 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:46 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:26:54 [monitor.py:33] torch.compile takes 6.31 s in total
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:26:54 [monitor.py:33] torch.compile takes 6.31 s in total
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:26:54 [monitor.py:33] torch.compile takes 6.31 s in total
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:26:54 [monitor.py:33] torch.compile takes 6.38 s in total
+INFO 04-18 10:26:55 [kv_cache_utils.py:634] GPU KV cache size: 4,793,504 tokens
+INFO 04-18 10:26:55 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 146.29x
+INFO 04-18 10:26:55 [kv_cache_utils.py:634] GPU KV cache size: 4,782,976 tokens
+INFO 04-18 10:26:55 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 145.96x
+INFO 04-18 10:26:55 [kv_cache_utils.py:634] GPU KV cache size: 4,782,976 tokens
+INFO 04-18 10:26:55 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 145.96x
+INFO 04-18 10:26:55 [kv_cache_utils.py:634] GPU KV cache size: 4,793,504 tokens
+INFO 04-18 10:26:55 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 146.29x
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:27:13 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:27:13 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:27:15 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:27:15 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=3 pid=3419171)[0;0m INFO 04-18 10:27:15 [gpu_model_runner.py:1626] Graph capturing finished in 20 secs, took 0.44 GiB
+[1;36m(VllmWorker rank=1 pid=3419090)[0;0m INFO 04-18 10:27:15 [gpu_model_runner.py:1626] Graph capturing finished in 20 secs, took 0.44 GiB
+[1;36m(VllmWorker rank=2 pid=3419128)[0;0m INFO 04-18 10:27:15 [gpu_model_runner.py:1626] Graph capturing finished in 20 secs, took 0.44 GiB
+[1;36m(VllmWorker rank=0 pid=3419055)[0;0m INFO 04-18 10:27:15 [gpu_model_runner.py:1626] Graph capturing finished in 20 secs, took 0.44 GiB
+INFO 04-18 10:27:15 [core.py:163] init engine (profile, create kv cache, warmup model) took 36.73 seconds
+INFO 04-18 10:27:16 [core_client.py:435] Core engine process 0 ready.
+####################
+Evaluation on dl19
+####################
+Processing batch: 1/3
+Completed 16/43 items
+Processing batch: 2/3
+Completed 32/43 items
+Processing batch: 3/3
+2025-04-18 10:27:51,555 INFO  [main] topicreader.TopicReader (TopicReader.java:229) - Downloading topics from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/topics.dl20.txt
+Downloading qrels from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/qrels.dl20-passage.txt
+Completed 43/43 items
+Total execution time: 32.73s
+write_file
+{'NDCG@1': 0.76357, 'NDCG@5': 0.73238, 'NDCG@10': 0.68475, 'MAP@1': 0.0253, 'MAP@5': 0.10606, 'MAP@10': 0.16083, 'Recall@1': 0.0253, 'Recall@5': 0.11002, 'Recall@10': 0.16934}
+####################
+Evaluation on dl20
+####################
+Processing batch: 1/4
+Completed 16/54 items
+Processing batch: 2/4
+Completed 32/54 items
+Processing batch: 3/4
+Completed 48/54 items
+Processing batch: 4/4
+Completed 54/54 items
+Total execution time: 42.26s
+write_file
+{'NDCG@1': 0.77469, 'NDCG@5': 0.67405, 'NDCG@10': 0.62744, 'MAP@1': 0.03547, 'MAP@5': 0.12418, 'MAP@10': 0.187, 'Recall@1': 0.03547, 'Recall@5': 0.13456, 'Recall@10': 0.21292}
+####################
+Evaluation on covid
+####################
+Downloading index at https://rgw.cs.uwaterloo.ca/pyserini/indexes/lucene/lucene-inverted.beir-v1.0.0-trec-covid.flat.20221116.505594.tar.gz...
+2025-04-18 10:28:45,144 INFO  [main] topicreader.TopicReader (TopicReader.java:229) - Downloading topics from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/topics.beir-v1.0.0-trec-covid.test.tsv.gz
+Downloading qrels from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/qrels.beir-v1.0.0-trec-covid.test.txt
+Processing batch: 1/4
+Completed 16/50 items
+Processing batch: 2/4
+Completed 32/50 items
+Processing batch: 3/4
+Completed 48/50 items
+Processing batch: 4/4
+Completed 50/50 items
+Total execution time: 89.21s
+write_file
+{'NDCG@1': 0.91, 'NDCG@5': 0.82721, 'NDCG@10': 0.77742, 'MAP@1': 0.00246, 'MAP@5': 0.01062, 'MAP@10': 0.0188, 'Recall@1': 0.00246, 'Recall@5': 0.01114, 'Recall@10': 0.02041}
+####################
+Evaluation on nfc
+####################
+Downloading index at https://rgw.cs.uwaterloo.ca/pyserini/indexes/lucene/lucene-inverted.beir-v1.0.0-nfcorpus.flat.20221116.505594.tar.gz...
+2025-04-18 10:30:16,083 INFO  [main] topicreader.TopicReader (TopicReader.java:229) - Downloading topics from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/topics.beir-v1.0.0-nfcorpus.test.tsv.gz
+Downloading qrels from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/qrels.beir-v1.0.0-nfcorpus.test.txt
+Processing batch: 1/21
+Completed 16/323 items
+Processing batch: 2/21
+Completed 32/323 items
+Processing batch: 3/21
+Completed 48/323 items
+Processing batch: 4/21
+Completed 64/323 items
+Processing batch: 5/21
+Completed 80/323 items
+Processing batch: 6/21
+Completed 96/323 items
+Processing batch: 7/21
+Completed 112/323 items
+Processing batch: 8/21
+Completed 128/323 items
+Processing batch: 9/21
+Completed 144/323 items
+Processing batch: 10/21
+Completed 160/323 items
+Processing batch: 11/21
+Completed 176/323 items
+Processing batch: 12/21
+Completed 192/323 items
+Processing batch: 13/21
+Completed 208/323 items
+Processing batch: 14/21
+Completed 224/323 items
+Processing batch: 15/21
+Completed 240/323 items
+Processing batch: 16/21
+Completed 256/323 items
+Processing batch: 17/21
+Completed 272/323 items
+Processing batch: 18/21
+Completed 288/323 items
+Processing batch: 19/21
+Completed 304/323 items
+Processing batch: 20/21
+Completed 320/323 items
+Processing batch: 21/21
+Completed 323/323 items
+Total execution time: 435.82s
+write_file
+{'NDCG@1': 0.51461, 'NDCG@5': 0.41528, 'NDCG@10': 0.37393, 'MAP@1': 0.06566, 'MAP@5': 0.12306, 'MAP@10': 0.14002, 'Recall@1': 0.06566, 'Recall@5': 0.13995, 'Recall@10': 0.16996}
+####################
+Evaluation on touche
+####################
+Downloading index at https://rgw.cs.uwaterloo.ca/pyserini/indexes/lucene/lucene-inverted.beir-v1.0.0-webis-touche2020.flat.20221116.505594.tar.gz...
+2025-04-18 10:37:55,400 INFO  [main] topicreader.TopicReader (TopicReader.java:229) - Downloading topics from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/topics.beir-v1.0.0-webis-touche2020.test.tsv.gz
+Downloading qrels from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/qrels.beir-v1.0.0-webis-touche2020.test.txt
+Processing batch: 1/4
+Completed 16/49 items
+Processing batch: 2/4
+Completed 32/49 items
+Processing batch: 3/4
+Completed 48/49 items
+Processing batch: 4/4
+Completed 49/49 items
+Total execution time: 83.62s
+write_file
+{'NDCG@1': 0.39796, 'NDCG@5': 0.3409, 'NDCG@10': 0.33462, 'MAP@1': 0.0323, 'MAP@5': 0.07838, 'MAP@10': 0.12089, 'Recall@1': 0.0323, 'Recall@5': 0.10267, 'Recall@10': 0.19878}
+####################
+Evaluation on dbpedia
+####################
+Downloading index at https://rgw.cs.uwaterloo.ca/pyserini/indexes/lucene/lucene-inverted.beir-v1.0.0-dbpedia-entity.flat.20221116.505594.tar.gz...
+2025-04-18 10:40:30,930 INFO  [main] topicreader.TopicReader (TopicReader.java:229) - Downloading topics from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/topics.beir-v1.0.0-dbpedia-entity.test.tsv.gz
+Downloading qrels from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/qrels.beir-v1.0.0-dbpedia-entity.test.txt
+Processing batch: 1/25
+Completed 16/400 items
+Processing batch: 2/25
+Completed 32/400 items
+Processing batch: 3/25
+Completed 48/400 items
+Processing batch: 4/25
+Completed 64/400 items
+Processing batch: 5/25
+Completed 80/400 items
+Processing batch: 6/25
+Completed 96/400 items
+Processing batch: 7/25
+Completed 112/400 items
+Processing batch: 8/25
+Completed 128/400 items
+Processing batch: 9/25
+Completed 144/400 items
+Processing batch: 10/25
+Completed 160/400 items
+Processing batch: 11/25
+Completed 176/400 items
+Processing batch: 12/25
+Completed 192/400 items
+Processing batch: 13/25
+Completed 208/400 items
+Processing batch: 14/25
+Completed 224/400 items
+Processing batch: 15/25
+Completed 240/400 items
+Processing batch: 16/25
+Completed 256/400 items
+Processing batch: 17/25
+Completed 272/400 items
+Processing batch: 18/25
+Completed 288/400 items
+Processing batch: 19/25
+Completed 304/400 items
+Processing batch: 20/25
+Completed 320/400 items
+Processing batch: 21/25
+Completed 336/400 items
+Processing batch: 22/25
+Completed 352/400 items
+Processing batch: 23/25
+Completed 368/400 items
+Processing batch: 24/25
+Completed 384/400 items
+Processing batch: 25/25
+Completed 400/400 items
+Total execution time: 299.41s
+write_file
+{'NDCG@1': 0.4975, 'NDCG@5': 0.41882, 'NDCG@10': 0.39834, 'MAP@1': 0.06767, 'MAP@5': 0.14192, 'MAP@10': 0.17553, 'Recall@1': 0.06767, 'Recall@5': 0.17359, 'Recall@10': 0.23262}
+####################
+Evaluation on scifact
+####################
+Downloading index at https://rgw.cs.uwaterloo.ca/pyserini/indexes/lucene/lucene-inverted.beir-v1.0.0-scifact.flat.20221116.505594.tar.gz...
+2025-04-18 10:45:39,171 INFO  [main] topicreader.TopicReader (TopicReader.java:229) - Downloading topics from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/topics.beir-v1.0.0-scifact.test.tsv.gz
+Downloading qrels from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/qrels.beir-v1.0.0-scifact.test.txt
+Processing batch: 1/19
+Completed 16/300 items
+Processing batch: 2/19
+Completed 32/300 items
+Processing batch: 3/19
+Completed 48/300 items
+Processing batch: 4/19
+Completed 64/300 items
+Processing batch: 5/19
+Completed 80/300 items
+Processing batch: 6/19
+Completed 96/300 items
+Processing batch: 7/19
+Completed 112/300 items
+Processing batch: 8/19
+Completed 128/300 items
+Processing batch: 9/19
+Completed 144/300 items
+Processing batch: 10/19
+Completed 160/300 items
+Processing batch: 11/19
+Completed 176/300 items
+Processing batch: 12/19
+Completed 192/300 items
+Processing batch: 13/19
+Completed 208/300 items
+Processing batch: 14/19
+Completed 224/300 items
+Processing batch: 15/19
+Completed 240/300 items
+Processing batch: 16/19
+Completed 256/300 items
+Processing batch: 17/19
+Completed 272/300 items
+Processing batch: 18/19
+Completed 288/300 items
+Processing batch: 19/19
+Completed 300/300 items
+Total execution time: 539.36s
+write_file
+{'NDCG@1': 0.57667, 'NDCG@5': 0.69104, 'NDCG@10': 0.70829, 'MAP@1': 0.55011, 'MAP@5': 0.65296, 'MAP@10': 0.66097, 'Recall@1': 0.55011, 'Recall@5': 0.78556, 'Recall@10': 0.83483}
+####################
+Evaluation on signal
+####################
+Downloading index at https://rgw.cs.uwaterloo.ca/pyserini/indexes/lucene/lucene-inverted.beir-v1.0.0-signal1m.flat.20221116.505594.tar.gz...
+2025-04-18 10:54:57,736 INFO  [main] topicreader.TopicReader (TopicReader.java:229) - Downloading topics from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/topics.beir-v1.0.0-signal1m.test.tsv.gz
+Downloading qrels from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/qrels.beir-v1.0.0-signal1m.test.txt
+Processing batch: 1/7
+Completed 16/97 items
+Processing batch: 2/7
+Completed 32/97 items
+Processing batch: 3/7
+Completed 48/97 items
+Processing batch: 4/7
+Completed 64/97 items
+Processing batch: 5/7
+Completed 80/97 items
+Processing batch: 6/7
+Completed 96/97 items
+Processing batch: 7/7
+Completed 97/97 items
+Total execution time: 51.06s
+write_file
+{'NDCG@1': 0.43814, 'NDCG@5': 0.36234, 'NDCG@10': 0.31729, 'MAP@1': 0.02968, 'MAP@5': 0.0822, 'MAP@10': 0.10926, 'Recall@1': 0.02968, 'Recall@5': 0.09336, 'Recall@10': 0.145}
+####################
+Evaluation on news
+####################
+Downloading index at https://rgw.cs.uwaterloo.ca/pyserini/indexes/lucene/lucene-inverted.beir-v1.0.0-trec-news.flat.20221116.505594.tar.gz...
+2025-04-18 10:57:15,302 INFO  [main] topicreader.TopicReader (TopicReader.java:229) - Downloading topics from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/topics.beir-v1.0.0-trec-news.test.tsv.gz
+Downloading qrels from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/qrels.beir-v1.0.0-trec-news.test.txt
+Processing batch: 1/4
+Completed 16/57 items
+Processing batch: 2/4
+Completed 32/57 items
+Processing batch: 3/4
+Completed 48/57 items
+Processing batch: 4/4
+Completed 57/57 items
+Total execution time: 114.85s
+write_file
+{'NDCG@1': 0.40643, 'NDCG@5': 0.43436, 'NDCG@10': 0.4324, 'MAP@1': 0.01917, 'MAP@5': 0.07458, 'MAP@10': 0.11875, 'Recall@1': 0.01917, 'Recall@5': 0.0897, 'Recall@10': 0.15312}
+####################
+Evaluation on robust04
+####################
+Downloading index at https://rgw.cs.uwaterloo.ca/pyserini/indexes/lucene/lucene-inverted.beir-v1.0.0-robust04.flat.20221116.505594.tar.gz...
+2025-04-18 11:00:02,057 INFO  [main] topicreader.TopicReader (TopicReader.java:229) - Downloading topics from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/topics.beir-v1.0.0-robust04.test.tsv.gz
+Downloading qrels from https://raw.githubusercontent.com/castorini/anserini-tools/master/topics-and-qrels/qrels.beir-v1.0.0-robust04.test.txt
+Processing batch: 1/16
+Completed 16/249 items
+Processing batch: 2/16
+Completed 32/249 items
+Processing batch: 3/16
+Completed 48/249 items
+Processing batch: 4/16
+Completed 64/249 items
+Processing batch: 5/16
+Completed 80/249 items
+Processing batch: 6/16
+Completed 96/249 items
+Processing batch: 7/16
+Completed 112/249 items
+Processing batch: 8/16
+Completed 128/249 items
+Processing batch: 9/16
+Completed 144/249 items
+Processing batch: 10/16
+Completed 160/249 items
+Processing batch: 11/16
+Completed 176/249 items
+Processing batch: 12/16
+Completed 192/249 items
+Processing batch: 13/16
+Completed 208/249 items
+Processing batch: 14/16
+Completed 224/249 items
+Processing batch: 15/16
+Completed 240/249 items
+Processing batch: 16/16
+Completed 249/249 items
+Total execution time: 496.75s
+write_file
+{'NDCG@1': 0.69679, 'NDCG@5': 0.55473, 'NDCG@10': 0.49949, 'MAP@1': 0.02773, 'MAP@5': 0.08309, 'MAP@10': 0.11765, 'Recall@1': 0.02773, 'Recall@5': 0.09498, 'Recall@10': 0.14878}
+
+======== GPU REPORT ========
+
+==============NVSMI LOG==============
+
+Timestamp                                 : Fri Apr 18 11:08:35 2025
+Driver Version                            : 560.35.03
+CUDA Version                              : 12.6
+
+Attached GPUs                             : 4
+GPU 00000000:01:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3419055
+            GPU Utilization               : 79 %
+            Memory Utilization            : 28 %
+            Max memory usage              : 73790 MiB
+            Time                          : 2548393 ms
+            Is Running                    : 0
+        Process ID                        : 3419128
+            GPU Utilization               : 0 %
+            Memory Utilization            : 0 %
+            Max memory usage              : 582 MiB
+            Time                          : 2531492 ms
+            Is Running                    : 0
+        Process ID                        : 3419090
+            GPU Utilization               : 0 %
+            Memory Utilization            : 0 %
+            Max memory usage              : 660 MiB
+            Time                          : 2540324 ms
+            Is Running                    : 0
+        Process ID                        : 3419171
+            GPU Utilization               : 0 %
+            Memory Utilization            : 0 %
+            Max memory usage              : 570 MiB
+            Time                          : 2523224 ms
+            Is Running                    : 0
+
+GPU 00000000:41:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3419090
+            GPU Utilization               : 79 %
+            Memory Utilization            : 28 %
+            Max memory usage              : 73766 MiB
+            Time                          : 2540323 ms
+            Is Running                    : 0
+
+GPU 00000000:81:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3419128
+            GPU Utilization               : 80 %
+            Memory Utilization            : 28 %
+            Max memory usage              : 73766 MiB
+            Time                          : 2531490 ms
+            Is Running                    : 0
+
+GPU 00000000:C1:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3419171
+            GPU Utilization               : 80 %
+            Memory Utilization            : 28 %
+            Max memory usage              : 73790 MiB
+            Time                          : 2523196 ms
+            Is Running                    : 0
+
+Fri Apr 18 11:08:35 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-80GB          On  |   00000000:01:00.0 Off |                    0 |
+| N/A   43C    P0             66W /  500W |       1MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-SXM4-80GB          On  |   00000000:41:00.0 Off |                    0 |
+| N/A   35C    P0             65W /  500W |       1MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA A100-SXM4-80GB          On  |   00000000:81:00.0 Off |                    0 |
+| N/A   43C    P0             72W /  500W |       1MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA A100-SXM4-80GB          On  |   00000000:C1:00.0 Off |                    0 |
+| N/A   35C    P0             64W /  500W |       1MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
