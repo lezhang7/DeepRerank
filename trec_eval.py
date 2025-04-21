@@ -46,6 +46,8 @@ def trec_eval(qrels: Dict[str, Dict[str, int]],
 
 def get_qrels_file(name):
     
+    if os.path.exists(name):
+        return name
     split = name.replace('-test', '.test')
     path = 'data/label_file/qrels.' + split + '.txt'  # try to use cache
     if not os.path.exists(path):  # updated to check the correct path variable
@@ -104,7 +106,6 @@ class EvalFunction:
 
     @staticmethod
     def write_file(rank_results, file):
-        print('write_file')
         with open(file, 'w') as f:
             for i in range(len(rank_results)):
                 rank = 1
@@ -141,12 +142,19 @@ class EvalFunction:
             run = pytrec_eval.parse_run(f_run)
 
         all_metrics = trec_eval(qrel, run, k_values=(1, 5, 10))
-        print(all_metrics)
         return all_metrics
 
 def eval_rerank(name, results):
+    if type(results) != list:
+        results = [results]
     temp_file = tempfile.NamedTemporaryFile(delete=False).name
     EvalFunction.write_file(results, temp_file)
+    if os.path.exists(name):
+        name = name.replace('-test', '.test')
+    if os.path.exists(name):
+        qrels_path = name
+        return EvalFunction.main(qrels_path, temp_file)
+    
     return EvalFunction.main(THE_TOPICS[name], temp_file)
 
 
