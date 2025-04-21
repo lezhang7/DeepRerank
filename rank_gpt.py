@@ -8,7 +8,8 @@ from run_evaluation import THE_TOPICS, THE_INDEX, DLV2
 from agent import get_agent
 from trec_eval import eval_rerank
 from utils import set_seed
-
+import re
+import os
 
 def run_retriever(topics, searcher, qrels=None, k=100, qid=None):
     ranks = []
@@ -86,7 +87,45 @@ def create_permutation_instruction(item=None, rank_start=0, rank_end=100):
     return messages
 
 
+def create_permutation_instruction_deeprerank(item=None, rank_start=0, rank_end=100):
+    query = item['query']
+    num = len(item['hits'][rank_start: rank_end])
+    max_length = 300
+    instruction =  (
+            f"I will provide you with passages, each indicated by number identifier []. Rank the passages based on their relevance to the search query."
+            f"Search Query: {query}. \nRank the {num} passages above based on their relevance to the search query."
+            f"The passages should be listed in descending order using identifiers. The most relevant passages should be listed first. The output format should be <answer> [] > [] </answer>, e.g., <answer> [1] > [2] </answer>."
+        )
+    
+    messages = [
+            {"role": "system", "content": "You are DeepRerank, an intelligent assistant that can rank passages based on their relevancy to the search query. You first thinks about the reasoning process in the mind and then provides the user with the answer."},
+            {"role": "user","content": instruction},
+            {"role": "assistant", "content": "Okay, please provide the passages."}
+        ]
+    rank = 0
+    for hit in item['hits'][rank_start: rank_end]:
+        rank += 1
+        content = hit['content']
+        content = content.replace('Title: Content: ', '')
+        content = content.strip()
+        content = ' '.join(content.split()[:int(max_length)]) # max token fea each passage is 300
+        messages.append({"role": "user", "content": f"[{rank}] {content}"})
+        messages.append({"role": "assistant", "content": f"Received passage [{rank}]."})
+        
+    messages.append({
+        "role": "user",
+        "content": f"Please analyze each of the following passages and rank them according to their relevance to the specified search query {query}. For each passage, clearly articulate your reasoning for the assigned relevance score within `<think>` tags. Finally, present the IDs of all provided passages in descending order of relevance within `<answer>` tags, using the format `<answer> [ID_most_relevant] > [ID_second_most_relevant] > ... > [ID_least_relevant] </answer>`. Ensure that all passage IDs are included in the ranking, regardless of their degree of relevance."
+    })
+
+
+    return messages
+
+
+
 def clean_response(response: str):
+    if "<answer>" in response:
+        content_match = re.search(r"<answer>(.*?)</answer>", response, re.DOTALL)
+        response = content_match.group(1).strip() if content_match else response.strip()
     new_response = ''
     for c in response:
         if not c.isdigit():
@@ -107,7 +146,14 @@ def remove_duplicate(response):
 
 def receive_permutation(item, permutation, rank_start=0, rank_end=100):
     response = clean_response(permutation)
+    if DEBUG:
+        print("="*100)
+        print(f"query: {item['query']}")
+        print(f"rank_start: {rank_start}, rank_end: {rank_end}")
+        print(f"model response: {permutation}")
     response = [int(x) - 1 for x in response.split()]
+    if DEBUG:
+        print(f"cleaned response: {response}")
     response = remove_duplicate(response)
     cut_range = copy.deepcopy(item['hits'][rank_start: rank_end])
     original_rank = [tt for tt in range(len(cut_range))]
@@ -125,7 +171,6 @@ def receive_permutation(item, permutation, rank_start=0, rank_end=100):
 def sliding_windows_batch(agent, items, rank_start=0, rank_end=100, window_size=20, step=10):
     """Process multiple items with sliding windows using batched inference."""
     items = [copy.deepcopy(item) for item in items]
-    results = []
     
     # Initialize positions for all items
     all_positions = []
@@ -153,7 +198,10 @@ def sliding_windows_batch(agent, items, rank_start=0, rank_end=100, window_size=
         for item_idx, (item, positions) in enumerate(zip(items, all_positions)):
             if window_idx < len(positions):
                 start_pos, end_pos = positions[window_idx]
-                messages = create_permutation_instruction(item=item, rank_start=start_pos, rank_end=end_pos)
+                if 'deeprerank' in agent.model_name:
+                    messages = create_permutation_instruction_deeprerank(item=item, rank_start=start_pos, rank_end=end_pos)
+                else:
+                    messages = create_permutation_instruction(item=item, rank_start=start_pos, rank_end=end_pos)
                 batch_messages.append(messages)
                 batch_metadata.append((item_idx, start_pos, end_pos))
         
@@ -230,18 +278,31 @@ def bm25_retrieve(data, top_k_retrieve=100):
 
 def main():
 
+
     set_seed(42)
-    for data in ['dl21', 'dl22', 'dl23']:
+    # model_name = "le723z/deeprerank-step100"
+    model_name = "Qwen/Qwen2.5-7B-Instruct"
+    print(f"model_name: {model_name}")
+    
+    agent = get_agent(model_name=model_name, api_key=None)
+    
+    for data in ['dl19']:
         rank_results = bm25_retrieve(data, top_k_retrieve=100)
-        # model_name = "Qwen/Qwen2.5-7B-Instruct"
-        # agent = get_agent(model_name=model_name, api_key=None)
-        # rank_results = process_rank_results_in_batches(agent, rank_results)
+       
+        
+        # bs is 16*num_gpu, gpu automatically allocated
+        num_gpu = len(os.environ.get('CUDA_VISIBLE_DEVICES', '').split(',')) if os.environ.get('CUDA_VISIBLE_DEVICES') else 1
+        bs = 16*num_gpu
+        rank_results = process_rank_results_in_batches(agent, rank_results, batch_size=bs   )
         
         # save rank_results
-        with open(f'/home/mila/l/le.zhang/scratch/DeepRerank/data/{data}_bm25_rank_results.json', 'w') as f:
-            json.dump(rank_results, f, indent=4)
+        # with open(f'/home/mila/l/le.zhang/scratch/DeepRerank/data/{data}_bm25_rank_results.json', 'w') as f:
+        #     json.dump(rank_results, f, indent=4)
         all_metrics = eval_rerank(data, rank_results)
+        print(all_metrics)
+        # breakpoint()
 
 
 if __name__ == '__main__':
+    DEBUG = True
     main()

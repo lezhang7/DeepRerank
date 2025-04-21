@@ -10,36 +10,37 @@ from run_evaluation import THE_TOPICS, DLV2
 def trec_eval(qrels: Dict[str, Dict[str, int]],
               results: Dict[str, Dict[str, float]],
               k_values: Tuple[int] = (10, 50, 100, 200, 1000)) -> Dict[str, float]:
-    ndcg, _map, recall = {}, {}, {}
+    # Pre-allocate dictionaries with zeros
+    ndcg = {f"NDCG@{k}": 0.0 for k in k_values}
+    _map = {f"MAP@{k}": 0.0 for k in k_values}
+    recall = {f"Recall@{k}": 0.0 for k in k_values}
 
-    for k in k_values:
-        ndcg[f"NDCG@{k}"] = 0.0
-        _map[f"MAP@{k}"] = 0.0
-        recall[f"Recall@{k}"] = 0.0
-
-    map_string = "map_cut." + ",".join([str(k) for k in k_values])
-    ndcg_string = "ndcg_cut." + ",".join([str(k) for k in k_values])
-    recall_string = "recall." + ",".join([str(k) for k in k_values])
+    # Join strings once instead of in a loop
+    map_string = "map_cut." + ",".join(map(str, k_values))
+    ndcg_string = "ndcg_cut." + ",".join(map(str, k_values))
+    recall_string = "recall." + ",".join(map(str, k_values))
 
     evaluator = pytrec_eval.RelevanceEvaluator(qrels, {map_string, ndcg_string, recall_string})
     scores = evaluator.evaluate(results)
-
-    for query_id in scores:
+    
+    # Use more efficient iteration
+    num_queries = len(scores)
+    for query_scores in scores.values():
         for k in k_values:
-            ndcg[f"NDCG@{k}"] += scores[query_id]["ndcg_cut_" + str(k)]
-            _map[f"MAP@{k}"] += scores[query_id]["map_cut_" + str(k)]
-            recall[f"Recall@{k}"] += scores[query_id]["recall_" + str(k)]
+            ndcg[f"NDCG@{k}"] += query_scores["ndcg_cut_" + str(k)]
+            _map[f"MAP@{k}"] += query_scores["map_cut_" + str(k)]
+            recall[f"Recall@{k}"] += query_scores["recall_" + str(k)]
 
-    def _normalize(m: dict) -> dict:
-        return {k: round(v / len(scores), 5) for k, v in m.items()}
+    # Normalize all metrics at once
+    for metric_dict in (ndcg, _map, recall):
+        for k in metric_dict:
+            metric_dict[k] = round(metric_dict[k] / num_queries, 5)
 
-    ndcg = _normalize(ndcg)
-    _map = _normalize(_map)
-    recall = _normalize(recall)
-
+    # Combine metrics more efficiently
     all_metrics = {}
-    for mt in [ndcg, _map, recall]:
-        all_metrics.update(mt)
+    all_metrics.update(ndcg)
+    all_metrics.update(_map)
+    all_metrics.update(recall)
 
     return all_metrics
 
@@ -70,17 +71,14 @@ def remove_duplicate(response):
 
 
 def clean_response(response: str):
-    new_response = ''
+    # More efficient string processing
+    chars = []
     for c in response:
-        if not c.isdigit():
-            new_response += ' '
+        if c.isdigit():
+            chars.append(c)
         else:
-            try:
-                new_response += str(int(c))
-            except:
-                new_response += ' '
-    new_response = new_response.strip()
-    return new_response
+            chars.append(' ')
+    return ''.join(chars).strip()
 
 
 class EvalFunction:
@@ -103,6 +101,22 @@ class EvalFunction:
         return rank_results
 
     @staticmethod
+    def convert_to_trec_format(rank_results):
+        """Convert rank_results directly to the format needed for pytrec_eval"""
+        run_dict = {}
+        for result in rank_results:
+            for hit in result['hits']:
+                qid = str(hit['qid'])  # Ensure qid is a string
+                docid = str(hit['docid'])  # Ensure docid is a string
+                score = float(hit['score'])  # Ensure score is a float
+                
+                if qid not in run_dict:
+                    run_dict[qid] = {}
+                run_dict[qid][docid] = score
+        
+        return run_dict
+
+    @staticmethod
     def write_file(rank_results, file):
         print('write_file')
         with open(file, 'w') as f:
@@ -115,39 +129,49 @@ class EvalFunction:
         return True
 
     @staticmethod
-    def trunc(qrels, run):
-        qrels = get_qrels_file(qrels)
-        # print(qrels)
-        run = pd.read_csv(run, sep='\s+', header=None)
-        qrels = pd.read_csv(qrels, sep='\s+', header=None)
-        run[0] = run[0].astype(str)
-        qrels[0] = qrels[0].astype(str)
-        qrels = qrels[qrels[0].isin(run[0])]
-        temp_file = tempfile.NamedTemporaryFile(delete=False).name
-        qrels.to_csv(temp_file, sep='\t', header=None, index=None)
-        return temp_file
+    def load_qrels(qrels_name):
+        """Load qrels directly into the format needed for pytrec_eval"""
+        qrels_path = get_qrels_file(qrels_name)
+        if not qrels_path:
+            return None
+            
+        qrels_dict = {}
+        # Use a more efficient file reading approach
+        with open(qrels_path, 'r') as f:
+            for line in f:
+                parts = line.strip().split()
+                if len(parts) >= 4:
+                    qid, _, docid, rel = parts[:4]
+                    qrels_dict.setdefault(qid, {})[docid] = int(rel)
+        
+        return qrels_dict
 
     @staticmethod
     def main(args_qrel, args_run):
-        args_qrel = EvalFunction.trunc(args_qrel, args_run)
-
-        assert os.path.exists(args_qrel)
-        assert os.path.exists(args_run)
-
-        with open(args_qrel, 'r') as f_qrel:
-            qrel = pytrec_eval.parse_qrel(f_qrel)
-
-        with open(args_run, 'r') as f_run:
-            run = pytrec_eval.parse_run(f_run)
-
-        all_metrics = trec_eval(qrel, run, k_values=(1, 5, 10))
+        if isinstance(args_run, str):
+            # If args_run is a file path, read it
+            assert os.path.exists(args_run)
+            with open(args_run, 'r') as f_run:
+                pred = pytrec_eval.parse_run(f_run)
+        else:
+            # If args_run is already the rank_results structure
+            pred = EvalFunction.convert_to_trec_format(args_run)
+        
+        # Load qrels
+        if isinstance(args_qrel, str):
+            qrels_dict = EvalFunction.load_qrels(args_qrel)
+        else:
+            qrels_dict = args_qrel
+            
+        all_metrics = trec_eval(qrels_dict, pred, k_values=(1, 5, 10))
         print(all_metrics)
         return all_metrics
 
 def eval_rerank(name, results):
-    temp_file = tempfile.NamedTemporaryFile(delete=False).name
-    EvalFunction.write_file(results, temp_file)
-    return EvalFunction.main(THE_TOPICS[name], temp_file)
+    """Evaluate reranking results without writing to temporary files"""
+    qrels_dict = EvalFunction.load_qrels(THE_TOPICS[name])
+    run_dict = EvalFunction.convert_to_trec_format(results)
+    return trec_eval(qrels_dict, run_dict, k_values=(1, 5, 10))
 
 
 if __name__ == '__main__':

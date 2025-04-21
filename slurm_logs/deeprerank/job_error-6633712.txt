@@ -1,0 +1,119 @@
+[=== Module cudatoolkit/12.6.0 loaded ===]
+[=== Module miniconda/3 loaded ===]
+WARNING: Using incubator modules: jdk.incubator.vector
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:49: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(ctx, input, weight, bias=None):
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:67: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+Apr 21, 2025 10:23:30 AM org.apache.lucene.store.MemorySegmentIndexInputProvider <init>
+INFO: Using MemorySegmentIndexInput with Java 21; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+  0%|          | 0/43 [00:00<?, ?it/s]  2%|▏         | 1/43 [00:00<00:13,  3.16it/s]  5%|▍         | 2/43 [00:00<00:08,  4.59it/s]  7%|▋         | 3/43 [00:00<00:06,  6.08it/s]  9%|▉         | 4/43 [00:00<00:05,  6.92it/s] 12%|█▏        | 5/43 [00:00<00:04,  7.69it/s] 14%|█▍        | 6/43 [00:00<00:04,  8.18it/s] 19%|█▊        | 8/43 [00:01<00:03,  9.27it/s] 23%|██▎       | 10/43 [00:01<00:03, 10.19it/s] 28%|██▊       | 12/43 [00:01<00:02, 10.84it/s] 33%|███▎      | 14/43 [00:01<00:02, 11.42it/s] 37%|███▋      | 16/43 [00:01<00:02, 12.22it/s] 42%|████▏     | 18/43 [00:01<00:01, 12.66it/s] 47%|████▋     | 20/43 [00:01<00:01, 13.38it/s] 51%|█████     | 22/43 [00:02<00:01, 14.16it/s] 56%|█████▌    | 24/43 [00:02<00:01, 14.11it/s] 60%|██████    | 26/43 [00:02<00:01, 14.50it/s] 65%|██████▌   | 28/43 [00:02<00:01, 14.92it/s] 70%|██████▉   | 30/43 [00:02<00:00, 14.15it/s] 74%|███████▍  | 32/43 [00:02<00:00, 14.13it/s] 79%|███████▉  | 34/43 [00:02<00:00, 13.36it/s] 84%|████████▎ | 36/43 [00:03<00:00, 13.53it/s] 88%|████████▊ | 38/43 [00:03<00:00, 14.50it/s] 93%|█████████▎| 40/43 [00:03<00:00, 14.01it/s] 98%|█████████▊| 42/43 [00:03<00:00, 14.34it/s]100%|██████████| 43/43 [00:03<00:00, 12.00it/s]
+WARNING: Using incubator modules: jdk.incubator.vector
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:49: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(ctx, input, weight, bias=None):
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:67: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+WARNING: Using incubator modules: jdk.incubator.vector
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:49: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(ctx, input, weight, bias=None):
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:67: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+WARNING: Using incubator modules: jdk.incubator.vector
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:49: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(ctx, input, weight, bias=None):
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:67: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+WARNING: Using incubator modules: jdk.incubator.vector
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:49: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(ctx, input, weight, bias=None):
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:67: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+WARNING: Using incubator modules: jdk.incubator.vector
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:49: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(ctx, input, weight, bias=None):
+/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py:67: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+libibverbs: Warning: couldn't load driver 'libqedr-rdmav34.so': libqedr-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libqedr-rdmav34.so': libqedr-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libqedr-rdmav34.so': libqedr-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libqedr-rdmav34.so': libqedr-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libocrdma-rdmav34.so': libocrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libocrdma-rdmav34.so': libocrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libocrdma-rdmav34.so': libocrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libocrdma-rdmav34.so': libocrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libbnxt_re-rdmav34.so': libbnxt_re-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libbnxt_re-rdmav34.so': libbnxt_re-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libbnxt_re-rdmav34.so': libbnxt_re-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libbnxt_re-rdmav34.so': libbnxt_re-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'librxe-rdmav34.so': librxe-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'librxe-rdmav34.so': librxe-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'librxe-rdmav34.so': librxe-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'librxe-rdmav34.so': librxe-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhfi1verbs-rdmav34.so': libhfi1verbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhfi1verbs-rdmav34.so': libhfi1verbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhfi1verbs-rdmav34.so': libhfi1verbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhfi1verbs-rdmav34.so': libhfi1verbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libirdma-rdmav34.so': libirdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libirdma-rdmav34.so': libirdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libirdma-rdmav34.so': libirdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libirdma-rdmav34.so': libirdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libipathverbs-rdmav34.so': libipathverbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libipathverbs-rdmav34.so': libipathverbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libipathverbs-rdmav34.so': libipathverbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libipathverbs-rdmav34.so': libipathverbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmthca-rdmav34.so': libmthca-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmthca-rdmav34.so': libmthca-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmthca-rdmav34.so': libmthca-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmthca-rdmav34.so': libmthca-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libcxgb4-rdmav34.so': libcxgb4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libcxgb4-rdmav34.so': libcxgb4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libcxgb4-rdmav34.so': libcxgb4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libcxgb4-rdmav34.so': libcxgb4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libefa-rdmav34.so': libefa-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libefa-rdmav34.so': libefa-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libefa-rdmav34.so': libefa-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libefa-rdmav34.so': libefa-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmlx4-rdmav34.so': libmlx4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmlx4-rdmav34.so': libmlx4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmlx4-rdmav34.so': libmlx4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmlx4-rdmav34.so': libmlx4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libsiw-rdmav34.so': libsiw-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libsiw-rdmav34.so': libsiw-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libsiw-rdmav34.so': libsiw-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libsiw-rdmav34.so': libsiw-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhns-rdmav34.so': libhns-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhns-rdmav34.so': libhns-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhns-rdmav34.so': libhns-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhns-rdmav34.so': libhns-rdmav34.so: cannot open shared object file: No such file or directory
+[1;36m(VllmWorker rank=0 pid=3518470)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(VllmWorker rank=0 pid=3518470)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:00,  4.02it/s]
+[1;36m(VllmWorker rank=0 pid=3518470)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:03<00:04,  2.02s/it]
+[1;36m(VllmWorker rank=0 pid=3518470)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:06<00:02,  2.55s/it]
+[1;36m(VllmWorker rank=0 pid=3518470)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:09<00:00,  2.68s/it]
+[1;36m(VllmWorker rank=0 pid=3518470)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:09<00:00,  2.39s/it]
+[1;36m(VllmWorker rank=0 pid=3518470)[0;0m 
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts:  12%|█▎        | 1/8 [00:01<00:13,  2.00s/it, est. speed input: 1363.95 toks/s, output: 189.84 toks/s]Processed prompts:  25%|██▌       | 2/8 [00:02<00:06,  1.07s/it, est. speed input: 2028.05 toks/s, output: 351.19 toks/s]Processed prompts:  38%|███▊      | 3/8 [00:02<00:03,  1.59it/s, est. speed input: 2772.90 toks/s, output: 531.35 toks/s]Processed prompts:  75%|███████▌  | 6/8 [00:02<00:00,  3.75it/s, est. speed input: 5204.73 toks/s, output: 1039.70 toks/s]Processed prompts:  88%|████████▊ | 7/8 [00:02<00:00,  4.28it/s, est. speed input: 5944.39 toks/s, output: 1191.00 toks/s]Processed prompts: 100%|██████████| 8/8 [00:03<00:00,  3.87it/s, est. speed input: 6037.96 toks/s, output: 1268.93 toks/s]Processed prompts: 100%|██████████| 8/8 [00:03<00:00,  2.48it/s, est. speed input: 6037.96 toks/s, output: 1268.93 toks/s]
+Traceback (most recent call last):
+  File "/network/scratch/l/le.zhang/DeepRerank/rank_gpt.py", line 289, in <module>
+    main()
+  File "/network/scratch/l/le.zhang/DeepRerank/rank_gpt.py", line 278, in main
+    rank_results = process_rank_results_in_batches(agent, rank_results)
+  File "/network/scratch/l/le.zhang/DeepRerank/rank_gpt.py", line 250, in process_rank_results_in_batches
+    processed_items = sliding_windows_batch(agent, batch_items,
+  File "/network/scratch/l/le.zhang/DeepRerank/rank_gpt.py", line 211, in sliding_windows_batch
+    items[item_idx] = receive_permutation(items[item_idx], permutation,
+  File "/network/scratch/l/le.zhang/DeepRerank/rank_gpt.py", line 149, in receive_permutation
+    response = clean_response(permutation)
+  File "/network/scratch/l/le.zhang/DeepRerank/rank_gpt.py", line 126, in clean_response
+    if "<answer>" in response:
+  File "/network/scratch/l/le.zhang/DeepRerank/rank_gpt.py", line 126, in clean_response
+    if "<answer>" in response:
+  File "/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/bdb.py", line 90, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/mila/l/le.zhang/.conda/envs/ir/lib/python3.10/bdb.py", line 115, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
