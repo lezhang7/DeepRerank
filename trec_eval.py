@@ -47,6 +47,8 @@ def trec_eval(qrels: Dict[str, Dict[str, int]],
 
 def get_qrels_file(name):
     
+    if os.path.exists(name):
+        return name
     split = name.replace('-test', '.test')
     path = 'data/label_file/qrels.' + split + '.txt'  # try to use cache
     if not os.path.exists(path):  # updated to check the correct path variable
@@ -118,7 +120,6 @@ class EvalFunction:
 
     @staticmethod
     def write_file(rank_results, file):
-        print('write_file')
         with open(file, 'w') as f:
             for i in range(len(rank_results)):
                 rank = 1
