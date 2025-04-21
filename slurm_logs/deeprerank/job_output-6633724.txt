@@ -1,0 +1,255 @@
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/condabin/conda
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/conda
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/conda-env
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/activate
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/deactivate
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/etc/profile.d/conda.sh
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/etc/fish/conf.d/conda.fish
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/shell/condabin/Conda.psm1
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/shell/condabin/conda-hook.ps1
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/lib/python3.7/site-packages/xontrib/conda.xsh
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/etc/profile.d/conda.csh
+no change     /home/mila/l/le.zhang/.bashrc
+No action taken.
+[2025-04-21 10:26:40,772] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 10:26:43 [__init__.py:239] Automatically detected platform cuda.
+Using 4 GPUs
+INFO 04-21 10:26:53 [config.py:689] This model supports multiple tasks: {'reward', 'generate', 'score', 'classify', 'embed'}. Defaulting to 'generate'.
+INFO 04-21 10:26:53 [config.py:1713] Defaulting to use mp for distributed inference
+INFO 04-21 10:26:53 [config.py:1901] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 04-21 10:26:54 [utils.py:2304] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/getting_started/troubleshooting.html#python-multiprocessing for more information. Reason: CUDA is initialized
+[2025-04-21 10:27:00,120] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 10:27:02 [__init__.py:239] Automatically detected platform cuda.
+INFO 04-21 10:27:03 [core.py:61] Initializing a V1 LLM engine (v0.8.4) with config: model='le723z/deeprerank-step100', speculative_config=None, tokenizer='le723z/deeprerank-step100', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=4, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=None, served_model_name=le723z/deeprerank-step100, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+WARNING 04-21 10:27:03 [multiproc_worker_utils.py:306] Reducing Torch parallelism from 24 threads to 1 to avoid unnecessary CPU contention. Set OMP_NUM_THREADS in the external environment to tune this value as needed.
+INFO 04-21 10:27:03 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1, 2, 3], buffer_handle=(4, 10485760, 10, 'psm_2faf5667'), local_subscribe_addr='ipc:///tmp/b55c747e-4c32-4a6a-9598-44a49af82e61', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[2025-04-21 10:27:09,378] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 10:27:11 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-21 10:27:13 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f9d2059e9b0>
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:13 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_9caeecfb'), local_subscribe_addr='ipc:///tmp/34ab014b-537f-4a1e-90b5-edc466888a23', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[2025-04-21 10:27:18,996] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 10:27:21 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-21 10:27:23 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7efcd2ac4550>
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:23 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_80a0174a'), local_subscribe_addr='ipc:///tmp/73d3cafb-e0f0-47be-98e3-cbcd44019367', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[2025-04-21 10:27:28,622] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 10:27:30 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-21 10:27:32 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f17701a8520>
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:32 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_29b0998f'), local_subscribe_addr='ipc:///tmp/8363a953-4134-4541-ae09-f91556961c02', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[2025-04-21 10:27:38,210] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 10:27:40 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-21 10:27:42 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f396f4985e0>
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:42 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_19c88866'), local_subscribe_addr='ipc:///tmp/6de168e3-86c5-4c11-909c-2ca203ea6ec7', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:42 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:42 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:42 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:42 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:42 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:42 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:42 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:42 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:44 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:44 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:44 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:44 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:44 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3], buffer_handle=(3, 4194304, 6, 'psm_a6bc489c'), local_subscribe_addr='ipc:///tmp/1cbf3736-acde-4a9c-a35c-40870bf04027', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:44 [parallel_state.py:959] rank 3 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 3
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:44 [parallel_state.py:959] rank 2 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 2
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:44 [parallel_state.py:959] rank 1 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 1
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:44 [parallel_state.py:959] rank 0 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 0
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:44 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:44 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:44 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:44 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:44 [gpu_model_runner.py:1276] Starting to load model le723z/deeprerank-step100...
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:44 [gpu_model_runner.py:1276] Starting to load model le723z/deeprerank-step100...
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:44 [gpu_model_runner.py:1276] Starting to load model le723z/deeprerank-step100...
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:44 [gpu_model_runner.py:1276] Starting to load model le723z/deeprerank-step100...
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m WARNING 04-21 10:27:44 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m WARNING 04-21 10:27:44 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m WARNING 04-21 10:27:44 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m WARNING 04-21 10:27:44 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:44 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:44 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:44 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:44 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:45 [weight_utils.py:281] Time spent downloading weights for le723z/deeprerank-step100: 0.503250 seconds
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:45 [loader.py:458] Loading weights took 0.92 seconds
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:45 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 1.274993 seconds
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:45 [loader.py:458] Loading weights took 0.91 seconds
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:46 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 1.608277 seconds
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:46 [loader.py:458] Loading weights took 0.94 seconds
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:46 [loader.py:458] Loading weights took 0.93 seconds
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:47 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 2.611803 seconds
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:47 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 2.651720 seconds
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:52 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/6fa920ccc8/rank_1_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:52 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/6fa920ccc8/rank_0_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:52 [backends.py:426] Dynamo bytecode transform time: 5.21 s
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:52 [backends.py:426] Dynamo bytecode transform time: 5.21 s
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:52 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/6fa920ccc8/rank_2_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:52 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/6fa920ccc8/rank_3_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:52 [backends.py:426] Dynamo bytecode transform time: 5.21 s
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:52 [backends.py:426] Dynamo bytecode transform time: 5.21 s
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:52 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:52 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:52 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:52 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:27:57 [monitor.py:33] torch.compile takes 5.21 s in total
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:27:57 [monitor.py:33] torch.compile takes 5.21 s in total
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:27:57 [monitor.py:33] torch.compile takes 5.21 s in total
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:27:57 [monitor.py:33] torch.compile takes 5.21 s in total
+INFO 04-21 10:27:58 [kv_cache_utils.py:634] GPU KV cache size: 4,311,984 tokens
+INFO 04-21 10:27:58 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 131.59x
+INFO 04-21 10:27:58 [kv_cache_utils.py:634] GPU KV cache size: 4,304,960 tokens
+INFO 04-21 10:27:58 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 131.38x
+INFO 04-21 10:27:58 [kv_cache_utils.py:634] GPU KV cache size: 4,304,960 tokens
+INFO 04-21 10:27:58 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 131.38x
+INFO 04-21 10:27:58 [kv_cache_utils.py:634] GPU KV cache size: 4,340,080 tokens
+INFO 04-21 10:27:58 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 132.45x
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:28:23 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:28:24 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:28:24 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:28:24 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=3 pid=3523785)[0;0m INFO 04-21 10:28:24 [gpu_model_runner.py:1626] Graph capturing finished in 26 secs, took 0.52 GiB
+[1;36m(VllmWorker rank=1 pid=3523448)[0;0m INFO 04-21 10:28:24 [gpu_model_runner.py:1626] Graph capturing finished in 26 secs, took 0.52 GiB
+[1;36m(VllmWorker rank=0 pid=3523266)[0;0m INFO 04-21 10:28:24 [gpu_model_runner.py:1626] Graph capturing finished in 26 secs, took 0.52 GiB
+[1;36m(VllmWorker rank=2 pid=3523575)[0;0m INFO 04-21 10:28:24 [gpu_model_runner.py:1626] Graph capturing finished in 26 secs, took 0.52 GiB
+INFO 04-21 10:28:24 [core.py:163] init engine (profile, create kv cache, warmup model) took 37.85 seconds
+INFO 04-21 10:28:25 [core_client.py:435] Core engine process 0 ready.
+Processing batch: 1/6
+Completed 8/43 items
+Processing batch: 2/6
+Completed 16/43 items
+Processing batch: 3/6
+Completed 24/43 items
+Processing batch: 4/6
+Completed 32/43 items
+Processing batch: 5/6
+Completed 40/43 items
+Processing batch: 6/6
+Completed 43/43 items
+Total execution time: 175.90s
+write_file
+{'NDCG@1': 0.54264, 'NDCG@5': 0.52783, 'NDCG@10': 0.50583, 'MAP@1': 0.02063, 'MAP@5': 0.07753, 'MAP@10': 0.11256, 'Recall@1': 0.02063, 'Recall@5': 0.0838, 'Recall@10': 0.12848}
+{'NDCG@1': 0.54264, 'NDCG@5': 0.52783, 'NDCG@10': 0.50583, 'MAP@1': 0.02063, 'MAP@5': 0.07753, 'MAP@10': 0.11256, 'Recall@1': 0.02063, 'Recall@5': 0.0838, 'Recall@10': 0.12848}
+
+======== GPU REPORT ========
+
+==============NVSMI LOG==============
+
+Timestamp                                 : Mon Apr 21 10:31:28 2025
+Driver Version                            : 560.35.03
+CUDA Version                              : 12.6
+
+Attached GPUs                             : 4
+GPU 00000000:26:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3523266
+            GPU Utilization               : 57 %
+            Memory Utilization            : 21 %
+            Max memory usage              : 74188 MiB
+            Time                          : 257712 ms
+            Is Running                    : 0
+        Process ID                        : 3523575
+            GPU Utilization               : 0 %
+            Memory Utilization            : 0 %
+            Max memory usage              : 518 MiB
+            Time                          : 238784 ms
+            Is Running                    : 0
+        Process ID                        : 3523448
+            GPU Utilization               : 0 %
+            Memory Utilization            : 0 %
+            Max memory usage              : 806 MiB
+            Time                          : 248597 ms
+            Is Running                    : 0
+        Process ID                        : 3523785
+            GPU Utilization               : 0 %
+            Memory Utilization            : 0 %
+            Max memory usage              : 758 MiB
+            Time                          : 229495 ms
+            Is Running                    : 0
+
+GPU 00000000:2F:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3523448
+            GPU Utilization               : 59 %
+            Memory Utilization            : 22 %
+            Max memory usage              : 74228 MiB
+            Time                          : 248566 ms
+            Is Running                    : 0
+
+GPU 00000000:46:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3523575
+            GPU Utilization               : 62 %
+            Memory Utilization            : 23 %
+            Max memory usage              : 74228 MiB
+            Time                          : 238747 ms
+            Is Running                    : 0
+
+GPU 00000000:54:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3523785
+            GPU Utilization               : 63 %
+            Memory Utilization            : 24 %
+            Max memory usage              : 74196 MiB
+            Time                          : 229438 ms
+            Is Running                    : 0
+
+Mon Apr 21 10:31:28 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:26:00.0 Off |                    0 |
+| N/A   32C    P0             72W /  700W |       1MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:2F:00.0 Off |                    0 |
+| N/A   41C    P0             77W /  700W |       1MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA H100 80GB HBM3          On  |   00000000:46:00.0 Off |                    0 |
+| N/A   39C    P0             74W /  700W |       1MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA H100 80GB HBM3          On  |   00000000:54:00.0 Off |                    0 |
+| N/A   33C    P0             70W /  700W |       1MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+

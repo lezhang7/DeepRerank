@@ -4,7 +4,7 @@ from transformers import AutoTokenizer
 from vllm import LLM, SamplingParams
 import os
 def get_agent(model_name, api_key=None):
-    if model_name == "Qwen/Qwen2.5-7B-Instruct":
+    if model_name == "Qwen/Qwen2.5-7B-Instruct" or "deeprerank" in model_name:
         agent = QwenClient(model_name=model_name, temperature=0)
     else:
         if api_key is None:

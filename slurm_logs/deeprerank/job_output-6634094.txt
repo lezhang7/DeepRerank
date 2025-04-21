@@ -1,0 +1,2178 @@
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/condabin/conda
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/conda
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/conda-env
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/activate
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/bin/deactivate
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/etc/profile.d/conda.sh
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/etc/fish/conf.d/conda.fish
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/shell/condabin/Conda.psm1
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/shell/condabin/conda-hook.ps1
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/lib/python3.7/site-packages/xontrib/conda.xsh
+no change     /cvmfs/ai.mila.quebec/apps/x86_64/debian/miniconda/3/etc/profile.d/conda.csh
+no change     /home/mila/l/le.zhang/.bashrc
+No action taken.
+[2025-04-21 11:42:54,233] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 11:42:56 [__init__.py:239] Automatically detected platform cuda.
+model_name: Qwen/Qwen2.5-7B-Instruct
+Using 4 GPUs
+INFO 04-21 11:43:06 [config.py:689] This model supports multiple tasks: {'embed', 'generate', 'reward', 'score', 'classify'}. Defaulting to 'generate'.
+INFO 04-21 11:43:06 [config.py:1713] Defaulting to use mp for distributed inference
+INFO 04-21 11:43:06 [config.py:1901] Chunked prefill is enabled with max_num_batched_tokens=8192.
+WARNING 04-21 11:43:07 [utils.py:2304] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/getting_started/troubleshooting.html#python-multiprocessing for more information. Reason: CUDA is initialized
+[2025-04-21 11:43:13,574] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 11:43:15 [__init__.py:239] Automatically detected platform cuda.
+INFO 04-21 11:43:17 [core.py:61] Initializing a V1 LLM engine (v0.8.4) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=4, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=None, served_model_name=Qwen/Qwen2.5-7B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+WARNING 04-21 11:43:17 [multiproc_worker_utils.py:306] Reducing Torch parallelism from 24 threads to 1 to avoid unnecessary CPU contention. Set OMP_NUM_THREADS in the external environment to tune this value as needed.
+INFO 04-21 11:43:17 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1, 2, 3], buffer_handle=(4, 10485760, 10, 'psm_7b9f99b2'), local_subscribe_addr='ipc:///tmp/03c6c95e-3f8c-4bd2-9593-9cfcf56925bd', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[2025-04-21 11:43:23,594] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 11:43:25 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-21 11:43:27 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7fbc8d0e6950>
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:43:27 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_c2e3a858'), local_subscribe_addr='ipc:///tmp/48f7ab42-e91c-4ea8-8a34-b6d70a9b0571', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[2025-04-21 11:43:33,902] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 11:43:36 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-21 11:43:38 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f3e8ee3aad0>
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:43:38 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_7bf833d2'), local_subscribe_addr='ipc:///tmp/7a98a0ff-ca46-40f0-8b1c-48e5712d0455', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[2025-04-21 11:43:44,241] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 11:43:46 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-21 11:43:48 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f518b91ea40>
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:43:48 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_60ec7ab4'), local_subscribe_addr='ipc:///tmp/26441d73-9dc0-4992-9127-64ca70c72af0', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[2025-04-21 11:43:54,518] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.6
+[93m [WARNING] [0m using untested triton version (3.2.0), only 1.0.0 is known to be compatible
+INFO 04-21 11:43:56 [__init__.py:239] Automatically detected platform cuda.
+WARNING 04-21 11:43:58 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f927d0eaaa0>
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:43:58 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_6987e0bf'), local_subscribe_addr='ipc:///tmp/df7034aa-20ba-429d-99b2-a2da27259221', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:43:59 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:43:59 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:43:59 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:43:59 [utils.py:993] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:43:59 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:43:59 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:43:59 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:43:59 [pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:43:59 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:43:59 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:43:59 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:43:59 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/mila/l/le.zhang/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:43:59 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3], buffer_handle=(3, 4194304, 6, 'psm_49e7943f'), local_subscribe_addr='ipc:///tmp/51c8d5fa-cca5-4c65-b106-0fa9048cbda3', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:43:59 [parallel_state.py:959] rank 3 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 3
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:43:59 [parallel_state.py:959] rank 2 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 2
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:43:59 [parallel_state.py:959] rank 0 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 0
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:43:59 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:43:59 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:43:59 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:43:59 [parallel_state.py:959] rank 1 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 1
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:43:59 [cuda.py:221] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:43:59 [gpu_model_runner.py:1276] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:43:59 [gpu_model_runner.py:1276] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:43:59 [gpu_model_runner.py:1276] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:43:59 [gpu_model_runner.py:1276] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m WARNING 04-21 11:43:59 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m WARNING 04-21 11:43:59 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m WARNING 04-21 11:43:59 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m WARNING 04-21 11:43:59 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:44:00 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:44:00 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:44:00 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:44:00 [weight_utils.py:265] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:44:08 [loader.py:458] Loading weights took 7.92 seconds
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:44:08 [loader.py:458] Loading weights took 7.84 seconds
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:44:08 [loader.py:458] Loading weights took 8.15 seconds
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:44:08 [loader.py:458] Loading weights took 8.27 seconds
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:44:08 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 8.640921 seconds
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:44:08 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 8.727252 seconds
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:44:08 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 8.727332 seconds
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:44:08 [gpu_model_runner.py:1291] Model loading took 3.5547 GiB and 8.727397 seconds
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:44:14 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/41989a59cf/rank_0_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:44:14 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/41989a59cf/rank_2_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:44:14 [backends.py:426] Dynamo bytecode transform time: 6.22 s
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:44:14 [backends.py:426] Dynamo bytecode transform time: 6.22 s
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:44:14 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/41989a59cf/rank_3_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:44:14 [backends.py:426] Dynamo bytecode transform time: 6.23 s
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:44:15 [backends.py:416] Using cache directory: /home/mila/l/le.zhang/.cache/vllm/torch_compile_cache/41989a59cf/rank_1_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:44:15 [backends.py:426] Dynamo bytecode transform time: 6.36 s
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:44:15 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:44:15 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:44:15 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:44:15 [backends.py:115] Directly load the compiled graph for shape None from the cache
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:44:24 [monitor.py:33] torch.compile takes 6.23 s in total
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:44:24 [monitor.py:33] torch.compile takes 6.22 s in total
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:44:24 [monitor.py:33] torch.compile takes 6.22 s in total
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:44:24 [monitor.py:33] torch.compile takes 6.36 s in total
+INFO 04-21 11:44:25 [kv_cache_utils.py:634] GPU KV cache size: 4,793,504 tokens
+INFO 04-21 11:44:25 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 146.29x
+INFO 04-21 11:44:25 [kv_cache_utils.py:634] GPU KV cache size: 4,782,976 tokens
+INFO 04-21 11:44:25 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 145.96x
+INFO 04-21 11:44:25 [kv_cache_utils.py:634] GPU KV cache size: 4,782,976 tokens
+INFO 04-21 11:44:25 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 145.96x
+INFO 04-21 11:44:25 [kv_cache_utils.py:634] GPU KV cache size: 4,793,504 tokens
+INFO 04-21 11:44:25 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 146.29x
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:44:46 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:44:46 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:44:46 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:44:46 [custom_all_reduce.py:195] Registering 3819 cuda graph addresses
+[1;36m(VllmWorker rank=3 pid=3108254)[0;0m INFO 04-21 11:44:46 [gpu_model_runner.py:1626] Graph capturing finished in 21 secs, took 0.44 GiB
+[1;36m(VllmWorker rank=1 pid=3108099)[0;0m INFO 04-21 11:44:46 [gpu_model_runner.py:1626] Graph capturing finished in 21 secs, took 0.44 GiB
+[1;36m(VllmWorker rank=2 pid=3108185)[0;0m INFO 04-21 11:44:46 [gpu_model_runner.py:1626] Graph capturing finished in 21 secs, took 0.44 GiB
+[1;36m(VllmWorker rank=0 pid=3108036)[0;0m INFO 04-21 11:44:46 [gpu_model_runner.py:1626] Graph capturing finished in 21 secs, took 0.44 GiB
+INFO 04-21 11:44:46 [core.py:163] init engine (profile, create kv cache, warmup model) took 38.10 seconds
+INFO 04-21 11:44:47 [core_client.py:435] Core engine process 0 ready.
+Processing batch: 1/1
+====================================================================================================
+query: how long is life cycle of flea
+rank_start: 80, rank_end: 100
+model response: [13] > [6] > [4] > [17] > [2] > [1] > [16] > [10] > [11] > [14] > [12] > [19] > [18] > [5] > [3] > [7] > [8] > [9] > [15]
+cleaned response: [12, 5, 3, 16, 1, 0, 15, 9, 10, 13, 11, 18, 17, 4, 2, 6, 7, 8, 14]
+====================================================================================================
+query: cost of interior concrete flooring
+rank_start: 80, rank_end: 100
+model response: [1] > [5] > [18] > [9] > [7] > [17] > [2] > [15] > [3] > [10] > [11] > [12] > [19] > [4] > [6] > [8] > [14] > [16] > [13]
+cleaned response: [0, 4, 17, 8, 6, 16, 1, 14, 2, 9, 10, 11, 18, 3, 5, 7, 13, 15, 12]
+====================================================================================================
+query: definition declaratory judgment
+rank_start: 80, rank_end: 100
+model response: [10] > [3] > [2] > [1] > [8] > [20] > [7] > [16] > [12] > [9] > [5] > [17] > [15] > [13] > [19] > [6] > [11] > [4] > [14] > [18]
+cleaned response: [9, 2, 1, 0, 7, 19, 6, 15, 11, 8, 4, 16, 14, 12, 18, 5, 10, 3, 13, 17]
+====================================================================================================
+query: what is durable medical equipment consist of
+rank_start: 80, rank_end: 100
+model response: [2] > [1] > [3] > [5] > [6] > [7] > [12] > [19] > [18] > [10] > [16] > [4] > [15] > [17] > [11] > [9] > [14] > [13] > [8]
+cleaned response: [1, 0, 2, 4, 5, 6, 11, 18, 17, 9, 15, 3, 14, 16, 10, 8, 13, 12, 7]
+====================================================================================================
+query: what is wifi vs bluetooth
+rank_start: 80, rank_end: 100
+model response: [3] > [4] > [20] > [8] > [15] > [13] > [5] > [16] > [10] > [11] > [14] > [17] > [9] > [6] > [19] > [7] > [12] > [18] > [2] > [1]
+cleaned response: [2, 3, 19, 7, 14, 12, 4, 15, 9, 10, 13, 16, 8, 5, 18, 6, 11, 17, 1, 0]
+====================================================================================================
+query: hydrogen is a liquid below what temperature
+rank_start: 80, rank_end: 100
+model response: [13] > [6] > [9] > [1] > [10] > [12] > [16] > [19] > [14] > [17] > [15] > [4] > [5] > [11] > [18] > [2] > [3] > [7] > [1]
+cleaned response: [12, 5, 8, 0, 9, 11, 15, 18, 13, 16, 14, 3, 4, 10, 17, 1, 2, 6, 0]
+====================================================================================================
+query: what are the social determinants of health
+rank_start: 80, rank_end: 100
+model response: [3] > [10] > [6] > [7] > [15] > [4] > [14] > [19] > [1] > [2] > [13] > [17] > [16] > [12] > [5] > [8] > [11] > [18] > [9]
+cleaned response: [2, 9, 5, 6, 14, 3, 13, 18, 0, 1, 12, 16, 15, 11, 4, 7, 10, 17, 8]
+====================================================================================================
+query: what are the three percenters?
+rank_start: 80, rank_end: 100
+model response: [17] > [9] > [19] > [16] > [14] > [12] > [15] > [13] > [11] > [10] > [8] > [7] > [6] > [5] > [4] > [3] > [2] > [1] > [18] > [1]
+cleaned response: [16, 8, 18, 15, 13, 11, 14, 12, 10, 9, 7, 6, 5, 4, 3, 2, 1, 0, 17, 0]
+====================================================================================================
+query: right pelvic pain causes
+rank_start: 80, rank_end: 100
+model response: [6] > [1] > [3] > [9] > [13] > [16] > [10] > [12] > [5] > [8] > [15] > [18] > [7] > [4] > [11] > [14] > [2] > [19] > [17] > [20]
+cleaned response: [5, 0, 2, 8, 12, 15, 9, 11, 4, 7, 14, 17, 6, 3, 10, 13, 1, 18, 16, 19]
+====================================================================================================
+query: definition of a sigmet
+rank_start: 80, rank_end: 100
+model response: [19] > [20] > [18] > [17] > [16] > [15] > [14] > [13] > [12] > [11] > [10] > [9] > [8] > [7] > [6] > [5] > [4] > [3] > [2]
+cleaned response: [18, 19, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+====================================================================================================
+query: how are some sharks warm blooded
+rank_start: 80, rank_end: 100
+model response: [7] > [1] > [10] > [16] > [20] > [17] > [9] > [11] > [13] > [5] > [14] > [2] > [4] > [15] > [6] > [3] > [12] > [19] > [8] > [18]
+cleaned response: [6, 0, 9, 15, 19, 16, 8, 10, 12, 4, 13, 1, 3, 14, 5, 2, 11, 18, 7, 17]
+====================================================================================================
+query: how to find the midsegment of a trapezoid
+rank_start: 80, rank_end: 100
+model response: [10] > [5] > [2] > [14] > [18] > [19] > [17] > [16] > [15] > [13] > [12] > [11] > [9] > [8] > [7] > [6] > [4] > [3] > [1]
+cleaned response: [9, 4, 1, 13, 17, 18, 16, 15, 14, 12, 11, 10, 8, 7, 6, 5, 3, 2, 0]
+====================================================================================================
+query: lps laws definition
+rank_start: 80, rank_end: 100
+model response: [10] > [6] > [18] > [1] > [16] > [13] > [7] > [11] > [12] > [15] > [14] > [17] > [3] > [5] > [9] > [2] > [4] > [19] > [12] > [12]
+cleaned response: [9, 5, 17, 0, 15, 12, 6, 10, 11, 14, 13, 16, 2, 4, 8, 1, 3, 18, 11, 11]
+====================================================================================================
+query: difference between a mcdouble and a double cheeseburger
+rank_start: 80, rank_end: 100
+model response: [3] > [10] > [14] > [5] > [7] > [12] > [4] > [13] > [6] > [15] > [2] > [16] > [19] > [18] > [17] > [11] > [9] > [8] > [20]
+cleaned response: [2, 9, 13, 4, 6, 11, 3, 12, 5, 14, 1, 15, 18, 17, 16, 10, 8, 7, 19]
+====================================================================================================
+query: difference between rn and bsn
+rank_start: 80, rank_end: 100
+model response: [3] > [4] > [15] > [16] > [8] > [12] > [13] > [9] > [10] > [11] > [18] > [7] > [2] > [14] > [19] > [5] > [6] > [17] > [1]
+cleaned response: [2, 3, 14, 15, 7, 11, 12, 8, 9, 10, 17, 6, 1, 13, 18, 4, 5, 16, 0]
+====================================================================================================
+query: types of dysarthria from cerebral palsy
+rank_start: 80, rank_end: 100
+model response: [7] > [2] > [3] > [4] > [5] > [16] > [14] > [15] > [1] > [8] > [9] > [10] > [11] > [12] > [13] > [17] > [18] > [19] > [20]
+cleaned response: [6, 1, 2, 3, 4, 15, 13, 14, 0, 7, 8, 9, 10, 11, 12, 16, 17, 18, 19]
+====================================================================================================
+query: who is robert gray
+rank_start: 80, rank_end: 100
+model response: [6] > [5] > [16] > [9] > [15] > [13] > [8] > [10] > [17] > [18] > [19] > [20] > [7] > [14] > [3] > [2] > [] > [] > [] > []
+cleaned response: [5, 4, 15, 8, 14, 12, 7, 9, 16, 17, 18, 19, 6, 13, 2, 1]
+====================================================================================================
+query: rsa definition key
+rank_start: 80, rank_end: 100
+model response: [6] > [4] > [8] > [3] > [1] > [9] > [16] > [19] > [12] > [18] > [5] > [7] > [10] > [14] > [15] > [11] > [13] > [20] > [17]
+cleaned response: [5, 3, 7, 2, 0, 8, 15, 18, 11, 17, 4, 6, 9, 13, 14, 10, 12, 19, 16]
+====================================================================================================
+query: medicare's definition of mechanical ventilation
+rank_start: 80, rank_end: 100
+model response: [10] > [1] > [4] > [12] > [20] > [14] > [16] > [15] > [11] > [9] > [7] > [17] > [18] > [3] > [5] > [6] > [13] > [19] > [8]
+cleaned response: [9, 0, 3, 11, 19, 13, 15, 14, 10, 8, 6, 16, 17, 2, 4, 5, 12, 18, 7]
+====================================================================================================
+query: example of monotonic function
+rank_start: 80, rank_end: 100
+model response: [8] > [12] > [10] > [15] > [6] > [17] > [19] > [16] > [18] > [7] > [3] > [4] > [14] > [5] > [2] > [13] > [11] > [9] > [1]
+cleaned response: [7, 11, 9, 14, 5, 16, 18, 15, 17, 6, 2, 3, 13, 4, 1, 12, 10, 8, 0]
+====================================================================================================
+query: causes of military suicide
+rank_start: 80, rank_end: 100
+model response: [4] > [12] > [2] > [3] > [7] > [17] > [6] > [1] > [14] > [15] > [16] > [5] > [8] > [9] > [11] > [13] > [18] > [19] > [10] > [20]
+cleaned response: [3, 11, 1, 2, 6, 16, 5, 0, 13, 14, 15, 4, 7, 8, 10, 12, 17, 18, 9, 19]
+====================================================================================================
+query: do goldfish grow
+rank_start: 80, rank_end: 100
+model response: [2] > [3] > [16] > [13] > [8] > [7] > [4] > [9] > [10] > [11] > [5] > [14] > [15] > [18] > [17] > [19] > [6] > [20] > [12] > [1]
+cleaned response: [1, 2, 15, 12, 7, 6, 3, 8, 9, 10, 4, 13, 14, 17, 16, 18, 5, 19, 11, 0]
+====================================================================================================
+query: what types of food can you cook sous vide
+rank_start: 80, rank_end: 100
+model response: [4] > [1] > [2] > [10] > [7] > [16] > [17] > [19] > [3] > [5] > [14] > [13] > [12] > [18] > [6] > [8] > [15] > [9] > [20]
+cleaned response: [3, 0, 1, 9, 6, 15, 16, 18, 2, 4, 13, 12, 11, 17, 5, 7, 14, 8, 19]
+====================================================================================================
+query: anthropological definition of environment
+rank_start: 80, rank_end: 100
+model response: [7] > [8] > [3] > [10] > [11] > [13] > [2] > [15] > [12] > [5] > [9] > [4] > [14] > [6] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [6, 7, 2, 9, 10, 12, 1, 14, 11, 4, 8, 3, 13, 5, 15, 16, 17, 18, 19]
+====================================================================================================
+query: axon terminals or synaptic knob definition
+rank_start: 80, rank_end: 100
+model response: [1] > [3] > [4] > [8] > [10] > [11] > [13] > [18] > [9] > [17] > [5] > [6] > [12] > [14] > [15] > [16] > [19] > [20]
+cleaned response: [0, 2, 3, 7, 9, 10, 12, 17, 8, 16, 4, 5, 11, 13, 14, 15, 18, 19]
+====================================================================================================
+query: exons definition biology
+rank_start: 80, rank_end: 100
+model response: [2] > [8] > [17] > [3] > [10] > [14] > [5] > [1] > [12] > [19] > [16] > [7] > [13] > [15] > [6] > [18] > [9] > [4] > [11] > [10]
+cleaned response: [1, 7, 16, 2, 9, 13, 4, 0, 11, 18, 15, 6, 12, 14, 5, 17, 8, 3, 10, 9]
+====================================================================================================
+query: causes of left ventricular hypertrophy
+rank_start: 80, rank_end: 100
+model response: [2] > [4] > [10] > [3] > [8] > [9] > [13] > [14] > [15] > [5] > [12] > [7] > [17] > [18] > [11] > [16] > [6] > [19] > [20]
+cleaned response: [1, 3, 9, 2, 7, 8, 12, 13, 14, 4, 11, 6, 16, 17, 10, 15, 5, 18, 19]
+====================================================================================================
+query: how is the weather in jamaica
+rank_start: 80, rank_end: 100
+model response: [1] > [2] > [3] > [4] > [5] > [6] > [7] > [8] > [9] > [10] > [11] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: what is theraderm used for
+rank_start: 80, rank_end: 100
+model response: [1] > [5] > [8] > [10] > [14] > [15] > [16] > [17] > [18] > [19] > [20] > [7] > [6] > [3] > [4] > [13] > [11] > [12] > [9]
+cleaned response: [0, 4, 7, 9, 13, 14, 15, 16, 17, 18, 19, 6, 5, 2, 3, 12, 10, 11, 8]
+====================================================================================================
+query: what is an aml surveillance analyst
+rank_start: 80, rank_end: 100
+model response: [10] > [8] > [13] > [5] > [7] > [11] > [6] > [12] > [16] > [17] > [18] > [4] > [9] > [15] > [2] > [3] > [14] > [19] > [1] > [16]
+cleaned response: [9, 7, 12, 4, 6, 10, 5, 11, 15, 16, 17, 3, 8, 14, 1, 2, 13, 18, 0, 15]
+====================================================================================================
+query: tracheids are part of _____.
+rank_start: 80, rank_end: 100
+model response: [2] > [4] > [6] > [9] > [10] > [11] > [17] > [19] > [1] > [3] > [5] > [7] > [8] > [13] > [14] > [15] > [16] > [18] > [20]
+cleaned response: [1, 3, 5, 8, 9, 10, 16, 18, 0, 2, 4, 6, 7, 12, 13, 14, 15, 17, 19]
+====================================================================================================
+query: when was the salvation army founded
+rank_start: 80, rank_end: 100
+model response: [20] > [12] > [1] > [8] > [5] > [19] > [16] > [13] > [7] > [10] > [14] > [4] > [3] > [2] > [15] > [6] > [17] > [9] > [11]
+cleaned response: [19, 11, 0, 7, 4, 18, 15, 12, 6, 9, 13, 3, 2, 1, 14, 5, 16, 8, 10]
+====================================================================================================
+query: what is the most popular food in switzerland
+rank_start: 80, rank_end: 100
+model response: [6] > [15] > [20] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > []
+cleaned response: [5, 14, 19]
+====================================================================================================
+query: what is famvir prescribed for
+rank_start: 80, rank_end: 100
+model response: [] > [5] > [20] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > []
+cleaned response: [4, 19]
+====================================================================================================
+query: what is physical description of spruce
+rank_start: 80, rank_end: 100
+model response: [6] > [5] > [15] > [4] > [3] > [2] > [10] > [13] > [14] > [17] > [12] > [11] > [7] > [8] > [9] > [16] > [18] > [19] > [1]
+cleaned response: [5, 4, 14, 3, 2, 1, 9, 12, 13, 16, 11, 10, 6, 7, 8, 15, 17, 18, 0]
+====================================================================================================
+query: what is a active margin
+rank_start: 80, rank_end: 100
+model response: [2] > [13] > [1] > [6] > [7] > [17] > [11] > [14] > [20] > [16] > [15] > [19] > [18] > [5] > [3] > [4] > [10] > [8] > [9]
+cleaned response: [1, 12, 0, 5, 6, 16, 10, 13, 19, 15, 14, 18, 17, 4, 2, 3, 9, 7, 8]
+====================================================================================================
+query: what can contour plowing reduce
+rank_start: 80, rank_end: 100
+model response: [9] > [1] > [18] > [10] > [20] > [8] > [5] > [3] > [17] > [16] > [15] > [14] > [13] > [7] > [6] > [2] > [19] > [4] > [12] > [11]
+cleaned response: [8, 0, 17, 9, 19, 7, 4, 2, 16, 15, 14, 13, 12, 6, 5, 1, 18, 3, 11, 10]
+====================================================================================================
+query: does legionella pneumophila cause pneumonia
+rank_start: 80, rank_end: 100
+model response: [2] > [4] > [8] > [14] > [11] > [12] > [17] > [5] > [10] > [3] > [15] > [1] > [9] > [6] > [16] > [7] > [13] > [18] > [19] > [20]
+cleaned response: [1, 3, 7, 13, 10, 11, 16, 4, 9, 2, 14, 0, 8, 5, 15, 6, 12, 17, 18, 19]
+====================================================================================================
+query: what is the daily life of thai people
+rank_start: 80, rank_end: 100
+model response: [5] > [8] > [2] > [15] > [14] > [13] > [6] > [18] > [17] > [16] > [19] > [12] > [11] > [10] > [9] > [7] > [4] > [3] > [1]
+cleaned response: [4, 7, 1, 14, 13, 12, 5, 17, 16, 15, 18, 11, 10, 9, 8, 6, 3, 2, 0]
+====================================================================================================
+query: why did the us volunterilay enter ww1
+rank_start: 80, rank_end: 100
+model response: [17] > [20] > [7] > [4] > [1] > [15] > [16] > [14] > [13] > [12] > [11] > [10] > [9] > [8] > [6] > [5] > [3]
+cleaned response: [16, 19, 6, 3, 0, 14, 15, 13, 12, 11, 10, 9, 8, 7, 5, 4, 2]
+====================================================================================================
+query: is cdg airport in main paris
+rank_start: 80, rank_end: 100
+model response: [11] > [7] > [12] > [10] > [3] > [16] > [17] > [4] > [19] > [18] > [5] > [6] > [8] > [20] > [2] > [14] > [15] > [9] > [13]
+cleaned response: [10, 6, 11, 9, 2, 15, 16, 3, 18, 17, 4, 5, 7, 19, 1, 13, 14, 8, 12]
+====================================================================================================
+query: who formed the commonwealth of independent states
+rank_start: 80, rank_end: 100
+model response: [5] > [13] > [2] > [7] > [8] > [17] > [19] > [6] > [16] > [15] > [4] > [14] > [10] > [12] > [11] > [18] > [3] > [9] > [1] > [10]
+cleaned response: [4, 12, 1, 6, 7, 16, 18, 5, 15, 14, 3, 13, 9, 11, 10, 17, 2, 8, 0, 9]
+====================================================================================================
+query: define visceral?
+rank_start: 80, rank_end: 100
+model response: [5] > [2] > [3] > [10] > [11] > [16] > [17] > [19] > [15] > [6] > [7] > [8] > [12] > [13] > [18] > [4] > [9] > [14] > [20]
+cleaned response: [4, 1, 2, 9, 10, 15, 16, 18, 14, 5, 6, 7, 11, 12, 17, 3, 8, 13, 19]
+====================================================================================================
+query: how long is life cycle of flea
+rank_start: 70, rank_end: 90
+model response: [2] > [14] > [11] > [12] > [4] > [5] > [13] > [9] > [19] > [7] > [10] > [15] > [16] > [17] > [18] > [6] > [3] > [8] > [1]
+cleaned response: [1, 13, 10, 11, 3, 4, 12, 8, 18, 6, 9, 14, 15, 16, 17, 5, 2, 7, 0]
+====================================================================================================
+query: cost of interior concrete flooring
+rank_start: 70, rank_end: 90
+model response: [2] > [8] > [10] > [11] > [1] > [12] > [3] > [5] > [14] > [16] > [17] > [6] > [9] > [15] > [18] > [7] > [13] > [4] > [20]
+cleaned response: [1, 7, 9, 10, 0, 11, 2, 4, 13, 15, 16, 5, 8, 14, 17, 6, 12, 3, 19]
+====================================================================================================
+query: definition declaratory judgment
+rank_start: 70, rank_end: 90
+model response: [4] > [11] > [12] > [10] > [9] > [2] > [3] > [14] > [16] > [8] > [5] > [7] > [13] > [15] > [17] > [18] > [19] > [1] > [6] > [20]
+cleaned response: [3, 10, 11, 9, 8, 1, 2, 13, 15, 7, 4, 6, 12, 14, 16, 17, 18, 0, 5, 19]
+====================================================================================================
+query: what is durable medical equipment consist of
+rank_start: 70, rank_end: 90
+model response: [11] > [12] > [13] > [14] > [4] > [8] > [16] > [20] > [3] > [5] > [6] > [7] > [9] > [10] > [15] > [17] > [18] > [19] > [2]
+cleaned response: [10, 11, 12, 13, 3, 7, 15, 19, 2, 4, 5, 6, 8, 9, 14, 16, 17, 18, 1]
+====================================================================================================
+query: what is wifi vs bluetooth
+rank_start: 70, rank_end: 90
+model response: [12] > [1] > [11] > [6] > [13] > [7] > [14] > [17] > [5] > [9] > [10] > [16] > [15] > [18] > [19] > [20]
+cleaned response: [11, 0, 10, 5, 12, 6, 13, 16, 4, 8, 9, 15, 14, 17, 18, 19]
+====================================================================================================
+query: hydrogen is a liquid below what temperature
+rank_start: 70, rank_end: 90
+model response: [11] > [10] > [6] > [5] > [19] > [17] > [14] > [16] > [15] > [8] > [9] > [7] > [2] > [3] > [13] > [12] > [4] > [1] > [18]
+cleaned response: [10, 9, 5, 4, 18, 16, 13, 15, 14, 7, 8, 6, 1, 2, 12, 11, 3, 0, 17]
+====================================================================================================
+query: what are the social determinants of health
+rank_start: 70, rank_end: 90
+model response: [5] > [10] > [3] > [11] > [2] > [13] > [15] > [12] > [4] > [8] > [7] > [6] > [9] > [14] > [16] > [17] > [19] > [18] > [1]
+cleaned response: [4, 9, 2, 10, 1, 12, 14, 11, 3, 7, 6, 5, 8, 13, 15, 16, 18, 17, 0]
+====================================================================================================
+query: what are the three percenters?
+rank_start: 70, rank_end: 90
+model response: [12] > [19] > [11] > [4] > [6] > [17] > [14] > [16] > [13] > [15] > [18] > [10] > [9] > [8] > [7] > [5] > [2] > [1] > [10] > [19]
+cleaned response: [11, 18, 10, 3, 5, 16, 13, 15, 12, 14, 17, 9, 8, 7, 6, 4, 1, 0, 9, 18]
+====================================================================================================
+query: right pelvic pain causes
+rank_start: 70, rank_end: 90
+model response: [4] > [16] > [15] > [8] > [10] > [19] > [14] > [13] > [5] > [3] > [2] > [11] > [12] > [17] > [18] > [6] > [7] > [9] > [1]
+cleaned response: [3, 15, 14, 7, 9, 18, 13, 12, 4, 2, 1, 10, 11, 16, 17, 5, 6, 8, 0]
+====================================================================================================
+query: definition of a sigmet
+rank_start: 70, rank_end: 90
+model response: [9] > [11] > [12] > [4] > [17] > [1] > [2] > [14] > [16] > [19] > [5] > [13] > [18] > [15] > [6] > [3] > [10] > [7] > [8] > [20]
+cleaned response: [8, 10, 11, 3, 16, 0, 1, 13, 15, 18, 4, 12, 17, 14, 5, 2, 9, 6, 7, 19]
+====================================================================================================
+query: how are some sharks warm blooded
+rank_start: 70, rank_end: 90
+model response: [8] > [11] > [12] > [13] > [2] > [4] > [6] > [9] > [15] > [16] > [3] > [5] > [7] > [10] > [14] > [17] > [18] > [19] > [20]
+cleaned response: [7, 10, 11, 12, 1, 3, 5, 8, 14, 15, 2, 4, 6, 9, 13, 16, 17, 18, 19]
+====================================================================================================
+query: how to find the midsegment of a trapezoid
+rank_start: 70, rank_end: 90
+model response: [17] > [13] > [12] > [7] > [5] > [2] > [14]
+cleaned response: [16, 12, 11, 6, 4, 1, 13]
+====================================================================================================
+query: lps laws definition
+rank_start: 70, rank_end: 90
+model response: [9] > [13] > [19] > [1] > [11] > [17] > [14] > [16] > [2] > [15] > [12] > [10] > [8] > [7] > [6] > [5] > [4] > [3] > [18] > [10]
+cleaned response: [8, 12, 18, 0, 10, 16, 13, 15, 1, 14, 11, 9, 7, 6, 5, 4, 3, 2, 17, 9]
+====================================================================================================
+query: difference between a mcdouble and a double cheeseburger
+rank_start: 70, rank_end: 90
+model response: [19] > [14] > [7] > [8] > [11] > [12] > [13] > [16] > [15] > [18] > [17] > [2] > [3] > [4] > [5] > [10] > [6] > [9] > [1]
+cleaned response: [18, 13, 6, 7, 10, 11, 12, 15, 14, 17, 16, 1, 2, 3, 4, 9, 5, 8, 0]
+====================================================================================================
+query: difference between rn and bsn
+rank_start: 70, rank_end: 90
+model response: [1] > [4] > [11] > [14] > [13] > [10] > [12] > [8] > [16] > [17] > [6] > [15] > [5] > [7] > [18] > [19] > [20] > [3] > [2]
+cleaned response: [0, 3, 10, 13, 12, 9, 11, 7, 15, 16, 5, 14, 4, 6, 17, 18, 19, 2, 1]
+====================================================================================================
+query: types of dysarthria from cerebral palsy
+rank_start: 70, rank_end: 90
+model response: [9] > [1] > [14] > [15] > [6] > [10] > [19] > [2] > [3] > [16] > [13] > [4] > [5] > [7] > [8] > [11] > [12] > [17] > [18]
+cleaned response: [8, 0, 13, 14, 5, 9, 18, 1, 2, 15, 12, 3, 4, 6, 7, 10, 11, 16, 17]
+====================================================================================================
+query: who is robert gray
+rank_start: 70, rank_end: 90
+model response: [5] > [11] > [14] > [3] > [17] > [16] > [15] > [6] > [18] > [19] > [20] > [4] > [7] > [8] > [13] > [12] > [9] > [10] > [2] > [1]
+cleaned response: [4, 10, 13, 2, 16, 15, 14, 5, 17, 18, 19, 3, 6, 7, 12, 11, 8, 9, 1, 0]
+====================================================================================================
+query: rsa definition key
+rank_start: 70, rank_end: 90
+model response: [10] > [5] > [6] > [2] > [11] > [4] > [14] > [13] > [16] > [17] > [3] > [8] > [19] > [1] > [7] > [15] > [12] > [9] > [20]
+cleaned response: [9, 4, 5, 1, 10, 3, 13, 12, 15, 16, 2, 7, 18, 0, 6, 14, 11, 8, 19]
+====================================================================================================
+query: medicare's definition of mechanical ventilation
+rank_start: 70, rank_end: 90
+model response: [2] > [11] > [15] > [4] > [14] > [7] > [12] > [16] > [13] > [10] > [17] > [18] > [19] > [5] > [6] > [8] > [9] > [1] > [3]
+cleaned response: [1, 10, 14, 3, 13, 6, 11, 15, 12, 9, 16, 17, 18, 4, 5, 7, 8, 0, 2]
+====================================================================================================
+query: example of monotonic function
+rank_start: 70, rank_end: 90
+model response: [8] > [12] > [9] > [7] > [4] > [16] > [17] > [19] > [1] > [5] > [14] > [15] > [2] > [10] > [18] > [6] > [3] > [11] > [13] > [20]
+cleaned response: [7, 11, 8, 6, 3, 15, 16, 18, 0, 4, 13, 14, 1, 9, 17, 5, 2, 10, 12, 19]
+====================================================================================================
+query: causes of military suicide
+rank_start: 70, rank_end: 90
+model response: [11] > [12] > [1] > [16] > [14] > [19] > [15] > [5] > [17] > [10] > [20] > [13] > [8] > [9] > [7] > [6] > [3] > [4] > [2]
+cleaned response: [10, 11, 0, 15, 13, 18, 14, 4, 16, 9, 19, 12, 7, 8, 6, 5, 2, 3, 1]
+====================================================================================================
+query: do goldfish grow
+rank_start: 70, rank_end: 90
+model response: [11] > [4] > [12] > [13] > [14] > [5] > [3] > [10] > [7] > [2] > [15] > [16] > [17] > [6] > [8] > [9] > [18] > [19] > [20]
+cleaned response: [10, 3, 11, 12, 13, 4, 2, 9, 6, 1, 14, 15, 16, 5, 7, 8, 17, 18, 19]
+====================================================================================================
+query: what types of food can you cook sous vide
+rank_start: 70, rank_end: 90
+model response: [11] > [7] > [10] > [3] > [5] > [12] > [13] > [14] > [17] > [19] > [16] > [15] > [2] > [4] > [8] > [18] > [9] > [6] > [1] > [20]
+cleaned response: [10, 6, 9, 2, 4, 11, 12, 13, 16, 18, 15, 14, 1, 3, 7, 17, 8, 5, 0, 19]
+====================================================================================================
+query: anthropological definition of environment
+rank_start: 70, rank_end: 90
+model response: [10] > [12] > [16] > [9] > [11] > [7] > [14] > [15] > [3] > [2] > [19] > [4] > [5] > [6] > [13] > [17] > [18] > [1] > [8] > [20]
+cleaned response: [9, 11, 15, 8, 10, 6, 13, 14, 2, 1, 18, 3, 4, 5, 12, 16, 17, 0, 7, 19]
+====================================================================================================
+query: axon terminals or synaptic knob definition
+rank_start: 70, rank_end: 90
+model response: [11] > [6] > [10] > [12] > [9] > [2] > [13] > [14] > [18] > [19] > [7] > [17] > [16] > [5] > [4] > [3] > [8] > [15] > [1] > [15]
+cleaned response: [10, 5, 9, 11, 8, 1, 12, 13, 17, 18, 6, 16, 15, 4, 3, 2, 7, 14, 0, 14]
+====================================================================================================
+query: exons definition biology
+rank_start: 70, rank_end: 90
+model response: [1] > [3] > [4] > [11] > [2] > [12] > [5] > [8] > [10] > [9] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [0, 2, 3, 10, 1, 11, 4, 7, 9, 8, 12, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: causes of left ventricular hypertrophy
+rank_start: 70, rank_end: 90
+model response: [4] > [13] > [6] > [20] > [19] > [18] > [7] > [8] > [12] > [11] > [16] > [17] > [15] > [5] > [3] > [10] > [2] > [9] > [1]
+cleaned response: [3, 12, 5, 19, 18, 17, 6, 7, 11, 10, 15, 16, 14, 4, 2, 9, 1, 8, 0]
+====================================================================================================
+query: how is the weather in jamaica
+rank_start: 70, rank_end: 90
+model response: [1] > [2] > [3] > [4] > [5] > [6] > [8] > [9] > [11] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [20] > [7] > [10] > [19]
+cleaned response: [0, 1, 2, 3, 4, 5, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 19, 6, 9, 18]
+====================================================================================================
+query: what is theraderm used for
+rank_start: 70, rank_end: 90
+model response: [11] > [1] > [8] > [9] > [10] > [7] > [6] > [5] > [4] > [3] > [2] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [10, 0, 7, 8, 9, 6, 5, 4, 3, 2, 1, 12, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: what is an aml surveillance analyst
+rank_start: 70, rank_end: 90
+model response: [13] > [6] > [11] > [20] > [19] > [18] > [17] > [16] > [15] > [14] > [12] > [10] > [9] > [8] > [7] > [5] > [4] > [3] > [1]
+cleaned response: [12, 5, 10, 19, 18, 17, 16, 15, 14, 13, 11, 9, 8, 7, 6, 4, 3, 2, 0]
+====================================================================================================
+query: tracheids are part of _____.
+rank_start: 70, rank_end: 90
+model response: [1] > [5] > [9] > [10] > [14] > [16] > [20] > [1] > [5] > [9] > [10] > [14] > [16] > [13] > [17] > [18] > [3] > [4] > [7]
+cleaned response: [0, 4, 8, 9, 13, 15, 19, 0, 4, 8, 9, 13, 15, 12, 16, 17, 2, 3, 6]
+====================================================================================================
+query: when was the salvation army founded
+rank_start: 70, rank_end: 90
+model response: [11] > [8] > [2] > [12] > [7] > [4] > [14] > [15] > [1] > [10] > [13] > [17] > [19] > [16] > [18] > [5] > [6] > [3] > [9]
+cleaned response: [10, 7, 1, 11, 6, 3, 13, 14, 0, 9, 12, 16, 18, 15, 17, 4, 5, 2, 8]
+====================================================================================================
+query: what is the most popular food in switzerland
+rank_start: 70, rank_end: 90
+model response: [2] > [7] > [9] > [19] > [18] > [16] > [17] > [12] > [13] > [15] > [10] > [11] > [4] > [6] > [5] > [3] > [8] > [14] > [20]
+cleaned response: [1, 6, 8, 18, 17, 15, 16, 11, 12, 14, 9, 10, 3, 5, 4, 2, 7, 13, 19]
+====================================================================================================
+query: what is famvir prescribed for
+rank_start: 70, rank_end: 90
+model response: [7] > [1] > [9] > [11] > [20] > [2] > [3] > [4] > [5] > [6] > [8] > [10] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [19]
+cleaned response: [6, 0, 8, 10, 19, 1, 2, 3, 4, 5, 7, 9, 11, 12, 13, 14, 15, 16, 17, 18]
+====================================================================================================
+query: what is physical description of spruce
+rank_start: 70, rank_end: 90
+model response: [11] > [8] > [7] > [9] > [5] > [14] > [1] > [12] > [17] > [18] > [19] > [6] > [16] > [4] > [15] > [2] > [3] > [10] > [20]
+cleaned response: [10, 7, 6, 8, 4, 13, 0, 11, 16, 17, 18, 5, 15, 3, 14, 1, 2, 9, 19]
+====================================================================================================
+query: what is a active margin
+rank_start: 70, rank_end: 90
+model response: [11] > [12] > [5] > [20] > [19] > [11] > [12] > [11] > [12] > [11] > [12] > [11] > [12] > [11] > [12] > [11] > [12] > [11] > [12] > [1]
+cleaned response: [10, 11, 4, 19, 18, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 0]
+====================================================================================================
+query: what can contour plowing reduce
+rank_start: 70, rank_end: 90
+model response: [11] > [12] > [4] > [7] > [8] > [18] > [19] > [17] > [16] > [15] > [3] > [2] > [1] > [14] > [5] > [6] > [10] > [9] > [13] > [1]
+cleaned response: [10, 11, 3, 6, 7, 17, 18, 16, 15, 14, 2, 1, 0, 13, 4, 5, 9, 8, 12, 0]
+====================================================================================================
+query: does legionella pneumophila cause pneumonia
+rank_start: 70, rank_end: 90
+model response: [1] > [2] > [7] > [10] > [14] > [15] > [3] > [4] > [9] > [12] > [13] > [16] > [17] > [5] > [6] > [18] > [19] > [8] > [11] > [20]
+cleaned response: [0, 1, 6, 9, 13, 14, 2, 3, 8, 11, 12, 15, 16, 4, 5, 17, 18, 7, 10, 19]
+====================================================================================================
+query: what is the daily life of thai people
+rank_start: 70, rank_end: 90
+model response: [8] > [11] > [12] > [20] > [16] > [9] > [17] > [18] > [4] > [5] > [19] > [3] > [7] > [14] > [15] > [6] > [13] > [2] > [10]
+cleaned response: [7, 10, 11, 19, 15, 8, 16, 17, 3, 4, 18, 2, 6, 13, 14, 5, 12, 1, 9]
+====================================================================================================
+query: why did the us volunterilay enter ww1
+rank_start: 70, rank_end: 90
+model response: [12] > [7] > [6] > [13] > [14] > [15] > [5] > [19] > [1] > [8] > [17] > [16] > [10] > [11] > [3] > [2] > [4] > [18] > [9] > [15]
+cleaned response: [11, 6, 5, 12, 13, 14, 4, 18, 0, 7, 16, 15, 9, 10, 2, 1, 3, 17, 8, 14]
+====================================================================================================
+query: is cdg airport in main paris
+rank_start: 70, rank_end: 90
+model response: [1] > [3] > [9] > [7] > [13] > [14] > [5] > [6] > [11] > [12] > [17] > [19] > [16] > [8] > [10] > [2] > [15] > [4] > [18]
+cleaned response: [0, 2, 8, 6, 12, 13, 4, 5, 10, 11, 16, 18, 15, 7, 9, 1, 14, 3, 17]
+====================================================================================================
+query: who formed the commonwealth of independent states
+rank_start: 70, rank_end: 90
+model response: [11] > [6] > [2] > [3] > [14] > [16] > [17] > [4] > [5] > [7] > [8] > [9] > [10] > [15] > [13] > [19] > [12] > [18] > [1]
+cleaned response: [10, 5, 1, 2, 13, 15, 16, 3, 4, 6, 7, 8, 9, 14, 12, 18, 11, 17, 0]
+====================================================================================================
+query: define visceral?
+rank_start: 70, rank_end: 90
+model response: [11] > [1] > [13] > [2] > [14] > [15] > [16] > [17] > [5] > [10] > [9] > [18] > [19] > [4] > [3] > [6] > [7] > [8] > [12]
+cleaned response: [10, 0, 12, 1, 13, 14, 15, 16, 4, 9, 8, 17, 18, 3, 2, 5, 6, 7, 11]
+====================================================================================================
+query: how long is life cycle of flea
+rank_start: 60, rank_end: 80
+model response: [5] > [4] > [11] > [12] > [13] > [14] > [6] > [17] > [2] > [16] > [3] > [8] > [19] > [7] > [10] > [15] > [1] > [9] > [18]
+cleaned response: [4, 3, 10, 11, 12, 13, 5, 16, 1, 15, 2, 7, 18, 6, 9, 14, 0, 8, 17]
+====================================================================================================
+query: cost of interior concrete flooring
+rank_start: 60, rank_end: 80
+model response: [1] > [3] > [4] > [5] > [7] > [9] > [11] > [12] > [13] > [14] > [16] > [20] > [19] > [6] > [8] > [15] > [17] > [18] > [10]
+cleaned response: [0, 2, 3, 4, 6, 8, 10, 11, 12, 13, 15, 19, 18, 5, 7, 14, 16, 17, 9]
+====================================================================================================
+query: definition declaratory judgment
+rank_start: 60, rank_end: 80
+model response: [11] > [13] > [12] > [10] > [19] > [6] > [5] > [17] > [16] > [4] > [3] > [2] > [15] > [18] > [14] > [1] > [7] > [8] > [9]
+cleaned response: [10, 12, 11, 9, 18, 5, 4, 16, 15, 3, 2, 1, 14, 17, 13, 0, 6, 7, 8]
+====================================================================================================
+query: what is durable medical equipment consist of
+rank_start: 60, rank_end: 80
+model response: [3] > [12] > [14] > [13] > [6] > [7] > [11] > [2] > [17] > [5] > [10] > [8] > [16] > [19] > [4] > [15] > [18] > [9] > [20]
+cleaned response: [2, 11, 13, 12, 5, 6, 10, 1, 16, 4, 9, 7, 15, 18, 3, 14, 17, 8, 19]
+====================================================================================================
+query: what is wifi vs bluetooth
+rank_start: 60, rank_end: 80
+model response: [8] > [11] > [12] > [6] > [13] > [14] > [15] > [17] > [20] > [3] > [10] > [7] > [5] > [4] > [16] > [18] > [19]
+cleaned response: [7, 10, 11, 5, 12, 13, 14, 16, 19, 2, 9, 6, 4, 3, 15, 17, 18]
+====================================================================================================
+query: hydrogen is a liquid below what temperature
+rank_start: 60, rank_end: 80
+model response: [11] > [9] > [1] > [19] > [16] > [17] > [18] > [6] > [4] > [12] > [14] > [15] > [2] > [3] > [5] > [7] > [10] > [8] > [13]
+cleaned response: [10, 8, 0, 18, 15, 16, 17, 5, 3, 11, 13, 14, 1, 2, 4, 6, 9, 7, 12]
+====================================================================================================
+query: what are the social determinants of health
+rank_start: 60, rank_end: 80
+model response: [3] > [4] > [11] > [2] > [6] > [13] > [14] > [16] > [15] > [1] > [8] > [9] > [12] > [17] > [18] > [5] > [7] > [10] > [19] > [20]
+cleaned response: [2, 3, 10, 1, 5, 12, 13, 15, 14, 0, 7, 8, 11, 16, 17, 4, 6, 9, 18, 19]
+====================================================================================================
+query: what are the three percenters?
+rank_start: 60, rank_end: 80
+model response: [14] > [1] > [15] > [8] > [13] > [16] > [17] > [18] > [19] > [20] > [6] > [7] > [10] > [11] > [12] > [3] > [4] > [5] > [9]
+cleaned response: [13, 0, 14, 7, 12, 15, 16, 17, 18, 19, 5, 6, 9, 10, 11, 2, 3, 4, 8]
+====================================================================================================
+query: right pelvic pain causes
+rank_start: 60, rank_end: 80
+model response: [7] > [12] > [8] > [11] > [14] > [10] > [6] > [5] > [3] > [17] > [18] > [19] > [16] > [4] > [2] > [15] > [13] > [1] > [9] > [10]
+cleaned response: [6, 11, 7, 10, 13, 9, 5, 4, 2, 16, 17, 18, 15, 3, 1, 14, 12, 0, 8, 9]
+====================================================================================================
+query: definition of a sigmet
+rank_start: 60, rank_end: 80
+model response: [10] > [9] > [8] > [7] > [6] > [5] > [4] > [3] > [2] > [1] > [14] > [11] > [12] > [13] > [15] > [16] > [17] > [18] > [19]
+cleaned response: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 13, 10, 11, 12, 14, 15, 16, 17, 18]
+====================================================================================================
+query: how are some sharks warm blooded
+rank_start: 60, rank_end: 80
+model response: [2] > [6] > [11] > [12] > [3] > [13] > [14] > [5] > [1] > [15] > [7] > [8] > [9] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [1, 5, 10, 11, 2, 12, 13, 4, 0, 14, 6, 7, 8, 15, 16, 17, 18, 19]
+====================================================================================================
+query: how to find the midsegment of a trapezoid
+rank_start: 60, rank_end: 80
+model response: [4] > [6] > [14] > [15] > [16] > [7] > [13] > [12] > [5] > [17] > [18] > [19] > [3] > [2] > [11] > [10] > [8] > [9] > [1]
+cleaned response: [3, 5, 13, 14, 15, 6, 12, 11, 4, 16, 17, 18, 2, 1, 10, 9, 7, 8, 0]
+====================================================================================================
+query: lps laws definition
+rank_start: 60, rank_end: 80
+model response: [14] > [15] > [16] > [10] > [11] > [12] > [13] > [17] > [18] > [20] > [7] > [5] > [3] > [4] > [19] > [2] > [1] > [6] > [8] > [9]
+cleaned response: [13, 14, 15, 9, 10, 11, 12, 16, 17, 19, 6, 4, 2, 3, 18, 1, 0, 5, 7, 8]
+====================================================================================================
+query: difference between a mcdouble and a double cheeseburger
+rank_start: 60, rank_end: 80
+model response: [4] > [3] > [11] > [16] > [19] > [14] > [5] > [15] > [10] > [13] > [18] > [7] > [12] > [9] > [20] > [17] > [1] > [8] > [6]
+cleaned response: [3, 2, 10, 15, 18, 13, 4, 14, 9, 12, 17, 6, 11, 8, 19, 16, 0, 7, 5]
+====================================================================================================
+query: difference between rn and bsn
+rank_start: 60, rank_end: 80
+model response: [1] > [4] > [11] > [10] > [3] > [12] > [14] > [15] > [16] > [7] > [13] > [17] > [18] > [6] > [5] > [19] > [8] > [9] > [20]
+cleaned response: [0, 3, 10, 9, 2, 11, 13, 14, 15, 6, 12, 16, 17, 5, 4, 18, 7, 8, 19]
+====================================================================================================
+query: types of dysarthria from cerebral palsy
+rank_start: 60, rank_end: 80
+model response: [10] > [11] > [12] > [7] > [1] > [3] > [4] > [5] > [6] > [14] > [16] > [17] > [19] > [2] > [8] > [9] > [15] > [13] > [18] > [20]
+cleaned response: [9, 10, 11, 6, 0, 2, 3, 4, 5, 13, 15, 16, 18, 1, 7, 8, 14, 12, 17, 19]
+====================================================================================================
+query: who is robert gray
+rank_start: 60, rank_end: 80
+model response: [1] > [10] > [11] > [2] > [12] > [15] > [17] > [18] > [19] > [16] > [6] > [3] > [4] > [5] > [7] > [8] > [9] > [14] > [20]
+cleaned response: [0, 9, 10, 1, 11, 14, 16, 17, 18, 15, 5, 2, 3, 4, 6, 7, 8, 13, 19]
+====================================================================================================
+query: rsa definition key
+rank_start: 60, rank_end: 80
+model response: [11] > [4] > [12] > [13] > [7] > [2] > [6] > [10] > [1] > [16] > [17] > [18] > [19] > [5] > [9] > [3] > [15] > [14] > [20]
+cleaned response: [10, 3, 11, 12, 6, 1, 5, 9, 0, 15, 16, 17, 18, 4, 8, 2, 14, 13, 19]
+====================================================================================================
+query: medicare's definition of mechanical ventilation
+rank_start: 60, rank_end: 80
+model response: [5] > [1] > [12] > [13] > [14] > [8] > [15] > [10] > [11] > [16] > [17] > [18] > [9] > [19] > [20] > [3] > [4] > [6] > [7]
+cleaned response: [4, 0, 11, 12, 13, 7, 14, 9, 10, 15, 16, 17, 8, 18, 19, 2, 3, 5, 6]
+====================================================================================================
+query: example of monotonic function
+rank_start: 60, rank_end: 80
+model response: [5] > [6] > [9] > [10] > [14] > [19] > [1] > [2] > [3] > [4] > [7] > [8] > [11] > [12] > [13] > [15] > [16] > [17] > [18] > [12]
+cleaned response: [4, 5, 8, 9, 13, 18, 0, 1, 2, 3, 6, 7, 10, 11, 12, 14, 15, 16, 17, 11]
+====================================================================================================
+query: causes of military suicide
+rank_start: 60, rank_end: 80
+model response: [8] > [9] > [12] > [13] > [5] > [19] > [16] > [15] > [7] > [14] > [10] > [11] > [6] > [3] > [2] > [17] > [18] > [4] > [1]
+cleaned response: [7, 8, 11, 12, 4, 18, 15, 14, 6, 13, 9, 10, 5, 2, 1, 16, 17, 3, 0]
+====================================================================================================
+query: do goldfish grow
+rank_start: 60, rank_end: 80
+model response: [2] > [1] > [6] > [10] > [11] > [14] > [13] > [5] > [9] > [16] > [3] > [15] > [4] > [7] > [17] > [8] > [12] > [18] > [20]
+cleaned response: [1, 0, 5, 9, 10, 13, 12, 4, 8, 15, 2, 14, 3, 6, 16, 7, 11, 17, 19]
+====================================================================================================
+query: what types of food can you cook sous vide
+rank_start: 60, rank_end: 80
+model response: [10] > [3] > [15] > [16] > [18] > [19] > [5] > [12] > [17] > [8] > [14] > [6] > [2] > [7] > [13] > [11] > [4] > [9] > [1] > [16]
+cleaned response: [9, 2, 14, 15, 17, 18, 4, 11, 16, 7, 13, 5, 1, 6, 12, 10, 3, 8, 0, 15]
+====================================================================================================
+query: anthropological definition of environment
+rank_start: 60, rank_end: 80
+model response: [9] > [6] > [15] > [14] > [12] > [13] > [10] > [11] > [16] > [19] > [20] > [17] > [18] > [4] > [5] > [3] > [2] > [1]
+cleaned response: [8, 5, 14, 13, 11, 12, 9, 10, 15, 18, 19, 16, 17, 3, 4, 2, 1, 0]
+====================================================================================================
+query: axon terminals or synaptic knob definition
+rank_start: 60, rank_end: 80
+model response: [5] > [3] > [7] > [11] > [14] > [2] > [10] > [13] > [19] > [4] > [15] > [6] > [17] > [16] > [18] > [9] > [12] > [1] > [8] > [10]
+cleaned response: [4, 2, 6, 10, 13, 1, 9, 12, 18, 3, 14, 5, 16, 15, 17, 8, 11, 0, 7, 9]
+====================================================================================================
+query: exons definition biology
+rank_start: 60, rank_end: 80
+model response: [10] > [11] > [12] > [7] > [4] > [13] > [14] > [6] > [8] > [16] > [17] > [3] > [2] > [15] > [19] > [18] > [5] > [20]
+cleaned response: [9, 10, 11, 6, 3, 12, 13, 5, 7, 15, 16, 2, 1, 14, 18, 17, 4, 19]
+====================================================================================================
+query: causes of left ventricular hypertrophy
+rank_start: 60, rank_end: 80
+model response: [9] > [1] > [10] > [2] > [3] > [12] > [13] > [4] > [5] > [6] > [7] > [8] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [8, 0, 9, 1, 2, 11, 12, 3, 4, 5, 6, 7, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: how is the weather in jamaica
+rank_start: 60, rank_end: 80
+model response: [1] > [3] > [10] > [5] > [8] > [14] > [12] > [19] > [16] > [17] > [6] > [11] > [15] > [7] > [13] > [4] > [2] > [18] > [9] > [12]
+cleaned response: [0, 2, 9, 4, 7, 13, 11, 18, 15, 16, 5, 10, 14, 6, 12, 3, 1, 17, 8, 11]
+====================================================================================================
+query: what is theraderm used for
+rank_start: 60, rank_end: 80
+model response: [9] > [11] > [4]
+cleaned response: [8, 10, 3]
+====================================================================================================
+query: what is an aml surveillance analyst
+rank_start: 60, rank_end: 80
+model response: [11] > [7] > [5] > [19] > [18] > [16] > [14] > [17] > [15] > [13] > [10] > [9] > [4] > [2] > [1] > [12] > [10] > [8] > [6]
+cleaned response: [10, 6, 4, 18, 17, 15, 13, 16, 14, 12, 9, 8, 3, 1, 0, 11, 9, 7, 5]
+====================================================================================================
+query: tracheids are part of _____.
+rank_start: 60, rank_end: 80
+model response: [1] > [7] > [8] > [10] > [14] > [16] > [2] > [3] > [5] > [6] > [9] > [12] > [15] > [18] > [19] > [4] > [11] > [13] > [17] > [20]
+cleaned response: [0, 6, 7, 9, 13, 15, 1, 2, 4, 5, 8, 11, 14, 17, 18, 3, 10, 12, 16, 19]
+====================================================================================================
+query: when was the salvation army founded
+rank_start: 60, rank_end: 80
+model response: [11] > [10] > [7] > [4] > [14] > [2] > [17] > [19] > [18] > [16] > [15] > [13] > [6] > [5] > [3] > [12] > [8] > [1] > [10]
+cleaned response: [10, 9, 6, 3, 13, 1, 16, 18, 17, 15, 14, 12, 5, 4, 2, 11, 7, 0, 9]
+====================================================================================================
+query: what is the most popular food in switzerland
+rank_start: 60, rank_end: 80
+model response: [1] > [5] > [11] > [17] > [3] > [19] > [8] > [13] > [6] > [15] > [16] > [2] > [4] > [10] > [7] > [18] > [14] > [9] > [20]
+cleaned response: [0, 4, 10, 16, 2, 18, 7, 12, 5, 14, 15, 1, 3, 9, 6, 17, 13, 8, 19]
+====================================================================================================
+query: what is famvir prescribed for
+rank_start: 60, rank_end: 80
+model response: [8] > [11] > [3] > [4] > [20] > [13] > [8] > [12] > [11] > [2] > [13] > [11] > [8] > [13] > [11] > [12] > [13] > [14] > [15]
+cleaned response: [7, 10, 2, 3, 19, 12, 7, 11, 10, 1, 12, 10, 7, 12, 10, 11, 12, 13, 14]
+====================================================================================================
+query: what is physical description of spruce
+rank_start: 60, rank_end: 80
+model response: [11] > [8] > [18] > [9] > [20] > [3] > [14] > [17] > [16] > [15] > [13] > [12] > [7] > [5] > [6] > [4] > [2] > [10] > [1]
+cleaned response: [10, 7, 17, 8, 19, 2, 13, 16, 15, 14, 12, 11, 6, 4, 5, 3, 1, 9, 0]
+====================================================================================================
+query: what is a active margin
+rank_start: 60, rank_end: 80
+model response: [9] > [11] > [12] > [1] > [20] > [10] > [13] > [17] > [18] > [19] > [4] > [6] > [7] > [5] > [15] > [16] > [3] > [14] > [12] > [8]
+cleaned response: [8, 10, 11, 0, 19, 9, 12, 16, 17, 18, 3, 5, 6, 4, 14, 15, 2, 13, 11, 7]
+====================================================================================================
+query: what can contour plowing reduce
+rank_start: 60, rank_end: 80
+model response: [11] > [12] > [9] > [7] > [6] > [5] > [4] > [3] > [2] > [1] > [17] > [16] > [15] > [14] > [13] > [10] > [8] > [19] > [20]
+cleaned response: [10, 11, 8, 6, 5, 4, 3, 2, 1, 0, 16, 15, 14, 13, 12, 9, 7, 18, 19]
+====================================================================================================
+query: does legionella pneumophila cause pneumonia
+rank_start: 60, rank_end: 80
+model response: [2] > [3] > [4] > [5] > [6] > [9] > [10] > [11] > [12] > [13] > [15] > [16] > [19] > [20] > [7] > [8] > [14] > [17] > [18]
+cleaned response: [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 14, 15, 18, 19, 6, 7, 13, 16, 17]
+====================================================================================================
+query: what is the daily life of thai people
+rank_start: 60, rank_end: 80
+model response: [12] > [17] > [2] > [13] > [1] > [11] > [8] > [7] > [5] > [4] > [6] > [15] > [14] > [16] > [3] > [10] > [9] > [19] > [18] > [11]
+cleaned response: [11, 16, 1, 12, 0, 10, 7, 6, 4, 3, 5, 14, 13, 15, 2, 9, 8, 18, 17, 10]
+====================================================================================================
+query: why did the us volunterilay enter ww1
+rank_start: 60, rank_end: 80
+model response: [11] > [14] > [10] > [1] > [5] > [6] > [15] > [12] > [9] > [7] > [16] > [13] > [17] > [18] > [20] > [8] > [3] > [4] > [19]
+cleaned response: [10, 13, 9, 0, 4, 5, 14, 11, 8, 6, 15, 12, 16, 17, 19, 7, 2, 3, 18]
+====================================================================================================
+query: is cdg airport in main paris
+rank_start: 60, rank_end: 80
+model response: [11] > [1] > [7] > [8] > [19] > [17] > [10] > [4] > [12] > [14] > [15] > [16] > [20] > [3] > [5] > [6] > [9] > [13] > [18]
+cleaned response: [10, 0, 6, 7, 18, 16, 9, 3, 11, 13, 14, 15, 19, 2, 4, 5, 8, 12, 17]
+====================================================================================================
+query: who formed the commonwealth of independent states
+rank_start: 60, rank_end: 80
+model response: [11] > [6] > [2] > [8] > [15] > [16] > [17] > [18] > [4] > [10] > [12] > [13] > [14] > [19] > [7] > [5] > [1] > [3] > [9]
+cleaned response: [10, 5, 1, 7, 14, 15, 16, 17, 3, 9, 11, 12, 13, 18, 6, 4, 0, 2, 8]
+====================================================================================================
+query: define visceral?
+rank_start: 60, rank_end: 80
+model response: [11] > [10] > [6] > [5] > [3] > [14] > [15] > [16] > [17] > [18] > [9] > [7] > [2] > [19] > [4] > [12] > [13] > [1] > [8]
+cleaned response: [10, 9, 5, 4, 2, 13, 14, 15, 16, 17, 8, 6, 1, 18, 3, 11, 12, 0, 7]
+====================================================================================================
+query: how long is life cycle of flea
+rank_start: 50, rank_end: 70
+model response: [9] > [11] > [14] > [16] > [18] > [3] > [15] > [17] > [2] > [6] > [13] > [5] > [10] > [12] > [19] > [7] > [4] > [1] > [20] > [1]
+cleaned response: [8, 10, 13, 15, 17, 2, 14, 16, 1, 5, 12, 4, 9, 11, 18, 6, 3, 0, 19, 0]
+====================================================================================================
+query: cost of interior concrete flooring
+rank_start: 50, rank_end: 70
+model response: [1] > [2] > [9] > [13] > [14] > [16] > [17] > [5] > [8] > [10] > [11] > [12] > [15] > [18] > [19] > [7] > [6] > [4] > [3]
+cleaned response: [0, 1, 8, 12, 13, 15, 16, 4, 7, 9, 10, 11, 14, 17, 18, 6, 5, 3, 2]
+====================================================================================================
+query: definition declaratory judgment
+rank_start: 50, rank_end: 70
+model response: [12] > [13] > [6] > [7] > [8] > [11] > [17] > [5] > [10] > [15] > [4] > [19] > [2] > [1] > [18] > [16] > [3] > [14] > [20]
+cleaned response: [11, 12, 5, 6, 7, 10, 16, 4, 9, 14, 3, 18, 1, 0, 17, 15, 2, 13, 19]
+====================================================================================================
+query: what is durable medical equipment consist of
+rank_start: 50, rank_end: 70
+model response: [10] > [17] > [6] > [16] > [3] > [4] > [5] > [8] > [7] > [11] > [12] > [14] > [15] > [2] > [13] > [19] > [1] > [9] > [18]
+cleaned response: [9, 16, 5, 15, 2, 3, 4, 7, 6, 10, 11, 13, 14, 1, 12, 18, 0, 8, 17]
+====================================================================================================
+query: what is wifi vs bluetooth
+rank_start: 50, rank_end: 70
+model response: [10] > [4] > [14] > [17] > [18] > [2] > [12] > [13] > [15] > [16] > [19] > [7] > [3] > [5] > [11] > [6] > [8] > [9] > [1] > [1]
+cleaned response: [9, 3, 13, 16, 17, 1, 11, 12, 14, 15, 18, 6, 2, 4, 10, 5, 7, 8, 0, 0]
+====================================================================================================
+query: hydrogen is a liquid below what temperature
+rank_start: 50, rank_end: 70
+model response: [11] > [6] > [2] > [12] > [13] > [4] > [10] > [14] > [15] > [16] > [17] > [18] > [19] > [7] > [8] > [9] > [5] > [1] > [3] > [20]
+cleaned response: [10, 5, 1, 11, 12, 3, 9, 13, 14, 15, 16, 17, 18, 6, 7, 8, 4, 0, 2, 19]
+====================================================================================================
+query: what are the social determinants of health
+rank_start: 50, rank_end: 70
+model response: [11] > [12] > [4] > [9] > [10] > [3] > [6] > [15] > [16] > [17] > [18] > [19] > [2] > [5] > [7] > [8] > [14] > [13] > [1] > [12]
+cleaned response: [10, 11, 3, 8, 9, 2, 5, 14, 15, 16, 17, 18, 1, 4, 6, 7, 13, 12, 0, 11]
+====================================================================================================
+query: what are the three percenters?
+rank_start: 50, rank_end: 70
+model response: [7] > [13] > [14] > [11] > [5] > [1] > [2] > [12] > [10] > [6] > [3] > [8] > [9] > [15] > [16] > [17] > [18] > [19] > [4]
+cleaned response: [6, 12, 13, 10, 4, 0, 1, 11, 9, 5, 2, 7, 8, 14, 15, 16, 17, 18, 3]
+====================================================================================================
+query: right pelvic pain causes
+rank_start: 50, rank_end: 70
+model response: [4] > [1] > [10] > [11] > [12] > [9] > [14] > [15] > [16] > [3] > [8] > [17] > [5] > [2] > [7] > [19] > [18] > [6] > [20]
+cleaned response: [3, 0, 9, 10, 11, 8, 13, 14, 15, 2, 7, 16, 4, 1, 6, 18, 17, 5, 19]
+====================================================================================================
+query: definition of a sigmet
+rank_start: 50, rank_end: 70
+model response: [4] > [11] > [16] > [12] > [13] > [1] > [3] > [5] > [6] > [7] > [14] > [15] > [17] > [18] > [19] > [20] > [2] > [8] > [9] > [10]
+cleaned response: [3, 10, 15, 11, 12, 0, 2, 4, 5, 6, 13, 14, 16, 17, 18, 19, 1, 7, 8, 9]
+====================================================================================================
+query: how are some sharks warm blooded
+rank_start: 50, rank_end: 70
+model response: [11] > [14] > [2] > [9] > [13] > [16] > [17] > [3] > [5] > [6] > [7] > [8] > [10] > [15] > [12] > [19] > [18] > [1] > [4] > [20]
+cleaned response: [10, 13, 1, 8, 12, 15, 16, 2, 4, 5, 6, 7, 9, 14, 11, 18, 17, 0, 3, 19]
+====================================================================================================
+query: how to find the midsegment of a trapezoid
+rank_start: 50, rank_end: 70
+model response: [4] > [1] > [7] > [13] > [14] > [15] > [16] > [17] > [18] > [20] > [19] > [2] > [3] > [5] > [6] > [10] > [11] > [12] > [1]
+cleaned response: [3, 0, 6, 12, 13, 14, 15, 16, 17, 19, 18, 1, 2, 4, 5, 9, 10, 11, 0]
+====================================================================================================
+query: lps laws definition
+rank_start: 50, rank_end: 70
+model response: [13] > [15] > [8] > [16] > [19] > [11] > [12] > [20] > [17] > [14] > [10] > [9] > [7] > [6] > [5] > [4] > [3] > [2] > [1] > [18]
+cleaned response: [12, 14, 7, 15, 18, 10, 11, 19, 16, 13, 9, 8, 6, 5, 4, 3, 2, 1, 0, 17]
+====================================================================================================
+query: difference between a mcdouble and a double cheeseburger
+rank_start: 50, rank_end: 70
+model response: [10] > [11] > [17] > [8] > [6] > [18] > [3] > [15] > [14] > [16] > [19] > [5] > [13] > [9] > [20] > [7] > [4] > [12] > [1]
+cleaned response: [9, 10, 16, 7, 5, 17, 2, 14, 13, 15, 18, 4, 12, 8, 19, 6, 3, 11, 0]
+====================================================================================================
+query: difference between rn and bsn
+rank_start: 50, rank_end: 70
+model response: [1] > [2] > [5] > [9] > [12] > [13] > [15] > [16] > [7] > [10] > [11] > [14] > [17] > [18] > [3] > [4] > [6] > [19] > [20]
+cleaned response: [0, 1, 4, 8, 11, 12, 14, 15, 6, 9, 10, 13, 16, 17, 2, 3, 5, 18, 19]
+====================================================================================================
+query: types of dysarthria from cerebral palsy
+rank_start: 50, rank_end: 70
+model response: [19] > [20] > [9] > [12] > [13] > [4] > [1] > [14] > [16] > [5] > [7] > [11] > [17] > [3] > [15] > [10] > [8] > [6] > [18] > [2]
+cleaned response: [18, 19, 8, 11, 12, 3, 0, 13, 15, 4, 6, 10, 16, 2, 14, 9, 7, 5, 17, 1]
+====================================================================================================
+query: who is robert gray
+rank_start: 50, rank_end: 70
+model response: [4] > [5] > [10] > [11] > [12] > [13] > [1] > [14] > [15] > [16] > [2] > [7] > [17] > [18] > [19] > [8] > [9] > [15] > [6]
+cleaned response: [3, 4, 9, 10, 11, 12, 0, 13, 14, 15, 1, 6, 16, 17, 18, 7, 8, 14, 5]
+====================================================================================================
+query: rsa definition key
+rank_start: 50, rank_end: 70
+model response: [5] > [11] > [9] > [10] > [12] > [13] > [14] > [3] > [4] > [7] > [2] > [15] > [6] > [17] > [19] > [16] > [20]
+cleaned response: [4, 10, 8, 9, 11, 12, 13, 2, 3, 6, 1, 14, 5, 16, 18, 15, 19]
+====================================================================================================
+query: medicare's definition of mechanical ventilation
+rank_start: 50, rank_end: 70
+model response: [4] > [5] > [13] > [14] > [15] > [10] > [11] > [12] > [16] > [17] > [1] > [2] > [3] > [6] > [7] > [8] > [9] > [18] > [19]
+cleaned response: [3, 4, 12, 13, 14, 9, 10, 11, 15, 16, 0, 1, 2, 5, 6, 7, 8, 17, 18]
+====================================================================================================
+query: example of monotonic function
+rank_start: 50, rank_end: 70
+model response: [5] > [6] > [11] > [12] > [13] > [4] > [14] > [15] > [7] > [10] > [17] > [2] > [3] > [8] > [9] > [16] > [18] > [19] > [20]
+cleaned response: [4, 5, 10, 11, 12, 3, 13, 14, 6, 9, 16, 1, 2, 7, 8, 15, 17, 18, 19]
+====================================================================================================
+query: causes of military suicide
+rank_start: 50, rank_end: 70
+model response: [11] > [4] > [5] > [13] > [12] > [19] > [17] > [18] > [8] > [10] > [6] > [3] > [2] > [7] > [16] > [15] > [14] > [9] > [1] > [20]
+cleaned response: [10, 3, 4, 12, 11, 18, 16, 17, 7, 9, 5, 2, 1, 6, 15, 14, 13, 8, 0, 19]
+====================================================================================================
+query: do goldfish grow
+rank_start: 50, rank_end: 70
+model response: [1] > [2] > [4] > [9] > [10] > [15] > [16] > [17] > [3] > [7] > [12] > [19] > [11] > [6] > [14] > [5] > [8] > [13] > [18]
+cleaned response: [0, 1, 3, 8, 9, 14, 15, 16, 2, 6, 11, 18, 10, 5, 13, 4, 7, 12, 17]
+====================================================================================================
+query: what types of food can you cook sous vide
+rank_start: 50, rank_end: 70
+model response: [19] > [18] > [8] > [10] > [12] > [14] > [15] > [16] > [3] > [4] > [5] > [7] > [13] > [17] > [2] > [6] > [9] > [11] > [1] > [1]
+cleaned response: [18, 17, 7, 9, 11, 13, 14, 15, 2, 3, 4, 6, 12, 16, 1, 5, 8, 10, 0, 0]
+====================================================================================================
+query: anthropological definition of environment
+rank_start: 50, rank_end: 70
+model response: [10] > [5] > [7] > [19] > [20] > [13] > [14] > [4] > [1] > [6] > [3] > [15] > [16] > [17] > [9] > [2] > [11] > [12] > [8]
+cleaned response: [9, 4, 6, 18, 19, 12, 13, 3, 0, 5, 2, 14, 15, 16, 8, 1, 10, 11, 7]
+====================================================================================================
+query: axon terminals or synaptic knob definition
+rank_start: 50, rank_end: 70
+model response: [11] > [14] > [3] > [1] > [13] > [16] > [12] > [19] > [20] > [6] > [17] > [18] > [9] > [5] > [7] > [2] > [15] > [4] > [10]
+cleaned response: [10, 13, 2, 0, 12, 15, 11, 18, 19, 5, 16, 17, 8, 4, 6, 1, 14, 3, 9]
+====================================================================================================
+query: exons definition biology
+rank_start: 50, rank_end: 70
+model response: [1] > [2] > [4] > [7] > [10] > [16] > [3] > [5] > [12] > [13] > [17] > [19] > [11] > [6] > [8] > [15] > [9] > [14] > [18] > [20]
+cleaned response: [0, 1, 3, 6, 9, 15, 2, 4, 11, 12, 16, 18, 10, 5, 7, 14, 8, 13, 17, 19]
+====================================================================================================
+query: causes of left ventricular hypertrophy
+rank_start: 50, rank_end: 70
+model response: [11] > [3] > [9] > [10] > [15] > [6] > [1] > [4] > [13] > [16] > [17] > [5] > [7] > [12] > [19] > [20] > [2] > [8] > [14]
+cleaned response: [10, 2, 8, 9, 14, 5, 0, 3, 12, 15, 16, 4, 6, 11, 18, 19, 1, 7, 13]
+====================================================================================================
+query: how is the weather in jamaica
+rank_start: 50, rank_end: 70
+model response: [8] > [4] > [1] > [12] > [16] > [19] > [20] > [5] > [6] > [15] > [3] > [14] > [7] > [13] > [2] > [17] > [18] > [10] > [11]
+cleaned response: [7, 3, 0, 11, 15, 18, 19, 4, 5, 14, 2, 13, 6, 12, 1, 16, 17, 9, 10]
+====================================================================================================
+query: what is theraderm used for
+rank_start: 50, rank_end: 70
+model response: [12] > [6] > [2] > [3] > [7] > [13] > [16] > [1] > [15] > [14] > [17] > [18] > [19] > [8] > [9] > [10] > [11] > [4] > [5]
+cleaned response: [11, 5, 1, 2, 6, 12, 15, 0, 14, 13, 16, 17, 18, 7, 8, 9, 10, 3, 4]
+====================================================================================================
+query: what is an aml surveillance analyst
+rank_start: 50, rank_end: 70
+model response: [11] > [17] > [19] > [20] > [5] > [16] > [14] > [13] > [15] > [12] > [18] > [10] > [7] > [3] > [6] > [2] > [1] > [9] > [8]
+cleaned response: [10, 16, 18, 19, 4, 15, 13, 12, 14, 11, 17, 9, 6, 2, 5, 1, 0, 8, 7]
+====================================================================================================
+query: tracheids are part of _____.
+rank_start: 50, rank_end: 70
+model response: [2] > [14] > [5] > [13] > [8] > [9] > [10] > [11] > [12] > [15] > [7] > [16] > [3] > [6] > [18] > [17] > [4] > [19] > [20]
+cleaned response: [1, 13, 4, 12, 7, 8, 9, 10, 11, 14, 6, 15, 2, 5, 17, 16, 3, 18, 19]
+====================================================================================================
+query: when was the salvation army founded
+rank_start: 50, rank_end: 70
+model response: [5] > [11] > [4] > [7] > [12] > [1] > [3] > [15] > [2] > [17] > [6] > [13] > [14] > [16] > [19] > [8] > [9] > [10] > [18] > [20]
+cleaned response: [4, 10, 3, 6, 11, 0, 2, 14, 1, 16, 5, 12, 13, 15, 18, 7, 8, 9, 17, 19]
+====================================================================================================
+query: what is the most popular food in switzerland
+rank_start: 50, rank_end: 70
+model response: [9] > [6] > [11] > [10] > [14] > [18] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > []
+cleaned response: [8, 5, 10, 9, 13, 17]
+====================================================================================================
+query: what is famvir prescribed for
+rank_start: 50, rank_end: 70
+model response: [11] > [6] > [4] > [2] > [8] > [12] > [16] > [5] > [17] > [3] > [14] > [10] > [9] > [15] > [7] > [13] > [19] > [18] > [1] > [20]
+cleaned response: [10, 5, 3, 1, 7, 11, 15, 4, 16, 2, 13, 9, 8, 14, 6, 12, 18, 17, 0, 19]
+====================================================================================================
+query: what is physical description of spruce
+rank_start: 50, rank_end: 70
+model response: [11] > [4] > [9] > [5] > [7] > [13] > [14] > [2] > [17] > [16] > [15] > [12] > [10] > [8] > [6] > [18] > [19] > [3] > [1]
+cleaned response: [10, 3, 8, 4, 6, 12, 13, 1, 16, 15, 14, 11, 9, 7, 5, 17, 18, 2, 0]
+====================================================================================================
+query: what is a active margin
+rank_start: 50, rank_end: 70
+model response: [1] > [2] > [11] > [12] > [14] > [10] > [17] > [3] > [8] > [16] > [9] > [5] > [6] > [15] > [13] > [19] > [7] > [18] > [12] > [14]
+cleaned response: [0, 1, 10, 11, 13, 9, 16, 2, 7, 15, 8, 4, 5, 14, 12, 18, 6, 17, 11, 13]
+====================================================================================================
+query: what can contour plowing reduce
+rank_start: 50, rank_end: 70
+model response: [11] > [12] > [3] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > []
+cleaned response: [10, 11, 2]
+====================================================================================================
+query: does legionella pneumophila cause pneumonia
+rank_start: 50, rank_end: 70
+model response: [1] > [2] > [5] > [8] > [10] > [11] > [12] > [14] > [15] > [16] > [19] > [20] > [3] > [4] > [7] > [9] > [13] > [17] > [18]
+cleaned response: [0, 1, 4, 7, 9, 10, 11, 13, 14, 15, 18, 19, 2, 3, 6, 8, 12, 16, 17]
+====================================================================================================
+query: what is the daily life of thai people
+rank_start: 50, rank_end: 70
+model response: [10] > [15] > [4] > [16] > [18] > [2] > [17] > [9] > [11] > [14] > [5] > [3] > [12] > [13] > [7] > [19] > [6] > [8] > [1] > [20]
+cleaned response: [9, 14, 3, 15, 17, 1, 16, 8, 10, 13, 4, 2, 11, 12, 6, 18, 5, 7, 0, 19]
+====================================================================================================
+query: why did the us volunterilay enter ww1
+rank_start: 50, rank_end: 70
+model response: [8] > [12] > [17] > [2] > [5] > [11] > [19] > [10] > [1] > [7] > [18] > [16] > [13] > [6] > [4] > [15] > [3] > [14] > [9]
+cleaned response: [7, 11, 16, 1, 4, 10, 18, 9, 0, 6, 17, 15, 12, 5, 3, 14, 2, 13, 8]
+====================================================================================================
+query: is cdg airport in main paris
+rank_start: 50, rank_end: 70
+model response: [3] > [1] > [4] > [10] > [11] > [12] > [7] > [15] > [2] > [5] > [6] > [16] > [17] > [18] > [19] > [20] > [8] > [9] > [13] > [14]
+cleaned response: [2, 0, 3, 9, 10, 11, 6, 14, 1, 4, 5, 15, 16, 17, 18, 19, 7, 8, 12, 13]
+====================================================================================================
+query: who formed the commonwealth of independent states
+rank_start: 50, rank_end: 70
+model response: [11] > [12] > [2] > [5] > [14] > [16] > [9] > [13] > [15] > [10] > [18] > [17] > [3] > [4] > [19] > [1] > [6] > [7] > [15] > [8]
+cleaned response: [10, 11, 1, 4, 13, 15, 8, 12, 14, 9, 17, 16, 2, 3, 18, 0, 5, 6, 14, 7]
+====================================================================================================
+query: define visceral?
+rank_start: 50, rank_end: 70
+model response: [11] > [1] > [8] > [7] > [12] > [17] > [18] > [19] > [20] > [3] > [4] > [5] > [6] > [9] > [10] > [13] > [14] > [15] > [16]
+cleaned response: [10, 0, 7, 6, 11, 16, 17, 18, 19, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15]
+====================================================================================================
+query: how long is life cycle of flea
+rank_start: 40, rank_end: 60
+model response: [4] > [3] > [5] > [7] > [11] > [14] > [15] > [16] > [17] > [12] > [13] > [18] > [2] > [6] > [9] > [10] > [19] > [1] > [20]
+cleaned response: [3, 2, 4, 6, 10, 13, 14, 15, 16, 11, 12, 17, 1, 5, 8, 9, 18, 0, 19]
+====================================================================================================
+query: cost of interior concrete flooring
+rank_start: 40, rank_end: 60
+model response: [1] > [8] > [2] > [6] > [9] > [14] > [11] > [12] > [13] > [10] > [15] > [16] > [17] > [5] > [7] > [18] > [19] > [20]
+cleaned response: [0, 7, 1, 5, 8, 13, 10, 11, 12, 9, 14, 15, 16, 4, 6, 17, 18, 19]
+====================================================================================================
+query: definition declaratory judgment
+rank_start: 40, rank_end: 60
+model response: [1] > [6] > [4] > [11] > [12] > [13] > [14] > [15] > [10] > [16] > [17] > [2] > [3] > [5] > [7] > [8] > [9] > [18] > [19] > [10]
+cleaned response: [0, 5, 3, 10, 11, 12, 13, 14, 9, 15, 16, 1, 2, 4, 6, 7, 8, 17, 18, 9]
+====================================================================================================
+query: what is durable medical equipment consist of
+rank_start: 40, rank_end: 60
+model response: [1] > [3] > [11] > [12] > [10] > [8] > [14] > [17] > [18] > [19] > [4] > [6] > [13] > [2] > [5] > [9] > [15] > [16] > [7]
+cleaned response: [0, 2, 10, 11, 9, 7, 13, 16, 17, 18, 3, 5, 12, 1, 4, 8, 14, 15, 6]
+====================================================================================================
+query: what is wifi vs bluetooth
+rank_start: 40, rank_end: 60
+model response: [17] > [18] > [4] > [14] > [15] > [7] > [11] > [19] > [20] > [5] > [13] > [10] > [3] > [2] > [8] > [16] > [12] > [6] > [9] > [1]
+cleaned response: [16, 17, 3, 13, 14, 6, 10, 18, 19, 4, 12, 9, 2, 1, 7, 15, 11, 5, 8, 0]
+====================================================================================================
+query: hydrogen is a liquid below what temperature
+rank_start: 40, rank_end: 60
+model response: [14] > [13] > [11] > [7] > [6] > [4] > [9] > [2] > [1] > [19] > [18] > [17] > [16] > [15] > [12] > [5] > [3] > [10] > [8]
+cleaned response: [13, 12, 10, 6, 5, 3, 8, 1, 0, 18, 17, 16, 15, 14, 11, 4, 2, 9, 7]
+====================================================================================================
+query: what are the social determinants of health
+rank_start: 40, rank_end: 60
+model response: [1] > [2] > [10] > [11] > [12] > [4] > [6] > [16] > [18] > [19] > [20] > [3] > [5] > [7] > [8] > [9] > [13] > [14] > [15]
+cleaned response: [0, 1, 9, 10, 11, 3, 5, 15, 17, 18, 19, 2, 4, 6, 7, 8, 12, 13, 14]
+====================================================================================================
+query: what are the three percenters?
+rank_start: 40, rank_end: 60
+model response: [5] > [11] > [12] > [13] > [2] > [1] > [8] > [16] > [18] > [15] > [17] > [19] > [14] > [3] > [7] > [6] > [4] > [10] > [9]
+cleaned response: [4, 10, 11, 12, 1, 0, 7, 15, 17, 14, 16, 18, 13, 2, 6, 5, 3, 9, 8]
+====================================================================================================
+query: right pelvic pain causes
+rank_start: 40, rank_end: 60
+model response: [2] > [4] > [14] > [15] > [17] > [18] > [9] > [19] > [3] > [5] > [11] > [12] > [13] > [7] > [10] > [6] > [16] > [1] > [8] > [20]
+cleaned response: [1, 3, 13, 14, 16, 17, 8, 18, 2, 4, 10, 11, 12, 6, 9, 5, 15, 0, 7, 19]
+====================================================================================================
+query: definition of a sigmet
+rank_start: 40, rank_end: 60
+model response: [10] > [11] > [12] > [1] > [15] > [2] > [3] > [4] > [5] > [6] > [7] > [8] > [9] > [14] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [9, 10, 11, 0, 14, 1, 2, 3, 4, 5, 6, 7, 8, 13, 15, 16, 17, 18, 19]
+====================================================================================================
+query: how are some sharks warm blooded
+rank_start: 40, rank_end: 60
+model response: [8] > [11] > [12] > [15] > [6] > [7] > [4] > [10] > [16] > [17] > [3] > [2] > [19] > [5] > [14] > [18] > [9] > [13] > [1] > [20]
+cleaned response: [7, 10, 11, 14, 5, 6, 3, 9, 15, 16, 2, 1, 18, 4, 13, 17, 8, 12, 0, 19]
+====================================================================================================
+query: how to find the midsegment of a trapezoid
+rank_start: 40, rank_end: 60
+model response: [12] > [14] > [15] > [16] > [8] > [13] > [17] > [1] > [2] > [3] > [4] > [5] > [6] > [7] > [9] > [10] > [11] > [18] > [19] > [20]
+cleaned response: [11, 13, 14, 15, 7, 12, 16, 0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 17, 18, 19]
+====================================================================================================
+query: lps laws definition
+rank_start: 40, rank_end: 60
+model response: [7] > [12] > [13] > [14] > [19] > [16] > [15] > [6] > [3] > [17] > [4] > [5] > [2] > [10] > [11] > [8] > [9] > [18] > [1]
+cleaned response: [6, 11, 12, 13, 18, 15, 14, 5, 2, 16, 3, 4, 1, 9, 10, 7, 8, 17, 0]
+====================================================================================================
+query: difference between a mcdouble and a double cheeseburger
+rank_start: 40, rank_end: 60
+model response: [10] > [12] > [16] > [6] > [14] > [18] > [19] > [11] > [13] > [15] > [3] > [20] > [17] > [5] > [4] > [7] > [8] > [9] > [1] > [1]
+cleaned response: [9, 11, 15, 5, 13, 17, 18, 10, 12, 14, 2, 19, 16, 4, 3, 6, 7, 8, 0, 0]
+====================================================================================================
+query: difference between rn and bsn
+rank_start: 40, rank_end: 60
+model response: [5] > [11] > [16] > [7] > [17] > [18] > [1] > [3] > [4] > [13] > [14] > [15] > [2] > [10] > [19] > [8] > [6] > [12] > [9] > [20]
+cleaned response: [4, 10, 15, 6, 16, 17, 0, 2, 3, 12, 13, 14, 1, 9, 18, 7, 5, 11, 8, 19]
+====================================================================================================
+query: types of dysarthria from cerebral palsy
+rank_start: 40, rank_end: 60
+model response: [9] > [10] > [13] > [4] > [6] > [20] > [3] > [14] > [15] > [16] > [19] > [12] > [7] > [11] > [5] > [8] > [1] > [18] > [17]
+cleaned response: [8, 9, 12, 3, 5, 19, 2, 13, 14, 15, 18, 11, 6, 10, 4, 7, 0, 17, 16]
+====================================================================================================
+query: who is robert gray
+rank_start: 40, rank_end: 60
+model response: [11] > [12] > [14] > [13] > [15] > [16] > [6] > [9] > [17] > [18] > [20] > [5] > [3] > [4] > [10] > [19]
+cleaned response: [10, 11, 13, 12, 14, 15, 5, 8, 16, 17, 19, 4, 2, 3, 9, 18]
+====================================================================================================
+query: rsa definition key
+rank_start: 40, rank_end: 60
+model response: [4] > [5] > [1] > [9] > [11] > [12] > [15] > [16] > [17] > [2] > [3] > [6] > [7] > [8] > [10] > [13] > [14] > [18] > [19] > [20]
+cleaned response: [3, 4, 0, 8, 10, 11, 14, 15, 16, 1, 2, 5, 6, 7, 9, 12, 13, 17, 18, 19]
+====================================================================================================
+query: medicare's definition of mechanical ventilation
+rank_start: 40, rank_end: 60
+model response: [9] > [12] > [13] > [14] > [15] > [11] > [7] > [16] > [17] > [18] > [19] > [20] > [4] > [2] > [3] > [6] > [10] > [5] > [1]
+cleaned response: [8, 11, 12, 13, 14, 10, 6, 15, 16, 17, 18, 19, 3, 1, 2, 5, 9, 4, 0]
+====================================================================================================
+query: example of monotonic function
+rank_start: 40, rank_end: 60
+model response: [2] > [3] > [5] > [4] > [17] > [12] > [14] > [15] > [10] > [11] > [7] > [16] > [18] > [19] > [6] > [8] > [13] > [1] > [9]
+cleaned response: [1, 2, 4, 3, 16, 11, 13, 14, 9, 10, 6, 15, 17, 18, 5, 7, 12, 0, 8]
+====================================================================================================
+query: causes of military suicide
+rank_start: 40, rank_end: 60
+model response: [11] > [2] > [14] > [15] > [13] > [9] > [12] > [16] > [17] > [18] > [19] > [20] > [5] > [3] > [4] > [6] > [7] > [10] > [1]
+cleaned response: [10, 1, 13, 14, 12, 8, 11, 15, 16, 17, 18, 19, 4, 2, 3, 5, 6, 9, 0]
+====================================================================================================
+query: do goldfish grow
+rank_start: 40, rank_end: 60
+model response: [2] > [3] > [6] > [12] > [17] > [18] > [14] > [16] > [5] > [9] > [7] > [13] > [11] > [19] > [10] > [4] > [15] > [20] > [1]
+cleaned response: [1, 2, 5, 11, 16, 17, 13, 15, 4, 8, 6, 12, 10, 18, 9, 3, 14, 19, 0]
+====================================================================================================
+query: what types of food can you cook sous vide
+rank_start: 40, rank_end: 60
+model response: [8] > [11] > [7] > [10] > [14] > [16] > [15] > [17] > [18] > [1] > [2] > [13] > [19] > [6] > [5] > [4] > [3] > [12] > [9]
+cleaned response: [7, 10, 6, 9, 13, 15, 14, 16, 17, 0, 1, 12, 18, 5, 4, 3, 2, 11, 8]
+====================================================================================================
+query: anthropological definition of environment
+rank_start: 40, rank_end: 60
+model response: [19] > [16] > [5] > [13] > [6] > [15] > [17] > [4] > [2] > [14] > [12] > [11] > [3] > [8] > [7] > [10] > [9] > [18] > [1] > [20]
+cleaned response: [18, 15, 4, 12, 5, 14, 16, 3, 1, 13, 11, 10, 2, 7, 6, 9, 8, 17, 0, 19]
+====================================================================================================
+query: axon terminals or synaptic knob definition
+rank_start: 40, rank_end: 60
+model response: [8] > [11] > [12] > [1] > [15] > [10] > [16] > [9] > [13] > [18] > [5] > [7] > [4] > [19] > [6] > [14] > [2] > [3] > [17] > [20]
+cleaned response: [7, 10, 11, 0, 14, 9, 15, 8, 12, 17, 4, 6, 3, 18, 5, 13, 1, 2, 16, 19]
+====================================================================================================
+query: exons definition biology
+rank_start: 40, rank_end: 60
+model response: [2] > [6] > [7] > [14] > [15] > [3] > [13] > [11] > [12] > [16] > [19] > [20] > [9] > [5] > [8] > [17] > [18] > [4] > [10]
+cleaned response: [1, 5, 6, 13, 14, 2, 12, 10, 11, 15, 18, 19, 8, 4, 7, 16, 17, 3, 9]
+====================================================================================================
+query: causes of left ventricular hypertrophy
+rank_start: 40, rank_end: 60
+model response: [1] > [11] > [13] > [20] > [1] > [12] > [15] > [9] > [19] > [4] > [16] > [3] > [5] > [6] > [7] > [8] > [10] > [14] > [17] > [18]
+cleaned response: [0, 10, 12, 19, 0, 11, 14, 8, 18, 3, 15, 2, 4, 5, 6, 7, 9, 13, 16, 17]
+====================================================================================================
+query: how is the weather in jamaica
+rank_start: 40, rank_end: 60
+model response: [1] > [4] > [10] > [16] > [17] > [5] > [7] > [8] > [9] > [13] > [12] > [19] > [6] > [15] > [14] > [3] > [2] > [18] > [20]
+cleaned response: [0, 3, 9, 15, 16, 4, 6, 7, 8, 12, 11, 18, 5, 14, 13, 2, 1, 17, 19]
+====================================================================================================
+query: what is theraderm used for
+rank_start: 40, rank_end: 60
+model response: [] > []
+cleaned response: []
+====================================================================================================
+query: what is an aml surveillance analyst
+rank_start: 40, rank_end: 60
+model response: [11] > [8] > [10] > [14] > [16] > [17] > [19] > [5] > [3] > [15] > [12] > [13] > [18] > [2] > [1] > [6] > [7] > [10] > [16] > [17]
+cleaned response: [10, 7, 9, 13, 15, 16, 18, 4, 2, 14, 11, 12, 17, 1, 0, 5, 6, 9, 15, 16]
+====================================================================================================
+query: tracheids are part of _____.
+rank_start: 40, rank_end: 60
+model response: [10] > [12] > [5] > [1] > [7] > [16] > [20] > [14] > [13] > [4] > [11] > [19] > [17] > [15] > [6] > [8] > [3] > [2] > [18]
+cleaned response: [9, 11, 4, 0, 6, 15, 19, 13, 12, 3, 10, 18, 16, 14, 5, 7, 2, 1, 17]
+====================================================================================================
+query: when was the salvation army founded
+rank_start: 40, rank_end: 60
+model response: [11] > [3] > [12] > [9] > [14] > [15] > [2] > [6] > [7] > [18] > [10] > [13] > [16] > [17] > [4] > [5] > [8] > [19] > [1] > [20]
+cleaned response: [10, 2, 11, 8, 13, 14, 1, 5, 6, 17, 9, 12, 15, 16, 3, 4, 7, 18, 0, 19]
+====================================================================================================
+query: what is the most popular food in switzerland
+rank_start: 40, rank_end: 60
+model response: [5] > [10] > [3] > [4] > [13] > [11] > [7] > [14] > [16] > [15] > [6] > [8] > [12] > [2] > [9] > [17] > [18] > [19] > [20]
+cleaned response: [4, 9, 2, 3, 12, 10, 6, 13, 15, 14, 5, 7, 11, 1, 8, 16, 17, 18, 19]
+====================================================================================================
+query: what is famvir prescribed for
+rank_start: 40, rank_end: 60
+model response: [11] > [4] > [5] > [12] > [10] > [16] > [17] > [1] > [2] > [15] > [19] > [13] > [14] > [18] > [6] > [7] > [8] > [9] > [10]
+cleaned response: [10, 3, 4, 11, 9, 15, 16, 0, 1, 14, 18, 12, 13, 17, 5, 6, 7, 8, 9]
+====================================================================================================
+query: what is physical description of spruce
+rank_start: 40, rank_end: 60
+model response: [11] > [4] > [8] > [19] > [16] > [17] > [7] > [14] > [13] > [5] > [12] > [15] > [10] > [2] > [6] > [18] > [3] > [1] > [9]
+cleaned response: [10, 3, 7, 18, 15, 16, 6, 13, 12, 4, 11, 14, 9, 1, 5, 17, 2, 0, 8]
+====================================================================================================
+query: what is a active margin
+rank_start: 40, rank_end: 60
+model response: [11] > [12] > [13] > [7] > [14] > [1] > [15] > [8] > [17] > [18] > [20] > [3] > [5] > [9] > [10] > [4] > [6] > [16] > [19]
+cleaned response: [10, 11, 12, 6, 13, 0, 14, 7, 16, 17, 19, 2, 4, 8, 9, 3, 5, 15, 18]
+====================================================================================================
+query: what can contour plowing reduce
+rank_start: 40, rank_end: 60
+model response: [11] > [12] > [1] > [5] > [6] > [9] > [10] > [3] > [13] > [4] > [17] > [19] > [16] > [14] > [15] > [18] > [20] > [7] > [16]
+cleaned response: [10, 11, 0, 4, 5, 8, 9, 2, 12, 3, 16, 18, 15, 13, 14, 17, 19, 6, 15]
+====================================================================================================
+query: does legionella pneumophila cause pneumonia
+rank_start: 40, rank_end: 60
+model response: [8] > [16] > [17] > [18] > [19] > [20] > [1] > [2] > [3] > [4] > [5] > [6] > [7] > [10] > [11] > [12] > [13] > [14] > [15]
+cleaned response: [7, 15, 16, 17, 18, 19, 0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14]
+====================================================================================================
+query: what is the daily life of thai people
+rank_start: 40, rank_end: 60
+model response: [12] > [6] > [13] > [14] > [15] > [16] > [3] > [4] > [5] > [10] > [11] > [7] > [8] > [9] > [17] > [18] > [19] > [20] > [2]
+cleaned response: [11, 5, 12, 13, 14, 15, 2, 3, 4, 9, 10, 6, 7, 8, 16, 17, 18, 19, 1]
+====================================================================================================
+query: why did the us volunterilay enter ww1
+rank_start: 40, rank_end: 60
+model response: [4] > [11] > [8] > [2] > [9] > [16] > [12] > [5] > [13] > [17] > [3] > [10] > [15] > [7] > [14] > [19] > [18] > [6] > [1]
+cleaned response: [3, 10, 7, 1, 8, 15, 11, 4, 12, 16, 2, 9, 14, 6, 13, 18, 17, 5, 0]
+====================================================================================================
+query: is cdg airport in main paris
+rank_start: 40, rank_end: 60
+model response: [11] > [1] > [4] > [9] > [5] > [13] > [7] > [10] > [15] > [16] > [12] > [17] > [6] > [14] > [19] > [2] > [3] > [8] > [18]
+cleaned response: [10, 0, 3, 8, 4, 12, 6, 9, 14, 15, 11, 16, 5, 13, 18, 1, 2, 7, 17]
+====================================================================================================
+query: who formed the commonwealth of independent states
+rank_start: 40, rank_end: 60
+model response: [11] > [6] > [1] > [18] > [15] > [16] > [13] > [14] > [19] > [7] > [17] > [12] > [5] > [3] > [2] > [10] > [8] > [9] > [4]
+cleaned response: [10, 5, 0, 17, 14, 15, 12, 13, 18, 6, 16, 11, 4, 2, 1, 9, 7, 8, 3]
+====================================================================================================
+query: define visceral?
+rank_start: 40, rank_end: 60
+model response: [11] > [1] > [6] > [2] > [12] > [10] > [5] > [16] > [17] > [18] > [19] > [20] > [7] > [4] > [9] > [14] > [15] > [13] > [8]
+cleaned response: [10, 0, 5, 1, 11, 9, 4, 15, 16, 17, 18, 19, 6, 3, 8, 13, 14, 12, 7]
+====================================================================================================
+query: how long is life cycle of flea
+rank_start: 30, rank_end: 50
+model response: [2] > [14] > [15] > [9] > [13] > [5] > [7] > [19] > [3] > [17] > [18] > [16] > [20] > [12] > [11] > [6] > [10] > [4] > [1] > [8]
+cleaned response: [1, 13, 14, 8, 12, 4, 6, 18, 2, 16, 17, 15, 19, 11, 10, 5, 9, 3, 0, 7]
+====================================================================================================
+query: cost of interior concrete flooring
+rank_start: 30, rank_end: 50
+model response: [4] > [1] > [16] > [17] > [18] > [3] > [12] > [19] > [7] > [14] > [15] > [5] > [6] > [20] > [9] > [10] > [11] > [8] > [13]
+cleaned response: [3, 0, 15, 16, 17, 2, 11, 18, 6, 13, 14, 4, 5, 19, 8, 9, 10, 7, 12]
+====================================================================================================
+query: definition declaratory judgment
+rank_start: 30, rank_end: 50
+model response: [4] > [12] > [8] > [1] > [10] > [2] > [3] > [5] > [6] > [7] > [9] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [3, 11, 7, 0, 9, 1, 2, 4, 5, 6, 8, 12, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: what is durable medical equipment consist of
+rank_start: 30, rank_end: 50
+model response: [7] > [12] > [14] > [6] > [3] > [2] > [13] > [17] > [4] > [10] > [11] > [16] > [15] > [9] > [18] > [19] > [8] > [5] > [1]
+cleaned response: [6, 11, 13, 5, 2, 1, 12, 16, 3, 9, 10, 15, 14, 8, 17, 18, 7, 4, 0]
+====================================================================================================
+query: what is wifi vs bluetooth
+rank_start: 30, rank_end: 50
+model response: [17] > [4] > [10] > [14] > [19] > [7] > [12] > [11] > [13] > [15] > [16] > [18] > [5] > [2] > [3] > [6] > [1] > [8] > [9]
+cleaned response: [16, 3, 9, 13, 18, 6, 11, 10, 12, 14, 15, 17, 4, 1, 2, 5, 0, 7, 8]
+====================================================================================================
+query: hydrogen is a liquid below what temperature
+rank_start: 30, rank_end: 50
+model response: [10] > [7] > [3] > [12] > [8] > [4] > [19] > [20] > [17] > [16] > [15] > [14] > [13] > [5] > [2] > [11] > [6] > [9] > [1]
+cleaned response: [9, 6, 2, 11, 7, 3, 18, 19, 16, 15, 14, 13, 12, 4, 1, 10, 5, 8, 0]
+====================================================================================================
+query: what are the social determinants of health
+rank_start: 30, rank_end: 50
+model response: [2] > [5] > [6] > [11] > [14] > [15] > [13] > [19] > [4] > [12] > [10] > [7] > [16] > [18] > [3] > [8] > [17] > [1] > [9]
+cleaned response: [1, 4, 5, 10, 13, 14, 12, 18, 3, 11, 9, 6, 15, 17, 2, 7, 16, 0, 8]
+====================================================================================================
+query: what are the three percenters?
+rank_start: 30, rank_end: 50
+model response: [12] > [11] > [5] > [3] > [13] > [14] > [6] > [7] > [8] > [15] > [16] > [17] > [18] > [19] > [20] > [1] > [4] > [9] > [10]
+cleaned response: [11, 10, 4, 2, 12, 13, 5, 6, 7, 14, 15, 16, 17, 18, 19, 0, 3, 8, 9]
+====================================================================================================
+query: right pelvic pain causes
+rank_start: 30, rank_end: 50
+model response: [10] > [8] > [9] > [14] > [13] > [5] > [6] > [4] > [15] > [16] > [1] > [3] > [7] > [11] > [12] > [17] > [18] > [2] > [19] > [20]
+cleaned response: [9, 7, 8, 13, 12, 4, 5, 3, 14, 15, 0, 2, 6, 10, 11, 16, 17, 1, 18, 19]
+====================================================================================================
+query: definition of a sigmet
+rank_start: 30, rank_end: 50
+model response: [19] > [20] > [16] > [15] > [12] > [11] > [10] > [9] > [8] > [7] > [6] > [5] > [4] > [3] > [2] > [1]
+cleaned response: [18, 19, 15, 14, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+====================================================================================================
+query: how are some sharks warm blooded
+rank_start: 30, rank_end: 50
+model response: [11] > [12] > [13] > [6] > [14] > [19] > [5] > [10] > [3] > [2] > [17] > [18] > [1] > [9] > [16] > [7] > [8] > [15] > [10] > [17]
+cleaned response: [10, 11, 12, 5, 13, 18, 4, 9, 2, 1, 16, 17, 0, 8, 15, 6, 7, 14, 9, 16]
+====================================================================================================
+query: how to find the midsegment of a trapezoid
+rank_start: 30, rank_end: 50
+model response: [10] > [7] > [6] > [12] > [13] > [14] > [16] > [18] > [3] > [5] > [9] > [11] > [15] > [17] > [19] > [20] > [1] > [2] > [4]
+cleaned response: [9, 6, 5, 11, 12, 13, 15, 17, 2, 4, 8, 10, 14, 16, 18, 19, 0, 1, 3]
+====================================================================================================
+query: lps laws definition
+rank_start: 30, rank_end: 50
+model response: [9] > [11] > [2] > [15] > [14] > [16] > [17] > [18] > [19] > [10] > [12] > [13] > [4] > [5] > [6] > [3] > [7] > [8] > [1] > [10]
+cleaned response: [8, 10, 1, 14, 13, 15, 16, 17, 18, 9, 11, 12, 3, 4, 5, 2, 6, 7, 0, 9]
+====================================================================================================
+query: difference between a mcdouble and a double cheeseburger
+rank_start: 30, rank_end: 50
+model response: [10] > [6] > [15] > [12] > [9] > [14] > [16] > [19] > [2] > [17] > [13] > [11] > [18] > [3] > [5] > [7] > [8] > [4] > [1]
+cleaned response: [9, 5, 14, 11, 8, 13, 15, 18, 1, 16, 12, 10, 17, 2, 4, 6, 7, 3, 0]
+====================================================================================================
+query: difference between rn and bsn
+rank_start: 30, rank_end: 50
+model response: [5] > [11] > [8] > [12] > [6] > [1] > [10] > [3] > [15] > [16] > [17] > [18] > [9] > [4] > [19] > [14] > [7] > [2] > [13] > [1]
+cleaned response: [4, 10, 7, 11, 5, 0, 9, 2, 14, 15, 16, 17, 8, 3, 18, 13, 6, 1, 12, 0]
+====================================================================================================
+query: types of dysarthria from cerebral palsy
+rank_start: 30, rank_end: 50
+model response: [19] > [12] > [1] > [20] > [11] > [4] > [14] > [3] > [7] > [8] > [16] > [13] > [6] > [10] > [15] > [5] > [17] > [18] > [9] > [12]
+cleaned response: [18, 11, 0, 19, 10, 3, 13, 2, 6, 7, 15, 12, 5, 9, 14, 4, 16, 17, 8, 11]
+====================================================================================================
+query: who is robert gray
+rank_start: 30, rank_end: 50
+model response: [11] > [12] > [13] > [14] > [15] > [16] > [17] > [8] > [10] > [20] > [5] > [7] > [9] > [6] > [3] > [4] > [19] > [2] > [1] > [18]
+cleaned response: [10, 11, 12, 13, 14, 15, 16, 7, 9, 19, 4, 6, 8, 5, 2, 3, 18, 1, 0, 17]
+====================================================================================================
+query: rsa definition key
+rank_start: 30, rank_end: 50
+model response: [1] > [3] > [9] > [14] > [15] > [16] > [11] > [12] > [7] > [2] > [10] > [17] > [4] > [6] > [13] > [5] > [18] > [19] > [8] > [20]
+cleaned response: [0, 2, 8, 13, 14, 15, 10, 11, 6, 1, 9, 16, 3, 5, 12, 4, 17, 18, 7, 19]
+====================================================================================================
+query: medicare's definition of mechanical ventilation
+rank_start: 30, rank_end: 50
+model response: [9] > [13] > [14] > [12] > [15] > [10] > [16] > [8] > [11] > [17] > [19] > [20] > [18] > [6] > [7] > [5] > [3] > [2] > [4]
+cleaned response: [8, 12, 13, 11, 14, 9, 15, 7, 10, 16, 18, 19, 17, 5, 6, 4, 2, 1, 3]
+====================================================================================================
+query: example of monotonic function
+rank_start: 30, rank_end: 50
+model response: [1] > [4] > [11] > [12] > [13] > [14] > [15] > [2] > [8] > [9] > [16] > [18] > [19] > [3] > [5] > [6] > [7] > [10] > [17]
+cleaned response: [0, 3, 10, 11, 12, 13, 14, 1, 7, 8, 15, 17, 18, 2, 4, 5, 6, 9, 16]
+====================================================================================================
+query: causes of military suicide
+rank_start: 30, rank_end: 50
+model response: [1] > [4] > [11] > [5] > [10] > [7] > [12] > [13] > [1] > [6] > [9] > [3] > [8] > [14] > [15] > [17] > [2] > [16] > [18] > [19]
+cleaned response: [0, 3, 10, 4, 9, 6, 11, 12, 0, 5, 8, 2, 7, 13, 14, 16, 1, 15, 17, 18]
+====================================================================================================
+query: do goldfish grow
+rank_start: 30, rank_end: 50
+model response: [10] > [1] > [16] > [17] > [11] > [4] > [14] > [15] > [3] > [13] > [2] > [18] > [6] > [12] > [19] > [5] > [7] > [8] > [1]
+cleaned response: [9, 0, 15, 16, 10, 3, 13, 14, 2, 12, 1, 17, 5, 11, 18, 4, 6, 7, 0]
+====================================================================================================
+query: what types of food can you cook sous vide
+rank_start: 30, rank_end: 50
+model response: [8] > [12] > [7] > [3] > [16] > [17] > [18] > [19] > [1] > [2] > [10] > [15] > [5] > [6] > [11] > [4] > [9] > [14] > [13]
+cleaned response: [7, 11, 6, 2, 15, 16, 17, 18, 0, 1, 9, 14, 4, 5, 10, 3, 8, 13, 12]
+====================================================================================================
+query: anthropological definition of environment
+rank_start: 30, rank_end: 50
+model response: [2] > [15] > [12] > [11] > [5] > [7] > [14] > [19] > [16] > [13] > [10] > [9] > [8] > [6] > [3] > [20] > [17] > [4] > [18]
+cleaned response: [1, 14, 11, 10, 4, 6, 13, 18, 15, 12, 9, 8, 7, 5, 2, 19, 16, 3, 17]
+====================================================================================================
+query: axon terminals or synaptic knob definition
+rank_start: 30, rank_end: 50
+model response: [1] > [6] > [7] > [11] > [12] > [14] > [15] > [17] > [5] > [18] > [19] > [4] > [8] > [10] > [3] > [2] > [9] > [13] > [16] > [20]
+cleaned response: [0, 5, 6, 10, 11, 13, 14, 16, 4, 17, 18, 3, 7, 9, 2, 1, 8, 12, 15, 19]
+====================================================================================================
+query: exons definition biology
+rank_start: 30, rank_end: 50
+model response: [11] > [12] > [13] > [9] > [14] > [15] > [16] > [3] > [4] > [10] > [17] > [1] > [8] > [19] > [20] > [18] > [5] > [6] > [7]
+cleaned response: [10, 11, 12, 8, 13, 14, 15, 2, 3, 9, 16, 0, 7, 18, 19, 17, 4, 5, 6]
+====================================================================================================
+query: causes of left ventricular hypertrophy
+rank_start: 30, rank_end: 50
+model response: [12] > [1] > [13] > [11] > [5] > [14] > [16] > [18] > [20] > [4] > [15] > [7] > [10] > [17] > [3] > [8] > [9] > [6] > [19]
+cleaned response: [11, 0, 12, 10, 4, 13, 15, 17, 19, 3, 14, 6, 9, 16, 2, 7, 8, 5, 18]
+====================================================================================================
+query: how is the weather in jamaica
+rank_start: 30, rank_end: 50
+model response: [1] > [5] > [2] > [7] > [4] > [11] > [14] > [15] > [16] > [17] > [18] > [19] > [10] > [3] > [6] > [12] > [13] > [8] > [9]
+cleaned response: [0, 4, 1, 6, 3, 10, 13, 14, 15, 16, 17, 18, 9, 2, 5, 11, 12, 7, 8]
+====================================================================================================
+query: what is theraderm used for
+rank_start: 30, rank_end: 50
+model response: [19] > [4] > [5]
+cleaned response: [18, 3, 4]
+====================================================================================================
+query: what is an aml surveillance analyst
+rank_start: 30, rank_end: 50
+model response: [10] > [11] > [8] > [14] > [16] > [15] > [13] > [17] > [19] > [2] > [7] > [18] > [6] > [5] > [4] > [3] > [12] > [1] > [9] > [15]
+cleaned response: [9, 10, 7, 13, 15, 14, 12, 16, 18, 1, 6, 17, 5, 4, 3, 2, 11, 0, 8, 14]
+====================================================================================================
+query: tracheids are part of _____.
+rank_start: 30, rank_end: 50
+model response: [1] > [10] > [11] > [4] > [5] > [6] > [7] > [8] > [12] > [14] > [15] > [16] > [17] > [18] > [19] > [20] > [3] > [2] > [9]
+cleaned response: [0, 9, 10, 3, 4, 5, 6, 7, 11, 13, 14, 15, 16, 17, 18, 19, 2, 1, 8]
+====================================================================================================
+query: when was the salvation army founded
+rank_start: 30, rank_end: 50
+model response: [4] > [12] > [13] > [11] > [2] > [10] > [5] > [1] > [16] > [17] > [19] > [15] > [14] > [6] > [7] > [8] > [18] > [3] > [9] > [1]
+cleaned response: [3, 11, 12, 10, 1, 9, 4, 0, 15, 16, 18, 14, 13, 5, 6, 7, 17, 2, 8, 0]
+====================================================================================================
+query: what is the most popular food in switzerland
+rank_start: 30, rank_end: 50
+model response: [4] > [11] > [12] > [10] > [5] > [15] > [3] > [16] > [9] > [19] > [20] > [7] > [8] > [14] > [13] > [6] > [17] > [18] > [1] > [12]
+cleaned response: [3, 10, 11, 9, 4, 14, 2, 15, 8, 18, 19, 6, 7, 13, 12, 5, 16, 17, 0, 11]
+====================================================================================================
+query: what is famvir prescribed for
+rank_start: 30, rank_end: 50
+model response: [1] > [8] > [9] > [10] > [11] > [16] > [14] > [5] > [3] > [2] > [13] > [17] > [18] > [19] > [6] > [7] > [12] > [15] > [20]
+cleaned response: [0, 7, 8, 9, 10, 15, 13, 4, 2, 1, 12, 16, 17, 18, 5, 6, 11, 14, 19]
+====================================================================================================
+query: what is physical description of spruce
+rank_start: 30, rank_end: 50
+model response: [11] > [4] > [6] > [14] > [15] > [7] > [13] > [16] > [17] > [18] > [19] > [5] > [2] > [8] > [9] > [10] > [12] > [1] > [3] > [15]
+cleaned response: [10, 3, 5, 13, 14, 6, 12, 15, 16, 17, 18, 4, 1, 7, 8, 9, 11, 0, 2, 14]
+====================================================================================================
+query: what is a active margin
+rank_start: 30, rank_end: 50
+model response: [11] > [12] > [6] > [14] > [15] > [16] > [13] > [3] > [2] > [9] > [7] > [17] > [10] > [5] > [4] > [19] > [20]
+cleaned response: [10, 11, 5, 13, 14, 15, 12, 2, 1, 8, 6, 16, 9, 4, 3, 18, 19]
+====================================================================================================
+query: what can contour plowing reduce
+rank_start: 30, rank_end: 50
+model response: [11] > [8] > [12] > [5] > [1] > [19] > [7] > [10] > [2] > [3] > [4] > [6] > [17] > [16] > [15] > [14] > [9] > [13] > [18]
+cleaned response: [10, 7, 11, 4, 0, 18, 6, 9, 1, 2, 3, 5, 16, 15, 14, 13, 8, 12, 17]
+====================================================================================================
+query: does legionella pneumophila cause pneumonia
+rank_start: 30, rank_end: 50
+model response: [1] > [2] > [4] > [5] > [6] > [7] > [8] > [9] > [10] > [11] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: what is the daily life of thai people
+rank_start: 30, rank_end: 50
+model response: [11] > [9] > [12] > [13] > [16] > [6] > [20] > [14] > [15] > [17] > [18] > [5] > [7] > [10] > [2] > [3] > [19] > [4] > [8]
+cleaned response: [10, 8, 11, 12, 15, 5, 19, 13, 14, 16, 17, 4, 6, 9, 1, 2, 18, 3, 7]
+====================================================================================================
+query: why did the us volunterilay enter ww1
+rank_start: 30, rank_end: 50
+model response: [11] > [12] > [6] > [2] > [16] > [17] > [5] > [14] > [15] > [18] > [3] > [19] > [10] > [8] > [7] > [9] > [13] > [1] > [12] > [20]
+cleaned response: [10, 11, 5, 1, 15, 16, 4, 13, 14, 17, 2, 18, 9, 7, 6, 8, 12, 0, 11, 19]
+====================================================================================================
+query: is cdg airport in main paris
+rank_start: 30, rank_end: 50
+model response: [11] > [1] > [3] > [4] > [6] > [7] > [15] > [8] > [9] > [10] > [16] > [17] > [14] > [5] > [19] > [20] > [12] > [13] > [18]
+cleaned response: [10, 0, 2, 3, 5, 6, 14, 7, 8, 9, 15, 16, 13, 4, 18, 19, 11, 12, 17]
+====================================================================================================
+query: who formed the commonwealth of independent states
+rank_start: 30, rank_end: 50
+model response: [6] > [9] > [11] > [3] > [13] > [2] > [15] > [16] > [17] > [19] > [1] > [7] > [8] > [10] > [14] > [18] > [5] > [12] > [4]
+cleaned response: [5, 8, 10, 2, 12, 1, 14, 15, 16, 18, 0, 6, 7, 9, 13, 17, 4, 11, 3]
+====================================================================================================
+query: define visceral?
+rank_start: 30, rank_end: 50
+model response: [1] > [11] > [12] > [13] > [3] > [15] > [16] > [9] > [10] > [14] > [17] > [5] > [6] > [19] > [20] > [18] > [4] > [7] > [2]
+cleaned response: [0, 10, 11, 12, 2, 14, 15, 8, 9, 13, 16, 4, 5, 18, 19, 17, 3, 6, 1]
+====================================================================================================
+query: how long is life cycle of flea
+rank_start: 20, rank_end: 40
+model response: [5] > [1] > [9] > [11] > [12] > [13] > [2] > [14] > [19] > [20] > [15] > [16] > [17] > [4] > [8] > [10] > [6] > [3] > [7]
+cleaned response: [4, 0, 8, 10, 11, 12, 1, 13, 18, 19, 14, 15, 16, 3, 7, 9, 5, 2, 6]
+====================================================================================================
+query: cost of interior concrete flooring
+rank_start: 20, rank_end: 40
+model response: [5] > [6] > [9] > [10] > [13] > [15] > [16] > [20] > [4] > [8] > [11] > [12] > [14] > [17] > [18] > [7] > [3] > [1] > [2]
+cleaned response: [4, 5, 8, 9, 12, 14, 15, 19, 3, 7, 10, 11, 13, 16, 17, 6, 2, 0, 1]
+====================================================================================================
+query: definition declaratory judgment
+rank_start: 20, rank_end: 40
+model response: [4] > [12] > [2] > [11] > [1] > [8] > [16] > [15] > [17] > [18] > [19] > [13] > [10] > [5] > [7] > [14] > [10] > [15] > [16]
+cleaned response: [3, 11, 1, 10, 0, 7, 15, 14, 16, 17, 18, 12, 9, 4, 6, 13, 9, 14, 15]
+====================================================================================================
+query: what is durable medical equipment consist of
+rank_start: 20, rank_end: 40
+model response: [11] > [13] > [12] > [7] > [4] > [5] > [6] > [19] > [14] > [17] > [16] > [10] > [20] > [8] > [9] > [15] > [18] > [2] > [3]
+cleaned response: [10, 12, 11, 6, 3, 4, 5, 18, 13, 16, 15, 9, 19, 7, 8, 14, 17, 1, 2]
+====================================================================================================
+query: what is wifi vs bluetooth
+rank_start: 20, rank_end: 40
+model response: [8] > [11] > [17] > [18] > [3] > [4] > [6] > [14] > [15] > [2] > [9] > [10] > [13] > [19] > [16] > [5] > [7] > [12] > [20]
+cleaned response: [7, 10, 16, 17, 2, 3, 5, 13, 14, 1, 8, 9, 12, 18, 15, 4, 6, 11, 19]
+====================================================================================================
+query: hydrogen is a liquid below what temperature
+rank_start: 20, rank_end: 40
+model response: [11] > [7] > [12] > [14] > [15] > [6] > [13] > [4] > [9] > [2] > [3] > [17] > [18] > [19] > [20] > [5] > [10] > [16] > [8]
+cleaned response: [10, 6, 11, 13, 14, 5, 12, 3, 8, 1, 2, 16, 17, 18, 19, 4, 9, 15, 7]
+====================================================================================================
+query: what are the social determinants of health
+rank_start: 20, rank_end: 40
+model response: [2] > [3] > [5] > [11] > [12] > [14] > [15] > [16] > [7] > [13] > [17] > [19] > [20] > [10] > [4] > [6] > [9] > [8] > [1]
+cleaned response: [1, 2, 4, 10, 11, 13, 14, 15, 6, 12, 16, 18, 19, 9, 3, 5, 8, 7, 0]
+====================================================================================================
+query: what are the three percenters?
+rank_start: 20, rank_end: 40
+model response: [9] > [11] > [5] > [20] > [2] > [15] > [16] > [12] > [1] > [10] > [14] > [3] > [17] > [6] > [13] > [7] > [8] > [4] > [19]
+cleaned response: [8, 10, 4, 19, 1, 14, 15, 11, 0, 9, 13, 2, 16, 5, 12, 6, 7, 3, 18]
+====================================================================================================
+query: right pelvic pain causes
+rank_start: 20, rank_end: 40
+model response: [2] > [5] > [10] > [11] > [14] > [19] > [13] > [6] > [17] > [15] > [16] > [3] > [4] > [18] > [7] > [12] > [9] > [8] > [1] > [1]
+cleaned response: [1, 4, 9, 10, 13, 18, 12, 5, 16, 14, 15, 2, 3, 17, 6, 11, 8, 7, 0, 0]
+====================================================================================================
+query: definition of a sigmet
+rank_start: 20, rank_end: 40
+model response: [2] > [1] > [3] > [15] > [16] > [14] > [17] > [18] > [19] > [20]
+cleaned response: [1, 0, 2, 14, 15, 13, 16, 17, 18, 19]
+====================================================================================================
+query: how are some sharks warm blooded
+rank_start: 20, rank_end: 40
+model response: [11] > [12] > [13] > [2] > [14] > [15] > [4] > [16] > [1] > [17] > [18] > [5] > [6] > [7] > [9] > [10] > [19] > [20] > [3] > [8]
+cleaned response: [10, 11, 12, 1, 13, 14, 3, 15, 0, 16, 17, 4, 5, 6, 8, 9, 18, 19, 2, 7]
+====================================================================================================
+query: how to find the midsegment of a trapezoid
+rank_start: 20, rank_end: 40
+model response: [2] > [17] > [18] > [19] > [14] > [5] > [6] > [11] > [12] > [13] > [3] > [9] > [15] > [16] > [1] > [10] > [7] > [8] > [4] > [10]
+cleaned response: [1, 16, 17, 18, 13, 4, 5, 10, 11, 12, 2, 8, 14, 15, 0, 9, 6, 7, 3, 9]
+====================================================================================================
+query: lps laws definition
+rank_start: 20, rank_end: 40
+model response: [15] > [11] > [12] > [4] > [18] > [19] > [3] > [7] > [16] > [17] > [6] > [5] > [13] > [10] > [2] > [14] > [9] > [1] > [12] > [19]
+cleaned response: [14, 10, 11, 3, 17, 18, 2, 6, 15, 16, 5, 4, 12, 9, 1, 13, 8, 0, 11, 18]
+====================================================================================================
+query: difference between a mcdouble and a double cheeseburger
+rank_start: 20, rank_end: 40
+model response: [4] > [14] > [15] > [7] > [13] > [20] > [6] > [9] > [12] > [3] > [10] > [11] > [5] > [8] > [17] > [18] > [2] > [16] > [19] > [1]
+cleaned response: [3, 13, 14, 6, 12, 19, 5, 8, 11, 2, 9, 10, 4, 7, 16, 17, 1, 15, 18, 0]
+====================================================================================================
+query: difference between rn and bsn
+rank_start: 20, rank_end: 40
+model response: [4] > [1] > [5] > [3] > [9] > [14] > [12] > [13] > [19] > [20] > [6] > [7] > [8] > [11] > [10] > [15] > [16] > [17] > [18]
+cleaned response: [3, 0, 4, 2, 8, 13, 11, 12, 18, 19, 5, 6, 7, 10, 9, 14, 15, 16, 17]
+====================================================================================================
+query: types of dysarthria from cerebral palsy
+rank_start: 20, rank_end: 40
+model response: [13] > [4] > [5] > [9] > [11] > [12] > [15] > [16] > [14] > [10] > [17] > [3] > [2] > [19] > [18] > [6] > [7] > [8] > [1]
+cleaned response: [12, 3, 4, 8, 10, 11, 14, 15, 13, 9, 16, 2, 1, 18, 17, 5, 6, 7, 0]
+====================================================================================================
+query: who is robert gray
+rank_start: 20, rank_end: 40
+model response: [12] > [11] > [13] > [14] > [17] > [8] > [5] > [10] > [15] > [16] > [3] > [20] > [2] > [9] > [6] > [7] > [4] > [19] > [18]
+cleaned response: [11, 10, 12, 13, 16, 7, 4, 9, 14, 15, 2, 19, 1, 8, 5, 6, 3, 18, 17]
+====================================================================================================
+query: rsa definition key
+rank_start: 20, rank_end: 40
+model response: [6] > [8] > [12] > [14] > [15] > [5] > [10] > [3] > [2] > [7] > [13] > [16] > [17] > [18] > [1] > [9] > [4] > [11] > [20]
+cleaned response: [5, 7, 11, 13, 14, 4, 9, 2, 1, 6, 12, 15, 16, 17, 0, 8, 3, 10, 19]
+====================================================================================================
+query: medicare's definition of mechanical ventilation
+rank_start: 20, rank_end: 40
+model response: [2] > [3] > [5] > [11] > [14] > [15] > [10] > [12] > [13] > [16] > [17] > [19] > [6] > [7] > [8] > [9] > [18] > [20] > [4]
+cleaned response: [1, 2, 4, 10, 13, 14, 9, 11, 12, 15, 16, 18, 5, 6, 7, 8, 17, 19, 3]
+====================================================================================================
+query: example of monotonic function
+rank_start: 20, rank_end: 40
+model response: [1] > [4] > [8] > [5] > [14] > [3] > [11] > [12] > [13] > [16] > [17] > [2] > [9] > [10] > [15] > [19] > [6] > [7] > [18]
+cleaned response: [0, 3, 7, 4, 13, 2, 10, 11, 12, 15, 16, 1, 8, 9, 14, 18, 5, 6, 17]
+====================================================================================================
+query: causes of military suicide
+rank_start: 20, rank_end: 40
+model response: [8] > [1] > [5] > [10] > [11] > [6] > [16] > [18] > [20] > [3] > [7] > [13] > [19] > [4] > [9] > [17] > [15] > [2] > [12] > [14]
+cleaned response: [7, 0, 4, 9, 10, 5, 15, 17, 19, 2, 6, 12, 18, 3, 8, 16, 14, 1, 11, 13]
+====================================================================================================
+query: do goldfish grow
+rank_start: 20, rank_end: 40
+model response: [3] > [1] > [10] > [4] > [5] > [20] > [11] > [7] > [17] > [6] > [14] > [13] > [18] > [2] > [9] > [16] > [15] > [8] > [12]
+cleaned response: [2, 0, 9, 3, 4, 19, 10, 6, 16, 5, 13, 12, 17, 1, 8, 15, 14, 7, 11]
+====================================================================================================
+query: what types of food can you cook sous vide
+rank_start: 20, rank_end: 40
+model response: [5] > [8] > [10] > [11] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [1] > [3] > [4] > [6] > [7] > [9] > [19] > [20]
+cleaned response: [4, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 0, 2, 3, 5, 6, 8, 18, 19]
+====================================================================================================
+query: anthropological definition of environment
+rank_start: 20, rank_end: 40
+model response: [10] > [4] > [11] > [13] > [14] > [12] > [16] > [5] > [3] > [19] > [18] > [17] > [2] > [6] > [15] > [8] > [7] > [1] > [9]
+cleaned response: [9, 3, 10, 12, 13, 11, 15, 4, 2, 18, 17, 16, 1, 5, 14, 7, 6, 0, 8]
+====================================================================================================
+query: axon terminals or synaptic knob definition
+rank_start: 20, rank_end: 40
+model response: [6] > [5] > [14] > [15] > [3] > [4] > [12] > [13] > [7] > [17] > [18] > [2] > [9] > [10] > [11] > [16] > [19] > [20] > [8]
+cleaned response: [5, 4, 13, 14, 2, 3, 11, 12, 6, 16, 17, 1, 8, 9, 10, 15, 18, 19, 7]
+====================================================================================================
+query: exons definition biology
+rank_start: 20, rank_end: 40
+model response: [7] > [10] > [11] > [12] > [13] > [3] > [4] > [5] > [17] > [1] > [9] > [14] > [15] > [16] > [2] > [8] > [6] > [18] > [19] > [20]
+cleaned response: [6, 9, 10, 11, 12, 2, 3, 4, 16, 0, 8, 13, 14, 15, 1, 7, 5, 17, 18, 19]
+====================================================================================================
+query: causes of left ventricular hypertrophy
+rank_start: 20, rank_end: 40
+model response: [2] > [1] > [6] > [11] > [13] > [14] > [16] > [17] > [18] > [5] > [3] > [8] > [10] > [9] > [19] > [7] > [12] > [15] > [20]
+cleaned response: [1, 0, 5, 10, 12, 13, 15, 16, 17, 4, 2, 7, 9, 8, 18, 6, 11, 14, 19]
+====================================================================================================
+query: how is the weather in jamaica
+rank_start: 20, rank_end: 40
+model response: [1] > [2] > [3] > [9] > [10] > [14] > [15] > [6] > [7] > [13] > [17] > [18] > [5] > [11] > [12] > [16] > [8] > [4] > [19] > [20]
+cleaned response: [0, 1, 2, 8, 9, 13, 14, 5, 6, 12, 16, 17, 4, 10, 11, 15, 7, 3, 18, 19]
+====================================================================================================
+query: what is theraderm used for
+rank_start: 20, rank_end: 40
+model response: [19] > [3] > [7] > [13] > [1] > [2] > [4] > [5] > [6] > [8] > [9] > [10] > [11] > [12] > [14] > [15] > [16] > [17] > [18] > [19]
+cleaned response: [18, 2, 6, 12, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18]
+====================================================================================================
+query: what is an aml surveillance analyst
+rank_start: 20, rank_end: 40
+model response: [9] > [1] > [4] > [12] > [14] > [3] > [6] > [19] > [11] > [7] > [5] > [10] > [16] > [17] > [18] > [2] > [15] > [13] > [12] > [16]
+cleaned response: [8, 0, 3, 11, 13, 2, 5, 18, 10, 6, 4, 9, 15, 16, 17, 1, 14, 12, 11, 15]
+====================================================================================================
+query: tracheids are part of _____.
+rank_start: 20, rank_end: 40
+model response: [1] > [6] > [11] > [14] > [15] > [16] > [17] > [18] > [19] > [5] > [2] > [3] > [7] > [8] > [9] > [10] > [12] > [13] > [1]
+cleaned response: [0, 5, 10, 13, 14, 15, 16, 17, 18, 4, 1, 2, 6, 7, 8, 9, 11, 12, 0]
+====================================================================================================
+query: when was the salvation army founded
+rank_start: 20, rank_end: 40
+model response: [11] > [12] > [13] > [7] > [4] > [19] > [5] > [6] > [14] > [2] > [3] > [8] > [10] > [17] > [16] > [15] > [18] > [1] > [9] > [1]
+cleaned response: [10, 11, 12, 6, 3, 18, 4, 5, 13, 1, 2, 7, 9, 16, 15, 14, 17, 0, 8, 0]
+====================================================================================================
+query: what is the most popular food in switzerland
+rank_start: 20, rank_end: 40
+model response: [11] > [9] > [15] > [16] > [5] > [7] > [12] > [13] > [10] > [18] > [17] > [19] > [14] > [6] > [20] > [3] > [8] > [4] > [1]
+cleaned response: [10, 8, 14, 15, 4, 6, 11, 12, 9, 17, 16, 18, 13, 5, 19, 2, 7, 3, 0]
+====================================================================================================
+query: what is famvir prescribed for
+rank_start: 20, rank_end: 40
+model response: [1] > [2] > [3] > [5] > [6] > [11] > [12] > [13] > [14] > [15] > [4] > [7] > [8] > [9] > [10] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [0, 1, 2, 4, 5, 10, 11, 12, 13, 14, 3, 6, 7, 8, 9, 15, 16, 17, 18, 19]
+====================================================================================================
+query: what is physical description of spruce
+rank_start: 20, rank_end: 40
+model response: [11] > [16] > [17] > [9] > [10] > [14] > [13] > [5] > [19] > [8] > [18] > [2] > [3] > [6] > [7] > [15] > [12] > [1] > [4] > [10]
+cleaned response: [10, 15, 16, 8, 9, 13, 12, 4, 18, 7, 17, 1, 2, 5, 6, 14, 11, 0, 3, 9]
+====================================================================================================
+query: what is a active margin
+rank_start: 20, rank_end: 40
+model response: [6] > [1] > [16] > [14] > [15] > [12] > [11] > [17] > [3] > [7] > [13] > [20] > [9] > [10] > [5] > [8] > [18] > [19] > [4]
+cleaned response: [5, 0, 15, 13, 14, 11, 10, 16, 2, 6, 12, 19, 8, 9, 4, 7, 17, 18, 3]
+====================================================================================================
+query: what can contour plowing reduce
+rank_start: 20, rank_end: 40
+model response: [12] > [4] > [1] > [2] > [15] > [11] > [7] > [6] > [17] > [3] > [9] > [14] > [13] > [10] > [16] > [5] > [8] > [19] > [20]
+cleaned response: [11, 3, 0, 1, 14, 10, 6, 5, 16, 2, 8, 13, 12, 9, 15, 4, 7, 18, 19]
+====================================================================================================
+query: does legionella pneumophila cause pneumonia
+rank_start: 20, rank_end: 40
+model response: [1] > [10] > [6] > [20] > [3] > [7] > [11] > [14] > [5] > [8] > [9] > [12] > [15] > [17] > [4] > [16] > [13] > [18] > [19]
+cleaned response: [0, 9, 5, 19, 2, 6, 10, 13, 4, 7, 8, 11, 14, 16, 3, 15, 12, 17, 18]
+====================================================================================================
+query: what is the daily life of thai people
+rank_start: 20, rank_end: 40
+model response: [11] > [2] > [14] > [19] > [18] > [5] > [7] > [17] > [16] > [15] > [6] > [13] > [3] > [4] > [12] > [10] > [9] > [1] > [15]
+cleaned response: [10, 1, 13, 18, 17, 4, 6, 16, 15, 14, 5, 12, 2, 3, 11, 9, 8, 0, 14]
+====================================================================================================
+query: why did the us volunterilay enter ww1
+rank_start: 20, rank_end: 40
+model response: [7] > [11] > [12] > [8] > [3] > [15] > [19] > [20] > [5] > [6] > [16] > [4] > [17] > [18] > [2] > [14] > [13] > [10] > [9] > [1]
+cleaned response: [6, 10, 11, 7, 2, 14, 18, 19, 4, 5, 15, 3, 16, 17, 1, 13, 12, 9, 8, 0]
+====================================================================================================
+query: is cdg airport in main paris
+rank_start: 20, rank_end: 40
+model response: [5] > [11] > [14] > [15] > [2] > [3] > [10] > [13] > [16] > [17] > [19] > [6] > [8] > [9] > [4] > [7] > [12] > [18] > [20]
+cleaned response: [4, 10, 13, 14, 1, 2, 9, 12, 15, 16, 18, 5, 7, 8, 3, 6, 11, 17, 19]
+====================================================================================================
+query: who formed the commonwealth of independent states
+rank_start: 20, rank_end: 40
+model response: [7] > [11] > [6] > [13] > [12] > [15] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > [] > []
+cleaned response: [6, 10, 5, 12, 11, 14]
+====================================================================================================
+query: define visceral?
+rank_start: 20, rank_end: 40
+model response: [2] > [12] > [10] > [15] > [16] > [17] > [1] > [3] > [4] > [6] > [9] > [13] > [14] > [18] > [5] > [7] > [8] > [11] > [19]
+cleaned response: [1, 11, 9, 14, 15, 16, 0, 2, 3, 5, 8, 12, 13, 17, 4, 6, 7, 10, 18]
+====================================================================================================
+query: how long is life cycle of flea
+rank_start: 10, rank_end: 30
+model response: [8] > [11] > [14] > [13] > [15] > [16] > [2] > [10] > [3] > [9] > [12] > [17] > [18] > [5] > [6] > [19] > [7] > [4] > [20]
+cleaned response: [7, 10, 13, 12, 14, 15, 1, 9, 2, 8, 11, 16, 17, 4, 5, 18, 6, 3, 19]
+====================================================================================================
+query: cost of interior concrete flooring
+rank_start: 10, rank_end: 30
+model response: [1] > [2] > [4] > [6] > [10] > [12] > [14] > [16] > [18] > [3] > [5] > [7] > [8] > [9] > [11] > [13] > [15] > [17] > [19] > [20]
+cleaned response: [0, 1, 3, 5, 9, 11, 13, 15, 17, 2, 4, 6, 7, 8, 10, 12, 14, 16, 18, 19]
+====================================================================================================
+query: definition declaratory judgment
+rank_start: 10, rank_end: 30
+model response: [2] > [9] > [12] > [11] > [6] > [14] > [3] > [5] > [10] > [7] > [8] > [16] > [13] > [15] > [19] > [17] > [18] > [1] > [4]
+cleaned response: [1, 8, 11, 10, 5, 13, 2, 4, 9, 6, 7, 15, 12, 14, 18, 16, 17, 0, 3]
+====================================================================================================
+query: what is durable medical equipment consist of
+rank_start: 10, rank_end: 30
+model response: [1] > [4] > [6] > [11] > [12] > [20] > [8] > [16] > [17] > [18] > [7] > [19] > [3] > [5] > [10] > [15] > [13] > [14] > [9]
+cleaned response: [0, 3, 5, 10, 11, 19, 7, 15, 16, 17, 6, 18, 2, 4, 9, 14, 12, 13, 8]
+====================================================================================================
+query: what is wifi vs bluetooth
+rank_start: 10, rank_end: 30
+model response: [11] > [4] > [14] > [12] > [9] > [17] > [18] > [19] > [7] > [10] > [13] > [16] > [2] > [5] > [6] > [3] > [15] > [1] > [8] > [20]
+cleaned response: [10, 3, 13, 11, 8, 16, 17, 18, 6, 9, 12, 15, 1, 4, 5, 2, 14, 0, 7, 19]
+====================================================================================================
+query: hydrogen is a liquid below what temperature
+rank_start: 10, rank_end: 30
+model response: [6] > [11] > [13] > [10] > [3] > [9] > [7] > [12] > [14] > [5] > [2] > [15] > [17] > [19] > [16] > [8] > [18] > [4] > [1] > [10]
+cleaned response: [5, 10, 12, 9, 2, 8, 6, 11, 13, 4, 1, 14, 16, 18, 15, 7, 17, 3, 0, 9]
+====================================================================================================
+query: what are the social determinants of health
+rank_start: 10, rank_end: 30
+model response: [2] > [4] > [10] > [14] > [16] > [19] > [20] > [5] > [8] > [15] > [17] > [13] > [11] > [7] > [12] > [18] > [3] > [6] > [9]
+cleaned response: [1, 3, 9, 13, 15, 18, 19, 4, 7, 14, 16, 12, 10, 6, 11, 17, 2, 5, 8]
+====================================================================================================
+query: what are the three percenters?
+rank_start: 10, rank_end: 30
+model response: [11] > [12] > [18] > [6] > [2] > [16] > [17] > [5] > [4] > [3] > [15] > [14] > [13] > [19] > [7] > [10] > [9] > [8] > [1] > [20]
+cleaned response: [10, 11, 17, 5, 1, 15, 16, 4, 3, 2, 14, 13, 12, 18, 6, 9, 8, 7, 0, 19]
+====================================================================================================
+query: right pelvic pain causes
+rank_start: 10, rank_end: 30
+model response: [2] > [4] > [5] > [8] > [14] > [16] > [17] > [1] > [3] > [9] > [11] > [12] > [13] > [15] > [19] > [6] > [10] > [18] > [7]
+cleaned response: [1, 3, 4, 7, 13, 15, 16, 0, 2, 8, 10, 11, 12, 14, 18, 5, 9, 17, 6]
+====================================================================================================
+query: definition of a sigmet
+rank_start: 10, rank_end: 30
+model response: [9] > [1] > [11] > [2] > [8] > [4] > [5] > [3] > [10] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [8, 0, 10, 1, 7, 3, 4, 2, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: how are some sharks warm blooded
+rank_start: 10, rank_end: 30
+model response: [11] > [2] > [12] > [13] > [15] > [18] > [6] > [9] > [16] > [7] > [10] > [17] > [19] > [3] > [4] > [5] > [8] > [14] > [1] > [19]
+cleaned response: [10, 1, 11, 12, 14, 17, 5, 8, 15, 6, 9, 16, 18, 2, 3, 4, 7, 13, 0, 18]
+====================================================================================================
+query: how to find the midsegment of a trapezoid
+rank_start: 10, rank_end: 30
+model response: [1] > [2] > [3] > [4] > [8] > [10] > [5] > [7] > [11] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [6] > [9]
+cleaned response: [0, 1, 2, 3, 7, 9, 4, 6, 10, 11, 12, 13, 14, 15, 16, 17, 18, 5, 8]
+====================================================================================================
+query: lps laws definition
+rank_start: 10, rank_end: 30
+model response: [5] > [2] > [12] > [15] > [8] > [13] > [10] > [11] > [16] > [9] > [14] > [18] > [19] > [7] > [6] > [4] > [3] > [17] > [1]
+cleaned response: [4, 1, 11, 14, 7, 12, 9, 10, 15, 8, 13, 17, 18, 6, 5, 3, 2, 16, 0]
+====================================================================================================
+query: difference between a mcdouble and a double cheeseburger
+rank_start: 10, rank_end: 30
+model response: [1] > [3] > [6] > [2] > [4] > [5] > [7] > [8] > [9] > [10] > [11] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [0, 2, 5, 1, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: difference between rn and bsn
+rank_start: 10, rank_end: 30
+model response: [3] > [1] > [4] > [5] > [7] > [13] > [14] > [16] > [17] > [18] > [19] > [20] > [2] > [8] > [9] > [10] > [11] > [12] > [6]
+cleaned response: [2, 0, 3, 4, 6, 12, 13, 15, 16, 17, 18, 19, 1, 7, 8, 9, 10, 11, 5]
+====================================================================================================
+query: types of dysarthria from cerebral palsy
+rank_start: 10, rank_end: 30
+model response: [9] > [5] > [6] > [11] > [1] > [3] > [4] > [10] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [2] > [7] > [8] > [10]
+cleaned response: [8, 4, 5, 10, 0, 2, 3, 9, 11, 12, 13, 14, 15, 16, 17, 18, 1, 6, 7, 9]
+====================================================================================================
+query: who is robert gray
+rank_start: 10, rank_end: 30
+model response: [11] > [12] > [13] > [14] > [16] > [19] > [20] > [2] > [3] > [4] > [5] > [6] > [7] > [8] > [9] > [10] > [15] > [17] > [18]
+cleaned response: [10, 11, 12, 13, 15, 18, 19, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 16, 17]
+====================================================================================================
+query: rsa definition key
+rank_start: 10, rank_end: 30
+model response: [8] > [12] > [13] > [14] > [15] > [2] > [4] > [1] > [7] > [10] > [6] > [17] > [18] > [19] > [3] > [5] > [9] > [11] > [16] > [1]
+cleaned response: [7, 11, 12, 13, 14, 1, 3, 0, 6, 9, 5, 16, 17, 18, 2, 4, 8, 10, 15, 0]
+====================================================================================================
+query: medicare's definition of mechanical ventilation
+rank_start: 10, rank_end: 30
+model response: [4] > [3] > [10] > [12] > [19] > [5] > [11] > [14] > [17] > [16] > [13] > [18] > [7] > [2] > [15] > [1] > [6] > [8] > [9]
+cleaned response: [3, 2, 9, 11, 18, 4, 10, 13, 16, 15, 12, 17, 6, 1, 14, 0, 5, 7, 8]
+====================================================================================================
+query: example of monotonic function
+rank_start: 10, rank_end: 30
+model response: [1] > [3] > [5] > [11] > [13] > [14] > [15] > [2] > [6] > [7] > [8] > [9] > [10] > [12] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [0, 2, 4, 10, 12, 13, 14, 1, 5, 6, 7, 8, 9, 11, 15, 16, 17, 18, 19]
+====================================================================================================
+query: causes of military suicide
+rank_start: 10, rank_end: 30
+model response: [11] > [7] > [6] > [2] > [10] > [4] > [8] > [14] > [15] > [5] > [1] > [3] > [17] > [18] > [9] > [16] > [12] > [13] > [19] > [20]
+cleaned response: [10, 6, 5, 1, 9, 3, 7, 13, 14, 4, 0, 2, 16, 17, 8, 15, 11, 12, 18, 19]
+====================================================================================================
+query: do goldfish grow
+rank_start: 10, rank_end: 30
+model response: [1] > [3] > [4] > [11] > [13] > [14] > [6] > [15] > [16] > [17] > [2] > [9] > [5] > [10] > [19] > [12] > [18] > [8] > [7] > [20]
+cleaned response: [0, 2, 3, 10, 12, 13, 5, 14, 15, 16, 1, 8, 4, 9, 18, 11, 17, 7, 6, 19]
+====================================================================================================
+query: what types of food can you cook sous vide
+rank_start: 10, rank_end: 30
+model response: [2] > [14] > [15] > [3] > [16] > [17] > [18] > [19] > [20] > [1] > [5] > [6] > [7] > [8] > [10] > [11] > [12] > [13] > [15]
+cleaned response: [1, 13, 14, 2, 15, 16, 17, 18, 19, 0, 4, 5, 6, 7, 9, 10, 11, 12, 14]
+====================================================================================================
+query: anthropological definition of environment
+rank_start: 10, rank_end: 30
+model response: [2] > [1] > [10] > [14] > [15] > [9] > [6] > [16] > [17] > [18] > [5] > [3] > [19] > [4] > [13] > [7] > [11] > [12] > [20]
+cleaned response: [1, 0, 9, 13, 14, 8, 5, 15, 16, 17, 4, 2, 18, 3, 12, 6, 10, 11, 19]
+====================================================================================================
+query: axon terminals or synaptic knob definition
+rank_start: 10, rank_end: 30
+model response: [2] > [1] > [3] > [5] > [7] > [8] > [10] > [11] > [12] > [13] > [14] > [16] > [17] > [18] > [6] > [9] > [20] > [4] > [15]
+cleaned response: [1, 0, 2, 4, 6, 7, 9, 10, 11, 12, 13, 15, 16, 17, 5, 8, 19, 3, 14]
+====================================================================================================
+query: exons definition biology
+rank_start: 10, rank_end: 30
+model response: [13] > [14] > [15] > [3] > [10] > [11] > [4] > [19] > [6] > [16] > [17] > [2] > [8] > [18] > [5] > [12] > [1] > [7] > [9] > [16]
+cleaned response: [12, 13, 14, 2, 9, 10, 3, 18, 5, 15, 16, 1, 7, 17, 4, 11, 0, 6, 8, 15]
+====================================================================================================
+query: causes of left ventricular hypertrophy
+rank_start: 10, rank_end: 30
+model response: [14] > [13] > [15] > [16] > [17] > [18] > [19] > [4] > [6] > [1] > [12] > [5] > [7] > [8] > [11] > [10] > [3] > [2] > [9] > [10]
+cleaned response: [13, 12, 14, 15, 16, 17, 18, 3, 5, 0, 11, 4, 6, 7, 10, 9, 2, 1, 8, 9]
+====================================================================================================
+query: how is the weather in jamaica
+rank_start: 10, rank_end: 30
+model response: [3] > [1] > [4] > [9] > [10] > [2] > [6] > [12] > [13] > [16] > [5] > [7] > [14] > [15] > [19] > [20] > [11] > [8] > [17] > [18]
+cleaned response: [2, 0, 3, 8, 9, 1, 5, 11, 12, 15, 4, 6, 13, 14, 18, 19, 10, 7, 16, 17]
+====================================================================================================
+query: what is theraderm used for
+rank_start: 10, rank_end: 30
+model response: [] > [17] > [14] > [7] > [3] > [19] > [16] > [18] > [15] > [11] > [10] > [9] > [12] > [5] > [13] > [2] > [6] > [1] > [8] > [10]
+cleaned response: [16, 13, 6, 2, 18, 15, 17, 14, 10, 9, 8, 11, 4, 12, 1, 5, 0, 7, 9]
+====================================================================================================
+query: what is an aml surveillance analyst
+rank_start: 10, rank_end: 30
+model response: [4] > [1] > [2] > [11] > [12] > [3] > [7] > [14] > [19] > [9] > [5] > [6] > [16] > [13] > [10] > [15] > [8] > [17] > [18] > [20]
+cleaned response: [3, 0, 1, 10, 11, 2, 6, 13, 18, 8, 4, 5, 15, 12, 9, 14, 7, 16, 17, 19]
+====================================================================================================
+query: tracheids are part of _____.
+rank_start: 10, rank_end: 30
+model response: [1] > [3] > [4] > [5] > [7] > [9] > [10] > [11] > [12] > [13] > [14] > [15] > [16] > [17] > [19] > [20] > [6] > [8] > [18] > [2]
+cleaned response: [0, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 5, 7, 17, 1]
+====================================================================================================
+query: when was the salvation army founded
+rank_start: 10, rank_end: 30
+model response: [10] > [11] > [12] > [13] > [9] > [8] > [7] > [6] > [5] > [4] > [3] > [2] > [1] > [16] > [15] > [14] > [17] > [19] > [18]
+cleaned response: [9, 10, 11, 12, 8, 7, 6, 5, 4, 3, 2, 1, 0, 15, 14, 13, 16, 18, 17]
+====================================================================================================
+query: what is the most popular food in switzerland
+rank_start: 10, rank_end: 30
+model response: [11] > [9] > [6] > [7] > [14] > [17] > [18] > [10] > [13] > [20] > [5] > [3] > [4] > [15] > [16] > [2] > [1] > [12] > [8] > [19]
+cleaned response: [10, 8, 5, 6, 13, 16, 17, 9, 12, 19, 4, 2, 3, 14, 15, 1, 0, 11, 7, 18]
+====================================================================================================
+query: what is famvir prescribed for
+rank_start: 10, rank_end: 30
+model response: [11] > [7] > [14] > [15] > [16] > [17] > [18] > [19] > [20] > [2] > [3] > [4] > [13] > [5] > [12] > [10] > [6] > [8] > [1]
+cleaned response: [10, 6, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 12, 4, 11, 9, 5, 7, 0]
+====================================================================================================
+query: what is physical description of spruce
+rank_start: 10, rank_end: 30
+model response: [11] > [8] > [12] > [14] > [16] > [17] > [13] > [15] > [19] > [10] > [6] > [2] > [18] > [3] > [4] > [5] > [7] > [1] > [9] > [12]
+cleaned response: [10, 7, 11, 13, 15, 16, 12, 14, 18, 9, 5, 1, 17, 2, 3, 4, 6, 0, 8, 11]
+====================================================================================================
+query: what is a active margin
+rank_start: 10, rank_end: 30
+model response: [11] > [7] > [10] > [12] > [14] > [15] > [16] > [17] > [18] > [1] > [9] > [5] > [3] > [2] > [4] > [13] > [19] > [20]
+cleaned response: [10, 6, 9, 11, 13, 14, 15, 16, 17, 0, 8, 4, 2, 1, 3, 12, 18, 19]
+====================================================================================================
+query: what can contour plowing reduce
+rank_start: 10, rank_end: 30
+model response: [1] > [2] > [4] > [6] > [11] > [12] > [15] > [16] > [3] > [8] > [9] > [10] > [14] > [19] > [17] > [5] > [18] > [7] > [20]
+cleaned response: [0, 1, 3, 5, 10, 11, 14, 15, 2, 7, 8, 9, 13, 18, 16, 4, 17, 6, 19]
+====================================================================================================
+query: does legionella pneumophila cause pneumonia
+rank_start: 10, rank_end: 30
+model response: [1] > [3] > [4] > [5] > [6] > [7] > [9] > [10] > [11] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [0, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: what is the daily life of thai people
+rank_start: 10, rank_end: 30
+model response: [11] > [6] > [13] > [12] > [20] > [4] > [8] > [17] > [16] > [15] > [14] > [18] > [5] > [3] > [10] > [7] > [9] > [19] > [1] > [15]
+cleaned response: [10, 5, 12, 11, 19, 3, 7, 16, 15, 14, 13, 17, 4, 2, 9, 6, 8, 18, 0, 14]
+====================================================================================================
+query: why did the us volunterilay enter ww1
+rank_start: 10, rank_end: 30
+model response: [9] > [11] > [12] > [2] > [8] > [17] > [18] > [3] > [4] > [10] > [6] > [16] > [5] > [7] > [15] > [14] > [13] > [19] > [20]
+cleaned response: [8, 10, 11, 1, 7, 16, 17, 2, 3, 9, 5, 15, 4, 6, 14, 13, 12, 18, 19]
+====================================================================================================
+query: is cdg airport in main paris
+rank_start: 10, rank_end: 30
+model response: [11] > [12] > [1] > [5] > [10] > [17] > [14] > [6] > [19] > [3] > [18] > [4] > [7] > [15] > [16] > [2] > [8] > [9] > [13] > [20]
+cleaned response: [10, 11, 0, 4, 9, 16, 13, 5, 18, 2, 17, 3, 6, 14, 15, 1, 7, 8, 12, 19]
+====================================================================================================
+query: who formed the commonwealth of independent states
+rank_start: 10, rank_end: 30
+model response: [8] > [11] > [12] > [6] > [1] > [15] > [16] > [9] > [10] > [14] > [13] > [17] > [18] > [19] > [20]
+cleaned response: [7, 10, 11, 5, 0, 14, 15, 8, 9, 13, 12, 16, 17, 18, 19]
+====================================================================================================
+query: define visceral?
+rank_start: 10, rank_end: 30
+model response: [8] > [11] > [12] > [3] > [10] > [7] > [15] > [16] > [17] > [5] > [6] > [9] > [13] > [14] > [19] > [20] > [4] > [18] > [1] > [10]
+cleaned response: [7, 10, 11, 2, 9, 6, 14, 15, 16, 4, 5, 8, 12, 13, 18, 19, 3, 17, 0, 9]
+====================================================================================================
+query: how long is life cycle of flea
+rank_start: 0, rank_end: 20
+model response: [12] > [15] > [16] > [2] > [3] > [10] > [11] > [13] > [14] > [5] > [7] > [4] > [19] > [1] > [6] > [8] > [17] > [18] > [20]
+cleaned response: [11, 14, 15, 1, 2, 9, 10, 12, 13, 4, 6, 3, 18, 0, 5, 7, 16, 17, 19]
+====================================================================================================
+query: cost of interior concrete flooring
+rank_start: 0, rank_end: 20
+model response: [1] > [2] > [3] > [4] > [9] > [10] > [11] > [12] > [13] > [14] > [5] > [6] > [7] > [8] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [0, 1, 2, 3, 8, 9, 10, 11, 12, 13, 4, 5, 6, 7, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: definition declaratory judgment
+rank_start: 0, rank_end: 20
+model response: [1] > [6] > [12] > [11] > [7] > [3] > [14] > [16] > [2] > [9] > [17] > [18] > [10] > [15] > [8] > [13] > [4] > [5] > [19] > [20]
+cleaned response: [0, 5, 11, 10, 6, 2, 13, 15, 1, 8, 16, 17, 9, 14, 7, 12, 3, 4, 18, 19]
+====================================================================================================
+query: what is durable medical equipment consist of
+rank_start: 0, rank_end: 20
+model response: [2] > [10] > [11] > [12] > [13] > [4] > [3] > [8] > [14] > [15] > [16] > [17] > [9] > [18] > [19] > [20]
+cleaned response: [1, 9, 10, 11, 12, 3, 2, 7, 13, 14, 15, 16, 8, 17, 18, 19]
+====================================================================================================
+query: what is wifi vs bluetooth
+rank_start: 0, rank_end: 20
+model response: [4] > [1] > [5] > [11] > [14] > [15] > [17] > [18] > [2] > [16] > [19] > [3] > [6] > [7] > [8] > [10] > [12] > [13] > [20]
+cleaned response: [3, 0, 4, 10, 13, 14, 16, 17, 1, 15, 18, 2, 5, 6, 7, 9, 11, 12, 19]
+====================================================================================================
+query: hydrogen is a liquid below what temperature
+rank_start: 0, rank_end: 20
+model response: [12] > [7] > [11] > [2] > [9] > [13] > [5] > [6] > [1] > [17] > [18] > [19] > [4] > [10] > [15] > [3] > [8] > [14] > [16]
+cleaned response: [11, 6, 10, 1, 8, 12, 4, 5, 0, 16, 17, 18, 3, 9, 14, 2, 7, 13, 15]
+====================================================================================================
+query: what are the social determinants of health
+rank_start: 0, rank_end: 20
+model response: [1] > [4] > [10] > [11] > [12] > [19] > [20] > [3] > [8] > [14] > [16] > [17] > [5] > [6] > [7] > [9] > [13] > [15] > [18]
+cleaned response: [0, 3, 9, 10, 11, 18, 19, 2, 7, 13, 15, 16, 4, 5, 6, 8, 12, 14, 17]
+====================================================================================================
+query: what are the three percenters?
+rank_start: 0, rank_end: 20
+model response: [3] > [11] > [12] > [3] > [7] > [13] > [3] > [10] > [17] > [16] > [5] > [9] > [15] > [14] > [18] > [19] > [6] > [8] > [4] > [2]
+cleaned response: [2, 10, 11, 2, 6, 12, 2, 9, 16, 15, 4, 8, 14, 13, 17, 18, 5, 7, 3, 1]
+====================================================================================================
+query: right pelvic pain causes
+rank_start: 0, rank_end: 20
+model response: [1] > [2] > [10] > [14] > [15] > [16] > [17] > [3] > [7] > [8] > [9] > [5] > [13] > [12] > [4] > [11] > [6] > [18] > [19] > [20]
+cleaned response: [0, 1, 9, 13, 14, 15, 16, 2, 6, 7, 8, 4, 12, 11, 3, 10, 5, 17, 18, 19]
+====================================================================================================
+query: definition of a sigmet
+rank_start: 0, rank_end: 20
+model response: [1] > [2] > [3] > [4] > [5] > [11] > [17] > [13] > [16] > [15] > [18] > [19] > [6] > [7] > [8] > [10] > [12] > [14] > [20]
+cleaned response: [0, 1, 2, 3, 4, 10, 16, 12, 15, 14, 17, 18, 5, 6, 7, 9, 11, 13, 19]
+====================================================================================================
+query: how are some sharks warm blooded
+rank_start: 0, rank_end: 20
+model response: [1] > [3] > [5] > [11] > [13] > [14] > [15] > [2] > [8] > [9] > [10] > [12] > [19] > [6] > [16] > [7] > [17] > [18] > [4]
+cleaned response: [0, 2, 4, 10, 12, 13, 14, 1, 7, 8, 9, 11, 18, 5, 15, 6, 16, 17, 3]
+====================================================================================================
+query: how to find the midsegment of a trapezoid
+rank_start: 0, rank_end: 20
+model response: [1] > [2] > [4] > [8] > [13] > [14] > [6] > [7] > [9] > [10] > [16] > [11] > [12] > [15] > [5] > [17] > [18] > [3] > [19] > [20]
+cleaned response: [0, 1, 3, 7, 12, 13, 5, 6, 8, 9, 15, 10, 11, 14, 4, 16, 17, 2, 18, 19]
+====================================================================================================
+query: lps laws definition
+rank_start: 0, rank_end: 20
+model response: [12] > [1] > [2] > [10] > [14] > [15] > [5] > [7] > [3] > [16] > [13] > [11] > [19] > [18] > [6] > [17] > [4] > [9] > [16] > [20]
+cleaned response: [11, 0, 1, 9, 13, 14, 4, 6, 2, 15, 12, 10, 18, 17, 5, 16, 3, 8, 15, 19]
+====================================================================================================
+query: difference between a mcdouble and a double cheeseburger
+rank_start: 0, rank_end: 20
+model response: [1] > [8] > [12] > [4] > [3] > [11] > [6] > [10] > [9] > [14] > [5] > [7] > [16] > [15] > [2] > [13] > [17] > [18] > [19] > [20]
+cleaned response: [0, 7, 11, 3, 2, 10, 5, 9, 8, 13, 4, 6, 15, 14, 1, 12, 16, 17, 18, 19]
+====================================================================================================
+query: difference between rn and bsn
+rank_start: 0, rank_end: 20
+model response: [4] > [10] > [14] > [7] > [13] > [11] > [12] > [19] > [20] > [3] > [5] > [6] > [17] > [16] > [15] > [2] > [1] > [8] > [9]
+cleaned response: [3, 9, 13, 6, 12, 10, 11, 18, 19, 2, 4, 5, 16, 15, 14, 1, 0, 7, 8]
+====================================================================================================
+query: types of dysarthria from cerebral palsy
+rank_start: 0, rank_end: 20
+model response: [1] > [8] > [9] > [11] > [20] > [19] > [15] > [7] > [14] > [12] > [16] > [17] > [5] > [6] > [10] > [13] > [4] > [3] > [18]
+cleaned response: [0, 7, 8, 10, 19, 18, 14, 6, 13, 11, 15, 16, 4, 5, 9, 12, 3, 2, 17]
+====================================================================================================
+query: who is robert gray
+rank_start: 0, rank_end: 20
+model response: [11] > [1] > [12] > [13] > [14] > [10] > [6] > [16] > [17] > [2] > [19] > [20] > [15] > [3] > [4] > [5] > [8] > [9] > [7]
+cleaned response: [10, 0, 11, 12, 13, 9, 5, 15, 16, 1, 18, 19, 14, 2, 3, 4, 7, 8, 6]
+====================================================================================================
+query: rsa definition key
+rank_start: 0, rank_end: 20
+model response: [1] > [4] > [12] > [15] > [7] > [8] > [11] > [14] > [3] > [10] > [13] > [2] > [17] > [16] > [18] > [5] > [6] > [9] > [19] > [20]
+cleaned response: [0, 3, 11, 14, 6, 7, 10, 13, 2, 9, 12, 1, 16, 15, 17, 4, 5, 8, 18, 19]
+====================================================================================================
+query: medicare's definition of mechanical ventilation
+rank_start: 0, rank_end: 20
+model response: [4] > [7] > [14] > [15] > [18] > [20] > [1] > [12] > [6] > [3] > [10] > [11] > [16] > [13] > [5] > [8] > [9] > [17] > [19]
+cleaned response: [3, 6, 13, 14, 17, 19, 0, 11, 5, 2, 9, 10, 15, 12, 4, 7, 8, 16, 18]
+====================================================================================================
+query: example of monotonic function
+rank_start: 0, rank_end: 20
+model response: [1] > [3] > [6] > [7] > [10] > [11] > [12] > [13] > [15] > [4] > [5] > [14] > [16] > [17] > [2] > [8] > [9] > [19] > [20]
+cleaned response: [0, 2, 5, 6, 9, 10, 11, 12, 14, 3, 4, 13, 15, 16, 1, 7, 8, 18, 19]
+====================================================================================================
+query: causes of military suicide
+rank_start: 0, rank_end: 20
+model response: [1] > [4] > [8] > [9] > [15] > [10] > [11] > [14] > [5] > [12] > [13] > [16] > [17] > [6] > [18] > [19] > [3] > [7] > [20]
+cleaned response: [0, 3, 7, 8, 14, 9, 10, 13, 4, 11, 12, 15, 16, 5, 17, 18, 2, 6, 19]
+====================================================================================================
+query: do goldfish grow
+rank_start: 0, rank_end: 20
+model response: [2] > [1] > [6] > [10] > [11] > [14] > [15] > [16] > [19] > [20] > [7] > [12] > [13] > [17] > [18] > [4] > [5] > [9] > [3]
+cleaned response: [1, 0, 5, 9, 10, 13, 14, 15, 18, 19, 6, 11, 12, 16, 17, 3, 4, 8, 2]
+====================================================================================================
+query: what types of food can you cook sous vide
+rank_start: 0, rank_end: 20
+model response: [11] > [2] > [10] > [1] > [4] > [13] > [16] > [17] > [18] > [19] > [3] > [5] > [6] > [7] > [8] > [9] > [12] > [14] > [15]
+cleaned response: [10, 1, 9, 0, 3, 12, 15, 16, 17, 18, 2, 4, 5, 6, 7, 8, 11, 13, 14]
+====================================================================================================
+query: anthropological definition of environment
+rank_start: 0, rank_end: 20
+model response: [10] > [2] > [11] > [5] > [6] > [7] > [3] > [14] > [15] > [18] > [17] > [16] > [1] > [4] > [9] > [13] > [12] > [19] > [20]
+cleaned response: [9, 1, 10, 4, 5, 6, 2, 13, 14, 17, 16, 15, 0, 3, 8, 12, 11, 18, 19]
+====================================================================================================
+query: axon terminals or synaptic knob definition
+rank_start: 0, rank_end: 20
+model response: [1] > [2] > [4] > [5] > [7] > [10] > [12] > [13] > [14] > [16] > [17] > [18] > [19] > [20] > [3] > [6] > [8] > [9] > [11]
+cleaned response: [0, 1, 3, 4, 6, 9, 11, 12, 13, 15, 16, 17, 18, 19, 2, 5, 7, 8, 10]
+====================================================================================================
+query: exons definition biology
+rank_start: 0, rank_end: 20
+model response: [1] > [11] > [12] > [13] > [4] > [16] > [18] > [2] > [7] > [17] > [10] > [14] > [15] > [5] > [19] > [6] > [8] > [9] > [3]
+cleaned response: [0, 10, 11, 12, 3, 15, 17, 1, 6, 16, 9, 13, 14, 4, 18, 5, 7, 8, 2]
+====================================================================================================
+query: causes of left ventricular hypertrophy
+rank_start: 0, rank_end: 20
+model response: [2] > [4] > [7] > [11] > [14] > [16] > [17] > [1] > [9] > [12] > [13] > [15] > [5] > [10] > [19] > [3] > [6] > [8] > [18]
+cleaned response: [1, 3, 6, 10, 13, 15, 16, 0, 8, 11, 12, 14, 4, 9, 18, 2, 5, 7, 17]
+====================================================================================================
+query: how is the weather in jamaica
+rank_start: 0, rank_end: 20
+model response: [1] > [2] > [3] > [4] > [6] > [7] > [8] > [9] > [10] > [11] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: what is theraderm used for
+rank_start: 0, rank_end: 20
+model response: [1] > [5] > [3] > [4] > [15] > [16] > [17] > [18] > [19] > [20] > [2] > [6] > [7] > [8] > [9] > [10] > [11] > [12] > [13] > [14]
+cleaned response: [0, 4, 2, 3, 14, 15, 16, 17, 18, 19, 1, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+====================================================================================================
+query: what is an aml surveillance analyst
+rank_start: 0, rank_end: 20
+model response: [4] > [1] > [7] > [11] > [13] > [15] > [9] > [6] > [2] > [14] > [16] > [19] > [10] > [12] > [17] > [18] > [3] > [5] > [20]
+cleaned response: [3, 0, 6, 10, 12, 14, 8, 5, 1, 13, 15, 18, 9, 11, 16, 17, 2, 4, 19]
+====================================================================================================
+query: tracheids are part of _____.
+rank_start: 0, rank_end: 20
+model response: [1] > [3] > [8] > [12] > [19] > [20] > [4] > [5] > [7] > [10] > [11] > [13] > [14] > [15] > [16] > [17] > [2] > [6] > [9]
+cleaned response: [0, 2, 7, 11, 18, 19, 3, 4, 6, 9, 10, 12, 13, 14, 15, 16, 1, 5, 8]
+====================================================================================================
+query: when was the salvation army founded
+rank_start: 0, rank_end: 20
+model response: [12] > [13] > [9] > [14] > [11] > [7] > [4] > [10] > [6] > [17] > [1] > [2] > [15] > [16] > [8] > [19] > [5] > [18] > [3] > [20]
+cleaned response: [11, 12, 8, 13, 10, 6, 3, 9, 5, 16, 0, 1, 14, 15, 7, 18, 4, 17, 2, 19]
+====================================================================================================
+query: what is the most popular food in switzerland
+rank_start: 0, rank_end: 20
+model response: [10] > [11] > [16] > [17] > [15] > [6] > [7] > [4] > [2] > [19] > [5] > [12] > [3] > [8] > [14] > [13] > [18] > [9] > [20] > [1]
+cleaned response: [9, 10, 15, 16, 14, 5, 6, 3, 1, 18, 4, 11, 2, 7, 13, 12, 17, 8, 19, 0]
+====================================================================================================
+query: what is famvir prescribed for
+rank_start: 0, rank_end: 20
+model response: [5] > [11] > [2] > [18] > [20] > [12] > [17] > [16] > [15] > [14] > [13] > [10] > [6] > [7] > [3] > [9] > [4] > [8] > [1]
+cleaned response: [4, 10, 1, 17, 19, 11, 16, 15, 14, 13, 12, 9, 5, 6, 2, 8, 3, 7, 0]
+====================================================================================================
+query: what is physical description of spruce
+rank_start: 0, rank_end: 20
+model response: [11] > [7] > [13] > [14] > [15] > [16] > [2] > [3] > [8] > [17] > [18] > [10] > [12] > [4] > [5] > [6] > [9] > [19] > [20]
+cleaned response: [10, 6, 12, 13, 14, 15, 1, 2, 7, 16, 17, 9, 11, 3, 4, 5, 8, 18, 19]
+====================================================================================================
+query: what is a active margin
+rank_start: 0, rank_end: 20
+model response: [2] > [10] > [11] > [12] > [3] > [5] > [6] > [14] > [16] > [17] > [19] > [20] > [1] > [7] > [8] > [13] > [15] > [18] > [9]
+cleaned response: [1, 9, 10, 11, 2, 4, 5, 13, 15, 16, 18, 19, 0, 6, 7, 12, 14, 17, 8]
+====================================================================================================
+query: what can contour plowing reduce
+rank_start: 0, rank_end: 20
+model response: [1] > [2] > [8] > [9] > [10] > [13] > [15] > [16] > [14] > [7] > [17] > [18] > [19] > [6] > [5] > [3] > [4] > [11] > [20]
+cleaned response: [0, 1, 7, 8, 9, 12, 14, 15, 13, 6, 16, 17, 18, 5, 4, 2, 3, 10, 19]
+====================================================================================================
+query: does legionella pneumophila cause pneumonia
+rank_start: 0, rank_end: 20
+model response: [1] > [5] > [6] > [9] > [10] > [11] > [2] > [3] > [4] > [7] > [8] > [12] > [13] > [14] > [15] > [16] > [17] > [18] > [19] > [20]
+cleaned response: [0, 4, 5, 8, 9, 10, 1, 2, 3, 6, 7, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+====================================================================================================
+query: what is the daily life of thai people
+rank_start: 0, rank_end: 20
+model response: [5] > [1] > [4] > [10] > [13] > [1] > [8] > [18] > [17] > [7] > [6] > [15] > [20] > [14] > [9] > [12] > [11] > [3] > [2] > [16]
+cleaned response: [4, 0, 3, 9, 12, 0, 7, 17, 16, 6, 5, 14, 19, 13, 8, 11, 10, 2, 1, 15]
+====================================================================================================
+query: why did the us volunterilay enter ww1
+rank_start: 0, rank_end: 20
+model response: [11] > [13] > [10] > [12] > [14] > [7] > [6] > [19] > [16] > [17] > [15] > [8] > [5] > [2] > [18] > [4] > [3] > [9] > [1] > [1]
+cleaned response: [10, 12, 9, 11, 13, 6, 5, 18, 15, 16, 14, 7, 4, 1, 17, 3, 2, 8, 0, 0]
+====================================================================================================
+query: is cdg airport in main paris
+rank_start: 0, rank_end: 20
+model response: [5] > [7] > [12] > [4] > [10] > [14] > [16] > [2] > [1] > [9] > [17] > [8] > [15] > [19] > [3] > [13] > [6] > [11] > [18] > [12]
+cleaned response: [4, 6, 11, 3, 9, 13, 15, 1, 0, 8, 16, 7, 14, 18, 2, 12, 5, 10, 17, 11]
+====================================================================================================
+query: who formed the commonwealth of independent states
+rank_start: 0, rank_end: 20
+model response: [11] > [10] > [12] > [13] > [4] > [5] > [15] > [16] > [17] > [19] > [20] > [7] > [8] > [9] > [14] > [6] > [1] > [3] > [18]
+cleaned response: [10, 9, 11, 12, 3, 4, 14, 15, 16, 18, 19, 6, 7, 8, 13, 5, 0, 2, 17]
+====================================================================================================
+query: define visceral?
+rank_start: 0, rank_end: 20
+model response: [2] > [11] > [12] > [13] > [1] > [7] > [6] > [17] > [19] > [5] > [16] > [15] > [14] > [3] > [4] > [10] > [8] > [18] > [20]
+cleaned response: [1, 10, 11, 12, 0, 6, 5, 16, 18, 4, 15, 14, 13, 2, 3, 9, 7, 17, 19]
+Completed 43/43 items
+Total execution time: 22.49s
+{'NDCG@1': 0.75581, 'NDCG@5': 0.72973, 'NDCG@10': 0.67024, 'MAP@1': 0.02488, 'MAP@5': 0.10475, 'MAP@10': 0.15465, 'Recall@1': 0.02488, 'Recall@5': 0.10651, 'Recall@10': 0.16143}
+
+======== GPU REPORT ========
+
+==============NVSMI LOG==============
+
+Timestamp                                 : Mon Apr 21 11:45:16 2025
+Driver Version                            : 560.35.03
+CUDA Version                              : 12.6
+
+Attached GPUs                             : 4
+GPU 00000000:01:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3108036
+            GPU Utilization               : 22 %
+            Memory Utilization            : 10 %
+            Max memory usage              : 73790 MiB
+            Time                          : 112530 ms
+            Is Running                    : 0
+        Process ID                        : 3108185
+            GPU Utilization               : 0 %
+            Memory Utilization            : 0 %
+            Max memory usage              : 582 MiB
+            Time                          : 92323 ms
+            Is Running                    : 0
+        Process ID                        : 3108254
+            GPU Utilization               : 0 %
+            Memory Utilization            : 0 %
+            Max memory usage              : 578 MiB
+            Time                          : 82195 ms
+            Is Running                    : 0
+        Process ID                        : 3108099
+            GPU Utilization               : 0 %
+            Memory Utilization            : 0 %
+            Max memory usage              : 652 MiB
+            Time                          : 103016 ms
+            Is Running                    : 0
+
+GPU 00000000:41:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3108099
+            GPU Utilization               : 24 %
+            Memory Utilization            : 11 %
+            Max memory usage              : 73766 MiB
+            Time                          : 102979 ms
+            Is Running                    : 0
+
+GPU 00000000:81:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3108185
+            GPU Utilization               : 27 %
+            Memory Utilization            : 12 %
+            Max memory usage              : 73766 MiB
+            Time                          : 92262 ms
+            Is Running                    : 0
+
+GPU 00000000:C1:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes
+        Process ID                        : 3108254
+            GPU Utilization               : 30 %
+            Memory Utilization            : 14 %
+            Max memory usage              : 73790 MiB
+            Time                          : 82145 ms
+            Is Running                    : 0
+
+Mon Apr 21 11:45:16 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-80GB          On  |   00000000:01:00.0 Off |                    0 |
+| N/A   40C    P0             67W /  500W |       1MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-SXM4-80GB          On  |   00000000:41:00.0 Off |                    0 |
+| N/A   37C    P0             87W /  500W |       1MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA A100-SXM4-80GB          On  |   00000000:81:00.0 Off |                    0 |
+| N/A   39C    P0             94W /  500W |       1MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA A100-SXM4-80GB          On  |   00000000:C1:00.0 Off |                    0 |
+| N/A   37C    P0             95W /  500W |       1MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
