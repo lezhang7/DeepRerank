@@ -4,6 +4,7 @@ import os
 import copy
 from typing import Dict, Tuple
 import pytrec_eval
+import datasets
 
 THE_TOPICS = {
     'dl19': 'dl19-passage',
@@ -53,7 +54,7 @@ def trec_eval(qrels: Dict[str, Dict[str, int]],
 
     evaluator = pytrec_eval.RelevanceEvaluator(qrels, {map_string, ndcg_string, recall_string})
     scores = evaluator.evaluate(results)
-    
+
     # Use more efficient iteration
     num_queries = len(scores)
     for query_scores in scores.values():
@@ -73,7 +74,7 @@ def trec_eval(qrels: Dict[str, Dict[str, int]],
     all_metrics.update(_map)
     all_metrics.update(recall)
 
-    return all_metrics
+    return all_metrics, scores
 
 
 def get_qrels_file(name):
@@ -201,7 +202,7 @@ class EvalFunction:
 
 def eval_rerank(name, results, qrels_dict=None):
     """Evaluate reranking results without writing to temporary files"""
-    if type(results) != list:
+    if not isinstance(results, (list, datasets.arrow_dataset.Dataset)):
         results = [results]
     if qrels_dict is None:
         qrels_dict = EvalFunction.load_qrels(THE_TOPICS.get(name, name))
