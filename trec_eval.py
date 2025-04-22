@@ -4,8 +4,39 @@ import os
 import copy
 from typing import Dict, Tuple
 import pytrec_eval
-from run_evaluation import THE_TOPICS, DLV2
 
+THE_TOPICS = {
+    'dl19': 'dl19-passage',
+    'dl20': 'dl20-passage',
+    'dl21': 'dl21-passage',
+    'dl22': 'dl22-passage',
+    'dl23': 'dl23-passage',
+    'covid': 'beir-v1.0.0-trec-covid-test',
+    'arguana': 'beir-v1.0.0-arguana-test',
+    'touche': 'beir-v1.0.0-webis-touche2020-test',
+    'news': 'beir-v1.0.0-trec-news-test',
+    'scifact': 'beir-v1.0.0-scifact-test',
+    'fiqa': 'beir-v1.0.0-fiqa-test',
+    'scidocs': 'beir-v1.0.0-scidocs-test',
+    'nfc': 'beir-v1.0.0-nfcorpus-test',
+    'quora': 'beir-v1.0.0-quora-test',
+    'dbpedia': 'beir-v1.0.0-dbpedia-entity-test',
+    'fever': 'beir-v1.0.0-fever-test',
+    'robust04': 'beir-v1.0.0-robust04-test',
+    'signal': 'beir-v1.0.0-signal1m-test',
+
+    'mrtydi-ar': 'mrtydi-v1.1-arabic-test',
+    'mrtydi-bn': 'mrtydi-v1.1-bengali-test',
+    'mrtydi-fi': 'mrtydi-v1.1-finnish-test',
+    'mrtydi-id': 'mrtydi-v1.1-indonesian-test',
+    'mrtydi-ja': 'mrtydi-v1.1-japanese-test',
+    'mrtydi-ko': 'mrtydi-v1.1-korean-test',
+    'mrtydi-ru': 'mrtydi-v1.1-russian-test',
+    'mrtydi-sw': 'mrtydi-v1.1-swahili-test',
+    'mrtydi-te': 'mrtydi-v1.1-telugu-test',
+    'mrtydi-th': 'mrtydi-v1.1-thai-test',
+
+}
 
 def trec_eval(qrels: Dict[str, Dict[str, int]],
               results: Dict[str, Dict[str, float]],
@@ -168,13 +199,17 @@ class EvalFunction:
         print(all_metrics)
         return all_metrics
 
-def eval_rerank(name, results):
+def eval_rerank(name, results, qrels_dict=None):
     """Evaluate reranking results without writing to temporary files"""
-    qrels_dict = EvalFunction.load_qrels(THE_TOPICS[name])
+    if type(results) != list:
+        results = [results]
+    if qrels_dict is None:
+        qrels_dict = EvalFunction.load_qrels(THE_TOPICS.get(name, name))
     run_dict = EvalFunction.convert_to_trec_format(results)
     return trec_eval(qrels_dict, run_dict, k_values=(1, 5, 10))
 
 
 if __name__ == '__main__':
-    EvalFunction.main('dl19', 'ranking_results_file')
+    name = '/mnt/home/DeepRerank/data/combined_qrels.txt'
+    print(THE_TOPICS.get(name, name))
 

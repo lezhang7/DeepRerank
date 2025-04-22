@@ -114,7 +114,7 @@ def create_permutation_instruction_deeprerank(item=None, rank_start=0, rank_end=
         
     messages.append({
         "role": "user",
-        "content": f"Please analyze each of the following passages and rank them according to their relevance to the specified search query {query}. For each passage, clearly articulate your reasoning for the assigned relevance score within `<think>` tags. Finally, present the IDs of all provided passages in descending order of relevance within `<answer>` tags, using the format `<answer> [ID_most_relevant] > [ID_second_most_relevant] > ... > [ID_least_relevant] </answer>`. Ensure that all passage IDs are included in the ranking, regardless of their degree of relevance."
+        "content": f"Please analyze each of the following passages and rank them according to their relevance to the specified search query {query}. For each passage, clearly articulate your reasoning for the assigned relevance score within `<think>` tags. Finally, present the IDs of all provided passages in descending order of relevance within `<answer>` tags, using the format `<answer> [ID_most_relevant] > [ID_second_most_relevant] > ... > [ID_least_relevant] </answer>`. "
     })
 
 
@@ -278,8 +278,8 @@ def bm25_retrieve(data, top_k_retrieve=100):
 
 def main():
 
-
-    set_seed(42)
+    os.environ['VLLM_WORKER_MULTIPROC_METHOD'] = 'spawn'
+    set_seed(42)    
     # model_name = "le723z/deeprerank-step100"
     model_name = "Qwen/Qwen2.5-7B-Instruct"
     print(f"model_name: {model_name}")
