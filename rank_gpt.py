@@ -114,8 +114,21 @@ def create_permutation_instruction_deeprerank(item=None, rank_start=0, rank_end=
         
     messages.append({
         "role": "user",
-        "content": f"Please analyze each of the following passages and rank them according to their relevance to the specified search query {query}. For each passage, clearly articulate your reasoning for the assigned relevance score within `<think>` tags. Finally, present the IDs of all provided passages in descending order of relevance within `<answer>` tags, using the format `<answer> [ID_most_relevant] > [ID_second_most_relevant] > ... > [ID_least_relevant] </answer>`. "
-    })
+        "content": f"""Please rank these passages according to their relevance to the search query: "{query}"
+        Follow these steps exactly:
+        1. First, within <think> tags, analyze EACH passage individually:
+        - Evaluate how well it addresses the query
+        - Note specific relevant information or keywords
+        - Assign a relevance score (1-5) with clear justification:
+            5: Directly answers the query with comprehensive, accurate information
+            4: Highly relevant with most key information but may lack some details
+            3: Moderately relevant with some useful information
+            2: Tangentially relevant with minimal useful information
+            1: Not relevant or off-topic
+
+        2. Then, within <answer> tags, provide ONLY the final ranking in descending order of relevance using the format: [X] > [Y] > [Z]
+        Your thinking process must directly inform your final ranking. The passages you determine most relevant in your analysis should be ranked highest in your answer."""
+        })
 
 
     return messages
@@ -280,11 +293,11 @@ def main():
 
     os.environ['VLLM_WORKER_MULTIPROC_METHOD'] = 'spawn'
     set_seed(42)    
-    # model_name = "le723z/deeprerank-step100"
-    model_name = "Qwen/Qwen2.5-7B-Instruct"
+    model_name = "le723z/qwen2_7b_deeprerank_ndcgreward10_3reward_v2"
+    # model_name = "Qwen/Qwen2.5-7B-Instruct"
     print(f"model_name: {model_name}")
     
-    # agent = get_agent(model_name=model_name, api_key=None)
+    agent = get_agent(model_name=model_name, api_key=None)
     
     for data in ['dl19']:
         rank_results = bm25_retrieve(data, top_k_retrieve=100)
@@ -293,12 +306,12 @@ def main():
         # bs is 16*num_gpu, gpu automatically allocated
         num_gpu = len(os.environ.get('CUDA_VISIBLE_DEVICES', '').split(',')) if os.environ.get('CUDA_VISIBLE_DEVICES') else 1
         bs = 16*num_gpu
-        # rank_results = process_rank_results_in_batches(agent, rank_results, batch_size=bs   )
+        rank_results = process_rank_results_in_batches(agent, rank_results, batch_size=bs   )
         
         # save rank_results
         # with open(f'/home/mila/l/le.zhang/scratch/DeepRerank/data/{data}_bm25_rank_results.json', 'w') as f:
         #     json.dump(rank_results, f, indent=4)
-        all_metrics = eval_rerank(data, rank_results)
+        all_metrics, _ = eval_rerank(data, rank_results)
         print(all_metrics)
         # breakpoint()
 
