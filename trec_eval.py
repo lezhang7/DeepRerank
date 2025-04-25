@@ -51,7 +51,6 @@ def trec_eval(qrels: Dict[str, Dict[str, int]],
     map_string = "map_cut." + ",".join(map(str, k_values))
     ndcg_string = "ndcg_cut." + ",".join(map(str, k_values))
     recall_string = "recall." + ",".join(map(str, k_values))
-
     evaluator = pytrec_eval.RelevanceEvaluator(qrels, {map_string, ndcg_string, recall_string})
     scores = evaluator.evaluate(results)
 

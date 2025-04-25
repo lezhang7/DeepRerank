@@ -4,7 +4,7 @@ from transformers import AutoTokenizer
 from vllm import LLM, SamplingParams
 import os
 def get_agent(model_name, api_key=None):
-    if model_name == "Qwen/Qwen2.5-7B-Instruct" or "deeprerank" in model_name:
+    if "Qwen" in model_name or "deeprerank" in model_name:
         agent = QwenClient(model_name=model_name, temperature=0)
     else:
         if api_key is None:
@@ -82,7 +82,7 @@ class QwenClient:
                 repetition_penalty=1.05, max_tokens=2048):
         self.model_name = model_name
         # Initialize the tokenizer
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B-Instruct")
         # Set default sampling parameters
         self.sampling_params = SamplingParams(
             temperature=temperature,

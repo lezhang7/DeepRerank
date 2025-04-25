@@ -7,9 +7,11 @@ from pyserini.search import get_topics, get_qrels
 from run_evaluation import THE_TOPICS, THE_INDEX, DLV2
 from agent import get_agent
 from trec_eval import eval_rerank
+from typing import List, Dict
 from utils import set_seed
 import re
 import os
+import random
 
 def run_retriever(topics, searcher, qrels=None, k=100, qid=None):
     ranks = []
@@ -157,15 +159,15 @@ def remove_duplicate(response):
     return new_response
 
 
-def receive_permutation(item, permutation, rank_start=0, rank_end=100):
+def receive_permutation(item, permutation, rank_start=0, rank_end=100, verbose=False):
     response = clean_response(permutation)
-    if DEBUG:
+    if verbose:
         print("="*100)
         print(f"query: {item['query']}")
         print(f"rank_start: {rank_start}, rank_end: {rank_end}")
         print(f"model response: {permutation}")
     response = [int(x) - 1 for x in response.split()]
-    if DEBUG:
+    if verbose:
         print(f"cleaned response: {response}")
     response = remove_duplicate(response)
     cut_range = copy.deepcopy(item['hits'][rank_start: rank_end])
@@ -181,7 +183,7 @@ def receive_permutation(item, permutation, rank_start=0, rank_end=100):
     return item
 
 
-def sliding_windows_batch(agent, items, rank_start=0, rank_end=100, window_size=20, step=10):
+def sliding_windows_batch(agent, items, rank_start=0, rank_end=100, window_size=20, step=10, verbose=False):
     """Process multiple items with sliding windows using batched inference."""
     items = [copy.deepcopy(item) for item in items]
     
@@ -230,7 +232,7 @@ def sliding_windows_batch(agent, items, rank_start=0, rank_end=100, window_size=
                 print(f"Error in batch processing: {permutation}")
                 continue
             items[item_idx] = receive_permutation(items[item_idx], permutation, 
-                                                 rank_start=start_pos, rank_end=end_pos)
+                                                 rank_start=start_pos, rank_end=end_pos, verbose=verbose)
     
     return items
 
@@ -246,7 +248,7 @@ def write_eval_file(rank_results, file):
     return True
 
 
-def process_rank_results_in_batches(agent, rank_results, batch_size=8, window_size=20, step=10):
+def process_rank_results_in_batches(agent, rank_results: List[Dict], batch_size=8, window_size=20, step=10, verbose=False):
     """
     Process ranking results in batches to improve throughput.
     
@@ -269,8 +271,8 @@ def process_rank_results_in_batches(agent, rank_results, batch_size=8, window_si
         
         # Process entire batch at once
         processed_items = sliding_windows_batch(agent, batch_items, 
-                                               rank_start=0, rank_end=100, 
-                                               window_size=window_size, step=step)
+                                               rank_start=0, rank_end=min(len(batch_items[0]['hits']), 100), 
+                                               window_size=window_size, step=step, verbose=verbose)
         new_results.extend(processed_items)
         
         print(f"Completed {len(new_results)}/{len(rank_results)} items")
@@ -292,30 +294,43 @@ def bm25_retrieve(data, top_k_retrieve=100):
 def main():
 
     os.environ['VLLM_WORKER_MULTIPROC_METHOD'] = 'spawn'
-    set_seed(42)    
-    model_name = "le723z/qwen2_7b_deeprerank_ndcgreward10_3reward_v2"
-    # model_name = "Qwen/Qwen2.5-7B-Instruct"
+    # model_name = "le723z/qwen2_7b_deeprerank_ndcgreward10_3reward_v3"
+    model_name = "Qwen/Qwen2.5-7B-Instruct"
     print(f"model_name: {model_name}")
     
     agent = get_agent(model_name=model_name, api_key=None)
     
-    for data in ['dl19']:
-        rank_results = bm25_retrieve(data, top_k_retrieve=100)
-       
-        
+    for data in ['dl21']:
+        bm25_results = bm25_retrieve(data, top_k_retrieve=100)
+        win_results = {}
         # bs is 16*num_gpu, gpu automatically allocated
         num_gpu = len(os.environ.get('CUDA_VISIBLE_DEVICES', '').split(',')) if os.environ.get('CUDA_VISIBLE_DEVICES') else 1
         bs = 16*num_gpu
-        rank_results = process_rank_results_in_batches(agent, rank_results, batch_size=bs   )
+        for qid, sample in enumerate(bm25_results):
+            hits = copy.deepcopy(sample['hits'])
+            rerank_win_original = 0
+            for _ in range(5):
+                sample['hits'] = random.sample(hits, min(20, len(hits)))
+                original_metrics, _ = eval_rerank(data, sample)
+                for rerank_idx in range(5):
+                    rerank_results = process_rank_results_in_batches(agent, [sample], batch_size=1, verbose=True)
+                    rerank_metrics, _ = eval_rerank(data, rerank_results)
+                    print(f"original metrics: {original_metrics}")
+                    print(f"rerank metrics: {rerank_metrics}")
+                    if rerank_metrics['NDCG@10'] > original_metrics['NDCG@10']:
+                        rerank_win_original += 1
+            print(f"rerank win rate: {rerank_win_original/25}")
+            win_results[qid] = rerank_win_original
+        print(f"win results: {win_results}")
+        print(f"mean win rate: {sum(win_results.values())/len(win_results)}")
+        # rank_results = process_rank_results_in_batches(agent, rank_results, batch_size=bs, verbose=True)
         
         # save rank_results
         # with open(f'/home/mila/l/le.zhang/scratch/DeepRerank/data/{data}_bm25_rank_results.json', 'w') as f:
         #     json.dump(rank_results, f, indent=4)
-        all_metrics, _ = eval_rerank(data, rank_results)
-        print(all_metrics)
+        
         # breakpoint()
 
 
 if __name__ == '__main__':
-    DEBUG = True
     main()
