@@ -10,8 +10,9 @@ from trec_eval import eval_rerank
 from typing import List, Dict
 from utils import set_seed
 import re
-import os
 import random
+import os
+
 
 def run_retriever(topics, searcher, qrels=None, k=100, qid=None):
     ranks = []
@@ -92,7 +93,6 @@ def create_permutation_instruction(item=None, rank_start=0, rank_end=100):
 def create_permutation_instruction_deeprerank(item=None, rank_start=0, rank_end=100):
     query = item['query']
     num = len(item['hits'][rank_start: rank_end])
-    max_length = 300
     instruction =  (
             f"I will provide you with passages, each indicated by number identifier []. Rank the passages based on their relevance to the search query."
             f"Search Query: {query}. \nRank the {num} passages above based on their relevance to the search query."
@@ -110,27 +110,21 @@ def create_permutation_instruction_deeprerank(item=None, rank_start=0, rank_end=
         content = hit['content']
         content = content.replace('Title: Content: ', '')
         content = content.strip()
-        content = ' '.join(content.split()[:int(max_length)]) # max token fea each passage is 300
-        messages.append({"role": "user", "content": f"[{rank}] {content}"})
+        content = ' '.join(content.split())
+        messages.append({"role": "user", "content": f"[{rank}] {content[:500]}"})
         messages.append({"role": "assistant", "content": f"Received passage [{rank}]."})
-        
+                
     messages.append({
         "role": "user",
         "content": f"""Please rank these passages according to their relevance to the search query: "{query}"
-        Follow these steps exactly:
-        1. First, within <think> tags, analyze EACH passage individually:
-        - Evaluate how well it addresses the query
-        - Note specific relevant information or keywords
-        - Assign a relevance score (1-5) with clear justification:
-            5: Directly answers the query with comprehensive, accurate information
-            4: Highly relevant with most key information but may lack some details
-            3: Moderately relevant with some useful information
-            2: Tangentially relevant with minimal useful information
-            1: Not relevant or off-topic
+            Follow these steps exactly:
+            1. First, within <think> tags, analyze EACH passage individually:
+            - Evaluate how well it addresses the query
+            - Note specific relevant information or keywords
 
-        2. Then, within <answer> tags, provide ONLY the final ranking in descending order of relevance using the format: [X] > [Y] > [Z]
-        Your thinking process must directly inform your final ranking. The passages you determine most relevant in your analysis should be ranked highest in your answer."""
-        })
+            2. Then, within <answer> tags, provide ONLY the final ranking in descending order of relevance using the format: [X] > [Y] > [Z]"""
+    })
+
 
 
     return messages
@@ -141,6 +135,9 @@ def clean_response(response: str):
     if "<answer>" in response:
         content_match = re.search(r"<answer>(.*?)</answer>", response, re.DOTALL)
         response = content_match.group(1).strip() if content_match else response.strip()
+    # process for Qwen3 with think tags but no answer tags
+    if "<think>" in response:
+        response = response.split("</think>")[-1]
     new_response = ''
     for c in response:
         if not c.isdigit():
@@ -183,7 +180,7 @@ def receive_permutation(item, permutation, rank_start=0, rank_end=100, verbose=F
     return item
 
 
-def sliding_windows_batch(agent, items, rank_start=0, rank_end=100, window_size=20, step=10, verbose=False):
+def sliding_windows_batch(agent, items, rank_start=0, rank_end=100, window_size=20, step=10, verbose=False, enable_thinking=False):
     """Process multiple items with sliding windows using batched inference."""
     items = [copy.deepcopy(item) for item in items]
     
@@ -213,7 +210,7 @@ def sliding_windows_batch(agent, items, rank_start=0, rank_end=100, window_size=
         for item_idx, (item, positions) in enumerate(zip(items, all_positions)):
             if window_idx < len(positions):
                 start_pos, end_pos = positions[window_idx]
-                if 'deeprerank' in agent.model_name:
+                if 'le723z' in agent.model_name:
                     messages = create_permutation_instruction_deeprerank(item=item, rank_start=start_pos, rank_end=end_pos)
                 else:
                     messages = create_permutation_instruction(item=item, rank_start=start_pos, rank_end=end_pos)
@@ -224,7 +221,7 @@ def sliding_windows_batch(agent, items, rank_start=0, rank_end=100, window_size=
             continue
             
         # Process this batch of messages
-        batch_permutations = agent.batch_chat(batch_messages, temperature=0, return_text=True, seed=42)
+        batch_permutations = agent.batch_chat(batch_messages, temperature=0, return_text=True, seed=42, enable_thinking=enable_thinking)
         
         # Apply permutations to respective items
         for (item_idx, start_pos, end_pos), permutation in zip(batch_metadata, batch_permutations):
@@ -248,7 +245,7 @@ def write_eval_file(rank_results, file):
     return True
 
 
-def process_rank_results_in_batches(agent, rank_results: List[Dict], batch_size=8, window_size=20, step=10, verbose=False):
+def process_rank_results_in_batches(agent, rank_results: List[Dict], batch_size=8, window_size=20, step=10, verbose=False, enable_thinking=False):
     """
     Process ranking results in batches to improve throughput.
     
@@ -265,14 +262,14 @@ def process_rank_results_in_batches(agent, rank_results: List[Dict], batch_size=
     new_results = []
     total_start_time = time.time()
     
-    for i in range(0, len(rank_results), batch_size):
+    for i in tqdm(range(0, len(rank_results), batch_size)):
         batch_items = rank_results[i:i+batch_size]
         print(f"Processing batch: {i//batch_size + 1}/{(len(rank_results) + batch_size - 1)//batch_size}")
         
         # Process entire batch at once
         processed_items = sliding_windows_batch(agent, batch_items, 
                                                rank_start=0, rank_end=min(len(batch_items[0]['hits']), 100), 
-                                               window_size=window_size, step=step, verbose=verbose)
+                                               window_size=window_size, step=step, verbose=verbose, enable_thinking=enable_thinking)
         new_results.extend(processed_items)
         
         print(f"Completed {len(new_results)}/{len(rank_results)} items")
@@ -295,35 +292,56 @@ def main():
 
     os.environ['VLLM_WORKER_MULTIPROC_METHOD'] = 'spawn'
     # model_name = "le723z/qwen2_7b_deeprerank_ndcgreward10_3reward_v3"
-    model_name = "Qwen/Qwen2.5-7B-Instruct"
-    print(f"model_name: {model_name}")
+    # model_name = "le723z/v6-s200"
+    model_name = "Qwen/Qwen3-8B"
+    enable_thinking = False
+    # model_name = "Qwen/Qwen2.5-7B-Instruct"
+    
     
     agent = get_agent(model_name=model_name, api_key=None)
+    print(f"model_name: {agent.model_name}")
     
-    for data in ['dl21']:
+    for data in ['dl19']:
         bm25_results = bm25_retrieve(data, top_k_retrieve=100)
         win_results = {}
-        # bs is 16*num_gpu, gpu automatically allocated
         num_gpu = len(os.environ.get('CUDA_VISIBLE_DEVICES', '').split(',')) if os.environ.get('CUDA_VISIBLE_DEVICES') else 1
         bs = 16*num_gpu
-        for qid, sample in enumerate(bm25_results):
-            hits = copy.deepcopy(sample['hits'])
-            rerank_win_original = 0
-            for _ in range(5):
-                sample['hits'] = random.sample(hits, min(20, len(hits)))
-                original_metrics, _ = eval_rerank(data, sample)
-                for rerank_idx in range(5):
-                    rerank_results = process_rank_results_in_batches(agent, [sample], batch_size=1, verbose=True)
-                    rerank_metrics, _ = eval_rerank(data, rerank_results)
-                    print(f"original metrics: {original_metrics}")
-                    print(f"rerank metrics: {rerank_metrics}")
-                    if rerank_metrics['NDCG@10'] > original_metrics['NDCG@10']:
-                        rerank_win_original += 1
-            print(f"rerank win rate: {rerank_win_original/25}")
-            win_results[qid] = rerank_win_original
-        print(f"win results: {win_results}")
-        print(f"mean win rate: {sum(win_results.values())/len(win_results)}")
-        # rank_results = process_rank_results_in_batches(agent, rank_results, batch_size=bs, verbose=True)
+        # for qid, sample in enumerate(bm25_results):
+        #     hits = copy.deepcopy(sample['hits'])
+        #     rerank_win_original = 0
+        #     for _ in range(5):
+    #         temp_sample = copy.deepcopy(sample)
+        #         random_select_index = random.sample(range(len(hits)), min(20, len(hits)))
+        #         random_select_index.sort()
+        #         temp_sample['hits'] = [hits[i] for i in random_select_index]
+
+
+        #         original_metrics, _ = eval_rerank(data, temp_sample)
+
+        #         rerank_results = process_rank_results_in_batches(agent, [temp_sample], batch_size=1, verbose=False)
+        #         rerank_metrics, _ = eval_rerank(data, rerank_results)
+             
+
+        #         print(f"original metrics: {original_metrics}")
+        #         print(f"rerank metrics:   {rerank_metrics}")
+    
+        #         if rerank_metrics['NDCG@10'] > original_metrics['NDCG@10']:
+        #             rerank_win_original += 1
+        #             print(f"rerank win")
+        #         else:
+        #             print(f"rerank lose")
+        #     print(f"***** qid: {qid}, rerank win rate: {rerank_win_original/5} *****")
+        #     win_results[qid] = rerank_win_original
+        # print(f"win results: {win_results}")
+        # print(f"mean win rate: {sum(win_results.values())/(len(win_results)*5)}")
+        original_metrics, _ = eval_rerank(data, bm25_results)
+        
+        rerank_results = process_rank_results_in_batches(agent, bm25_results, batch_size=bs, verbose=True, enable_thinking=enable_thinking)
+        rerank_metrics, _ = eval_rerank(data, rerank_results)
+        print(f"data: {data}")
+        print(f"original metrics: {original_metrics}")
+        print(f"rerank metrics:   {rerank_metrics}")
+
         
         # save rank_results
         # with open(f'/home/mila/l/le.zhang/scratch/DeepRerank/data/{data}_bm25_rank_results.json', 'w') as f:

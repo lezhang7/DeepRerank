@@ -115,23 +115,6 @@ def clean_response(response: str):
 
 
 class EvalFunction:
-    @staticmethod
-    def receive_responses(rank_results, responses, cut_start=0, cut_end=100):
-        print('receive_responses', len(responses), len(rank_results))
-        for i in range(len(responses)):
-            response = responses[i]
-            response = clean_response(response)
-            response = [int(x) - 1 for x in response.split()]
-            response = remove_duplicate(response)
-            cut_range = copy.deepcopy(rank_results[i]['hits'][cut_start: cut_end])
-            original_rank = [tt for tt in range(len(cut_range))]
-            response = [ss for ss in response if ss in original_rank]
-            response = response + [tt for tt in original_rank if tt not in response]
-            for j, x in enumerate(response):
-                rank_results[i]['hits'][j + cut_start] = {
-                    'content': cut_range[x]['content'], 'qid': cut_range[x]['qid'], 'docid': cut_range[x]['docid'],
-                    'rank': cut_range[j]['rank'], 'score': cut_range[j]['score']}
-        return rank_results
 
     @staticmethod
     def convert_to_trec_format(rank_results):

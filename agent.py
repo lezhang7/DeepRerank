@@ -4,7 +4,7 @@ from transformers import AutoTokenizer
 from vllm import LLM, SamplingParams
 import os
 def get_agent(model_name, api_key=None):
-    if "Qwen" in model_name or "deeprerank" in model_name:
+    if "Qwen" in model_name or "le723z" in model_name:
         agent = QwenClient(model_name=model_name, temperature=0)
     else:
         if api_key is None:
@@ -82,7 +82,7 @@ class QwenClient:
                 repetition_penalty=1.05, max_tokens=2048):
         self.model_name = model_name
         # Initialize the tokenizer
-        self.tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B-Instruct")
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         # Set default sampling parameters
         self.sampling_params = SamplingParams(
             temperature=temperature,
@@ -98,16 +98,27 @@ class QwenClient:
         # Ensure the model is in evaluation mode
 
     @torch.no_grad()  # Use decorator to disable gradient tracking
-    def chat(self, messages, return_text=True, **kwargs):
+    def chat(self, messages, return_text=True, enable_thinking=False, **kwargs):
         while True:
             try:
-                # Apply chat template to format messages
-                text = self.tokenizer.apply_chat_template(
-                    messages,
-                    tokenize=False,
-                    add_generation_prompt=True
-                )
+                if 'Qwen3' in self.model_name:
+                    # Apply chat template to format messages
+                    text = self.tokenizer.apply_chat_template(
+                        messages,
+                        tokenize=False,
+                        add_generation_prompt=True,
+                        enable_thinking=enable_thinking
+
+                    )
                 
+                else:
+                    # Apply chat template to format messages
+                    text = self.tokenizer.apply_chat_template(
+                        messages,
+                        tokenize=False,
+                        add_generation_prompt=True
+                    )
+                    
                 # Update sampling parameters if provided in kwargs
                 sampling_params = self.sampling_params
                 if kwargs:
@@ -143,7 +154,7 @@ class QwenClient:
         messages = [{"role": "user", "content": prompt}]
         return self.chat(messages, return_text=return_text, **kwargs)
 
-    def batch_chat(self, messages_batch, return_text=True, **kwargs):
+    def batch_chat(self, messages_batch, return_text=True, enable_thinking=False, **kwargs):
         """
         Process multiple message sets in a batch using vLLM's efficient batching.
         This can significantly improve throughput compared to sequential processing.
@@ -151,20 +162,29 @@ class QwenClient:
         # Prepare inputs for all messages in the batch
         texts = []
         for messages in messages_batch:
-            # Apply chat template to format messages
-            text = self.tokenizer.apply_chat_template(
-                messages,
-                tokenize=False,
-                add_generation_prompt=True
-            )
+            if 'Qwen3' in self.model_name:
+                # Apply chat template to format messages
+                text = self.tokenizer.apply_chat_template(
+                    messages,
+                    tokenize=False,
+                    add_generation_prompt=True,
+                    enable_thinking=enable_thinking
+                )
+            else:
+                # Apply chat template to format messages
+                text = self.tokenizer.apply_chat_template(
+                    messages,
+                    tokenize=False,
+                    add_generation_prompt=True
+                )
             texts.append(text)
         
         # Update sampling parameters if provided in kwargs
         sampling_params = self.sampling_params
         if kwargs:
             sampling_params = SamplingParams(
-                temperature=kwargs.get('temperature', self.sampling_params.temperature),
-                top_p=kwargs.get('top_p', self.sampling_params.top_p),
+                temperature=0.6 if enable_thinking else kwargs.get('temperature', self.sampling_params.temperature),
+                top_p=0.95 if enable_thinking else kwargs.get('top_p', self.sampling_params.top_p),
                 repetition_penalty=kwargs.get('repetition_penalty', self.sampling_params.repetition_penalty),
                 max_tokens=kwargs.get('max_tokens', self.sampling_params.max_tokens)
             )

@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:a100l:4
 #SBATCH --ntasks-per-node=1                                  # Ask for 1 GPU
 #SBATCH --mem=128G           
-#SBATCH --time=0:50:00                                    
+#SBATCH --time=2:00:00                                    
 #SBATCH --output=./slurm_logs/deeprerank/job_output-%j.txt
 #SBATCH --error=./slurm_logs/deeprerank/job_error-%j.txt 
 export RDMA_CORE_SUPPRESS_WARNINGS=1
@@ -15,4 +15,4 @@ module load miniconda/3
 conda init
 conda activate ir
 
-python rank_gpt.py
+python run_evaluation.py

@@ -71,12 +71,19 @@ if __name__ == '__main__':
     from agent import get_agent
     from trec_eval import eval_rerank
     from utils import set_seed, get_results_file
+    import os
+    os.environ['VLLM_WORKER_MULTIPROC_METHOD'] = 'spawn'
 
     set_seed(42)
-    model_name = "Qwen/Qwen2.5-7B-Instruct"
+    # model_name = "Qwen/Qwen2.5-7B-Instruct"
+    # model_name = "le723z/v7-s140"
+    model_name = "le723z/v7-s240"
+    # model_name = "Qwen/Qwen3-8B"
+    enable_thinking = True
     agent = get_agent(model_name=model_name)
-
-    results_file = f'results/{model_name.split("/")[-1]}.json'
+    num_gpu = len(os.environ.get('CUDA_VISIBLE_DEVICES', '').split(',')) if os.environ.get('CUDA_VISIBLE_DEVICES') else 1
+    bs = 16*num_gpu
+    results_file = f'results/{model_name.split("/")[-1]}-{enable_thinking}.json' if 'Qwen3' in model_name else f'results/{model_name.split("/")[-1]}.json'
     all_results = get_results_file(results_file)
 
     for data in ['dl19', 'dl20', 'covid', 'nfc', 'touche', 'dbpedia', 'scifact', 'signal', 'news', 'robust04']:
@@ -89,9 +96,9 @@ if __name__ == '__main__':
         print(f'Evaluation on {data}')
         print('#' * 20)
         
-        rank_results = bm25_retrieve(data, top_k_retrieve=100)
-        new_results = process_rank_results_in_batches(agent, rank_results, batch_size=16, window_size=20, step=10)
-        all_metrics = eval_rerank(data, new_results)
+        bm25_results = bm25_retrieve(data, top_k_retrieve=100)
+        rerank_results = process_rank_results_in_batches(agent, bm25_results, batch_size=bs, verbose=False, enable_thinking=enable_thinking)
+        all_metrics, _ = eval_rerank(data, rerank_results)
 
         all_results[data] = {
             'metrics': all_metrics
