@@ -9,3 +9,4 @@ __pycache__/
 *.pyz
 *.pywz
 *.pyzw
+# ignore all __pycache__ folderr and all .pyc files
