@@ -305,26 +305,27 @@ def main():
 
     os.environ['VLLM_WORKER_MULTIPROC_METHOD'] = 'spawn'
     set_seed(42)    
-    model_name = "le723z/qwen2_7b_deeprerank_ndcgreward10_3reward_v2"
-    # model_name = "Qwen/Qwen2.5-7B-Instruct"
+    # model_name = "le723z/qwen2_7b_deeprerank_ndcgreward10_3reward_v2"
+    model_name = "Qwen/Qwen2.5-7B-Instruct"
     print(f"model_name: {model_name}")
     
     agent = get_agent(model_name=model_name, api_key=None)
     
     for data in ['dl19']:
-        rank_results = bm25_retrieve(data, top_k_retrieve=100)
+        rank_results = bm25_retrieve(data, top_k_retrieve=20)
        
-        
+        all_metrics, _ = eval_rerank(data, rank_results)
+        print("original metrics", all_metrics)
         # bs is 16*num_gpu, gpu automatically allocated
         num_gpu = len(os.environ.get('CUDA_VISIBLE_DEVICES', '').split(',')) if os.environ.get('CUDA_VISIBLE_DEVICES') else 1
         bs = 16*num_gpu
-        rank_results = process_rank_results_in_batches(agent, rank_results, batch_size=bs   )
+        rank_results = process_rank_results_in_batches(agent, rank_results, batch_size=bs)
         
         # save rank_results
         # with open(f'/home/mila/l/le.zhang/scratch/DeepRerank/data/{data}_bm25_rank_results.json', 'w') as f:
         #     json.dump(rank_results, f, indent=4)
         all_metrics, _ = eval_rerank(data, rank_results)
-        print(all_metrics)
+        print("reranked metrics", all_metrics)
         # breakpoint()
 
 

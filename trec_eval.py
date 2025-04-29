@@ -135,11 +135,11 @@ class EvalFunction:
         return rank_results
 
     @staticmethod
-    def convert_to_trec_format(rank_results):
+    def convert_to_trec_format(rank_results, hit_key):
         """Convert rank_results directly to the format needed for pytrec_eval"""
         run_dict = {}
         for result in rank_results:
-            for hit in result['hits']:
+            for hit in result[hit_key]:
                 qid = str(hit['qid'])  # Ensure qid is a string
                 docid = str(hit['docid'])  # Ensure docid is a string
                 score = float(hit['score'])  # Ensure score is a float
@@ -200,13 +200,13 @@ class EvalFunction:
         print(all_metrics)
         return all_metrics
 
-def eval_rerank(name, results, qrels_dict=None):
+def eval_rerank(name, results, qrels_dict=None, hit_key='hits'):
     """Evaluate reranking results without writing to temporary files"""
     if not isinstance(results, (list, datasets.arrow_dataset.Dataset)):
         results = [results]
     if qrels_dict is None:
         qrels_dict = EvalFunction.load_qrels(THE_TOPICS.get(name, name))
-    run_dict = EvalFunction.convert_to_trec_format(results)
+    run_dict = EvalFunction.convert_to_trec_format(results, hit_key=hit_key)
     return trec_eval(qrels_dict, run_dict, k_values=(1, 5, 10))
 
 
