@@ -293,9 +293,9 @@ def main():
     os.environ['VLLM_WORKER_MULTIPROC_METHOD'] = 'spawn'
     # model_name = "le723z/qwen2_7b_deeprerank_ndcgreward10_3reward_v3"
     # model_name = "le723z/v6-s200"
-    model_name = "Qwen/Qwen3-8B"
+    # model_name = "Qwen/Qwen3-8B"
     enable_thinking = False
-    # model_name = "Qwen/Qwen2.5-7B-Instruct"
+    model_name = "Qwen/Qwen2.5-7B-Instruct"
     
     
     agent = get_agent(model_name=model_name, api_key=None)
@@ -303,44 +303,47 @@ def main():
     
     for data in ['dl19']:
         bm25_results = bm25_retrieve(data, top_k_retrieve=100)
+        breakpoint()
+
         win_results = {}
         num_gpu = len(os.environ.get('CUDA_VISIBLE_DEVICES', '').split(',')) if os.environ.get('CUDA_VISIBLE_DEVICES') else 1
         bs = 16*num_gpu
-        # for qid, sample in enumerate(bm25_results):
-        #     hits = copy.deepcopy(sample['hits'])
-        #     rerank_win_original = 0
-        #     for _ in range(5):
-    #         temp_sample = copy.deepcopy(sample)
-        #         random_select_index = random.sample(range(len(hits)), min(20, len(hits)))
-        #         random_select_index.sort()
-        #         temp_sample['hits'] = [hits[i] for i in random_select_index]
+        for qid, sample in enumerate(bm25_results):
+            hits = copy.deepcopy(sample['hits'])
+            rerank_win_original = 0
+          
+            temp_sample = copy.deepcopy(sample)
+            # random_select_index = random.sample(range(len(hits)), min(20, len(hits)))
+            # random_select_index.sort()
+            temp_sample['hits'] = hits[:20]
 
 
-        #         original_metrics, _ = eval_rerank(data, temp_sample)
+            original_metrics, _ = eval_rerank(data, temp_sample)
 
-        #         rerank_results = process_rank_results_in_batches(agent, [temp_sample], batch_size=1, verbose=False)
-        #         rerank_metrics, _ = eval_rerank(data, rerank_results)
-             
-
-        #         print(f"original metrics: {original_metrics}")
-        #         print(f"rerank metrics:   {rerank_metrics}")
+            rerank_results = process_rank_results_in_batches(agent, [temp_sample], batch_size=1, verbose=False)
+            rerank_metrics, _ = eval_rerank(data, rerank_results)
+            
     
-        #         if rerank_metrics['NDCG@10'] > original_metrics['NDCG@10']:
-        #             rerank_win_original += 1
-        #             print(f"rerank win")
-        #         else:
-        #             print(f"rerank lose")
-        #     print(f"***** qid: {qid}, rerank win rate: {rerank_win_original/5} *****")
-        #     win_results[qid] = rerank_win_original
-        # print(f"win results: {win_results}")
-        # print(f"mean win rate: {sum(win_results.values())/(len(win_results)*5)}")
-        original_metrics, _ = eval_rerank(data, bm25_results)
+            print(f"original metrics: {original_metrics}")
+            print(f"rerank metrics:   {rerank_metrics}")
+
+            if rerank_metrics['NDCG@10'] > original_metrics['NDCG@10']:
+                rerank_win_original += 1
+                print(f"rerank win")
+            else:
+                print(f"rerank lose")
+
+            print(f"***** qid: {qid}, rerank win rate: {rerank_win_original/5} *****")
+            win_results[qid] = rerank_win_original
+        print(f"win results: {win_results}")
+        print(f"mean win rate: {sum(win_results.values())/(len(win_results)*5)}")
+        # original_metrics, _ = eval_rerank(data, bm25_results)
         
-        rerank_results = process_rank_results_in_batches(agent, bm25_results, batch_size=bs, verbose=True, enable_thinking=enable_thinking)
-        rerank_metrics, _ = eval_rerank(data, rerank_results)
-        print(f"data: {data}")
-        print(f"original metrics: {original_metrics}")
-        print(f"rerank metrics:   {rerank_metrics}")
+        # rerank_results = process_rank_results_in_batches(agent, bm25_results, batch_size=bs, verbose=True, enable_thinking=enable_thinking)
+        # rerank_metrics, _ = eval_rerank(data, rerank_results)
+        # print(f"data: {data}")
+        # print(f"original metrics: {original_metrics}")
+        # print(f"rerank metrics:   {rerank_metrics}")
 
         
         # save rank_results
