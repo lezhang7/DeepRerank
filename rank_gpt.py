@@ -112,23 +112,35 @@ def create_permutation_instruction_deeprerank(item=None, rank_start=0, rank_end=
         messages.append({"role": "user", "content": f"[{rank}] {content}"})
         messages.append({"role": "assistant", "content": f"Received passage [{rank}]."})
         
+    # messages.append({
+    #     "role": "user",
+    #     "content": f"""Please rank these passages according to their relevance to the search query: "{query}"
+    #     Follow these steps exactly:
+    #     1. First, within <think> tags, analyze EACH passage individually:
+    #     - Evaluate how well it addresses the query
+    #     - Note specific relevant information or keywords
+    #     - Assign a relevance score (1-5) with clear justification:
+    #         5: Directly answers the query with comprehensive, accurate information
+    #         4: Highly relevant with most key information but may lack some details
+    #         3: Moderately relevant with some useful information
+    #         2: Tangentially relevant with minimal useful information
+    #         1: Not relevant or off-topic
+
+    #     2. Then, within <answer> tags, provide ONLY the final ranking in descending order of relevance using the format: [X] > [Y] > [Z]
+    #     Your thinking process must directly inform your final ranking. The passages you determine most relevant in your analysis should be ranked highest in your answer."""
+    #     })
+
+            
     messages.append({
         "role": "user",
         "content": f"""Please rank these passages according to their relevance to the search query: "{query}"
-        Follow these steps exactly:
-        1. First, within <think> tags, analyze EACH passage individually:
-        - Evaluate how well it addresses the query
-        - Note specific relevant information or keywords
-        - Assign a relevance score (1-5) with clear justification:
-            5: Directly answers the query with comprehensive, accurate information
-            4: Highly relevant with most key information but may lack some details
-            3: Moderately relevant with some useful information
-            2: Tangentially relevant with minimal useful information
-            1: Not relevant or off-topic
+            Follow these steps exactly:
+            1. First, within <think> tags, analyze EACH passage individually:
+            - Evaluate how well it addresses the query
+            - Note specific relevant information or keywords
 
-        2. Then, within <answer> tags, provide ONLY the final ranking in descending order of relevance using the format: [X] > [Y] > [Z]
-        Your thinking process must directly inform your final ranking. The passages you determine most relevant in your analysis should be ranked highest in your answer."""
-        })
+            2. Then, within <answer> tags, provide ONLY the final ranking in descending order of relevance using the format: [X] > [Y] > [Z]"""
+    })
 
 
     return messages

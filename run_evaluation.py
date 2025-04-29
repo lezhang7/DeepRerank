@@ -73,7 +73,8 @@ if __name__ == '__main__':
     from utils import set_seed, get_results_file
 
     set_seed(42)
-    model_name = "Qwen/Qwen2.5-7B-Instruct"
+    # model_name = "Qwen/Qwen2.5-7B-Instruct"
+    model_name = ""
     agent = get_agent(model_name=model_name)
 
     results_file = f'results/{model_name.split("/")[-1]}.json'
