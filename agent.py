@@ -3,35 +3,38 @@ import torch
 from transformers import AutoTokenizer
 from vllm import LLM, SamplingParams
 import os
-def get_agent(model_name, api_key=None):
+def get_agent(model_name, api_key=None, base_url=None):
     if "Qwen" in model_name or "le723z" in model_name:
         agent = QwenClient(model_name=model_name, temperature=0)
     else:
+        from openai import OpenAI
         if api_key is None:
-            raise "Please provide OpenAI Key."
-        agent = OpenaiClient(api_key)
+            api_key = os.environ.get("OPENAI_API_KEY")
+            if api_key is None:
+                raise "Please provide OpenAI Key."
+        if "openai" not in model_name:
+            api_key = os.environ.get("SILICONFLOW_API_KEY")
+            if api_key is None:
+                raise "Please provide SiliconFlow Key."
+            base_url = "https://api.siliconflow.cn/v1"
+
+        agent = OpenAI(model_name=model_name, api_key=api_key, base_url=base_url)
     return agent
 
 class OpenaiClient:
-    def __init__(self, keys=None, start_id=None, proxy=None):
+    def __init__(self, model_name, api_key=None, base_url=None, start_id=None, proxy=None):
         from openai import OpenAI
         import openai
-        if isinstance(keys, str):
-            keys = [keys]
-        if keys is None:
-            raise "Please provide OpenAI Key."
+        self.model_name = model_name
+        self.api_key = api_key
+        self.base_url = base_url
+        self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
 
-        self.key = keys
-        self.key_id = start_id or 0
-        self.key_id = self.key_id % len(self.key)
-        self.api_key = self.key[self.key_id % len(self.key)]
-        self.client = OpenAI(api_key=self.api_key)
-
-    def chat(self, *args, return_text=False, reduce_length=False, **kwargs):
+    def chat(self, messages, return_text=False, reduce_length=False, **kwargs):
         while True:
             try:
-                completion = self.client.chat.completions.create(*args, **kwargs, timeout=30)
-                break
+                breakpoint()
+                completion = self.client.chat.completions.create(model=self.model_name, messages=messages)
             except Exception as e:
                 print(str(e))
                 if "This model's maximum context length is" in str(e):
@@ -45,10 +48,10 @@ class OpenaiClient:
     def text(self, *args, return_text=False, reduce_length=False, **kwargs):
         while True:
             try:
+                
                 completion = self.client.completions.create(
-                    *args, **kwargs
+                    model=self.model_name, *args, **kwargs
                 )
-                break
             except Exception as e:
                 print(e)
                 if "This model's maximum context length is" in str(e):
@@ -59,7 +62,8 @@ class OpenaiClient:
             completion = completion.choices[0].text
         return completion
     
-    def batch_chat(self, messages_batch, return_text=True, **kwargs):
+    def batch_chat(self, messages_batch, return_text=True, enable_thinking=False, **kwargs):
+        breakpoint()
         """Process multiple message sets in a batch to improve throughput."""
         results = []
         
@@ -78,10 +82,13 @@ class OpenaiClient:
         return results
 
 class QwenClient:
-    def __init__(self, model_name="Qwen/Qwen2.5-7B-Instruct", temperature=0.7, top_p=0.8, 
-                repetition_penalty=1.05, max_tokens=2048):
+    def __init__(self, model_name="Qwen/Qwen2.5-7B-Instruct", temperature=0.0, top_p=1.0, 
+                repetition_penalty=1.0, max_tokens=2048):
         self.model_name = model_name
         # Initialize the tokenizer
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
+        torch.use_deterministic_algorithms(True)
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         # Set default sampling parameters
         self.sampling_params = SamplingParams(
@@ -122,6 +129,7 @@ class QwenClient:
                 # Update sampling parameters if provided in kwargs
                 sampling_params = self.sampling_params
                 if kwargs:
+                    print(f"temperature: {kwargs.get('temperature', self.sampling_params.temperature)}")
                     sampling_params = SamplingParams(
                         temperature=kwargs.get('temperature', self.sampling_params.temperature),
                         top_p=kwargs.get('top_p', self.sampling_params.top_p),
@@ -183,8 +191,8 @@ class QwenClient:
         sampling_params = self.sampling_params
         if kwargs:
             sampling_params = SamplingParams(
-                temperature=0.6 if enable_thinking else kwargs.get('temperature', self.sampling_params.temperature),
-                top_p=0.95 if enable_thinking else kwargs.get('top_p', self.sampling_params.top_p),
+                temperature=kwargs.get('temperature', self.sampling_params.temperature),
+                top_p=kwargs.get('top_p', self.sampling_params.top_p),
                 repetition_penalty=kwargs.get('repetition_penalty', self.sampling_params.repetition_penalty),
                 max_tokens=kwargs.get('max_tokens', self.sampling_params.max_tokens)
             )

@@ -5,6 +5,8 @@ import copy
 from typing import Dict, Tuple
 import pytrec_eval
 import datasets
+from utils import read_bright_qrels
+from run_evaluation import BRIGHT
 
 THE_TOPICS = {
     'dl19': 'dl19-passage',
@@ -118,7 +120,22 @@ class EvalFunction:
 
     @staticmethod
     def convert_to_trec_format(rank_results):
-        """Convert rank_results directly to the format needed for pytrec_eval"""
+        """
+        Convert rank_results directly to the format needed for pytrec_eval
+        input:
+            rank_results: list of dicts, each dict contains 'qid', 'hits'
+            [{'qid': 1, 'hits': [{'docid': 1, 'score': 0.5}, {'docid': 2, 'score': 0.4}]},
+             {'qid': 2, 'hits': [{'docid': 1, 'score': 0.5}, {'docid': 2, 'score': 0.4}]}]
+
+        return:
+            {
+                'qid': {
+                    'docid': score,
+                    'docid': score
+            }
+        
+        
+        """
         run_dict = {}
         for result in rank_results:
             for hit in result['hits']:
@@ -187,7 +204,11 @@ def eval_rerank(name, results, qrels_dict=None):
     if not isinstance(results, (list, datasets.arrow_dataset.Dataset)):
         results = [results]
     if qrels_dict is None:
-        qrels_dict = EvalFunction.load_qrels(THE_TOPICS.get(name, name))
+        if name in BRIGHT:
+            basedir = os.path.dirname(os.path.abspath(__file__))
+            qrels_dict = read_bright_qrels(f"{basedir}/data/bright/data/pyserini_qrels/{name}.tsv")
+        else:
+            qrels_dict = EvalFunction.load_qrels(THE_TOPICS.get(name, name))
     run_dict = EvalFunction.convert_to_trec_format(results)
     return trec_eval(qrels_dict, run_dict, k_values=(1, 5, 10))
 

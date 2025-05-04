@@ -2,6 +2,7 @@ wandb/
 slurm_logs/
 results/
 __pycache__/
+data/bright/
 *.pyc
 *.pyo
 *.pyd

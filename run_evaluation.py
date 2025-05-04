@@ -63,32 +63,60 @@ THE_TOPICS = {
 
 }
 DLV2 = ['dl20', 'dl21', 'dl22', 'dl23']
+BRIGHT = ['biology', 'earth_science', 'economics', 'psychology', 'robotics', 'stackoverflow', 'sustainable_living', 'pony', 'leetcode', 'aops', 'theoremqa_theorems', 'theoremqa_questions']
+
+def parse_args():
+    import argparse
+    parser = argparse.ArgumentParser(description='Run evaluation for DeepRerank')
+    parser.add_argument('--model_name', type=str, default="le723z/v9-s20",
+                        help='Model name to use for reranking')
+    parser.add_argument('--enable_thinking', action='store_true',
+                        help='Enable thinking mode for the agent')
+    parser.add_argument('--batch_size', type=int, default=None,
+                        help='Batch size for processing (default: 16 * num_gpus)')
+    parser.add_argument('--bright', action='store_true',
+                        help='Run evaluation on bright datasets')
+    parser.add_argument('--standard', action='store_true',
+                        help='Run evaluation on standard datasets')
+    parser.add_argument('--mrtydi', action='store_true',
+                        help='Run evaluation on mrtydi datasets')
+    parser.add_argument('--seed', type=int, default=42,
+                        help='Random seed for reproducibility')
+    parser.add_argument('--skip_existing', action='store_true',
+                        help='Skip datasets that already have results')
+    parser.add_argument('--top_k', type=int, default=100,
+                        help='Number of documents to retrieve with BM25')
+
+    return parser.parse_args()
 
 
-if __name__ == '__main__':
+def run_evaluation(args, datasets):
     from rank_gpt import process_rank_results_in_batches, bm25_retrieve
     import json
     from agent import get_agent
     from trec_eval import eval_rerank
     from utils import set_seed, get_results_file
     import os
-    os.environ['VLLM_WORKER_MULTIPROC_METHOD'] = 'spawn'
-
-    set_seed(42)
-    # model_name = "Qwen/Qwen2.5-7B-Instruct"
-    # model_name = "le723z/v7-s140"
-    model_name = "le723z/v7-s240"
-    # model_name = "Qwen/Qwen3-8B"
-    enable_thinking = True
-    agent = get_agent(model_name=model_name)
+    
+    set_seed(args.seed)
+    agent = get_agent(model_name=args.model_name)
+    
+    # Determine batch size based on available GPUs
     num_gpu = len(os.environ.get('CUDA_VISIBLE_DEVICES', '').split(',')) if os.environ.get('CUDA_VISIBLE_DEVICES') else 1
-    bs = 16*num_gpu
-    results_file = f'results/{model_name.split("/")[-1]}-{enable_thinking}.json' if 'Qwen3' in model_name else f'results/{model_name.split("/")[-1]}.json'
+
+    if args.model_name == "deepseek-ai/DeepSeek-R1":
+        bs = 1
+    else:
+        bs = args.batch_size if args.batch_size is not None else 16 * num_gpu
+    
+    # Set up results file path
+    model_short_name = args.model_name.split("/")[-1]
+    results_file = f'results/{model_short_name}-{args.enable_thinking}.json' if 'Qwen3' in args.model_name else f'results/{model_short_name}.json'
     all_results = get_results_file(results_file)
 
-    for data in ['dl19', 'dl20', 'covid', 'nfc', 'touche', 'dbpedia', 'scifact', 'signal', 'news', 'robust04']:
-        # Skip if dataset already has results
-        if data in all_results:
+    for data in datasets:
+        # Skip if dataset already has results and skip_existing is True
+        if args.skip_existing and data in all_results:
             print(f'Skipping {data} as results already exist')
             continue
             
@@ -96,8 +124,19 @@ if __name__ == '__main__':
         print(f'Evaluation on {data}')
         print('#' * 20)
         
-        bm25_results = bm25_retrieve(data, top_k_retrieve=100)
-        rerank_results = process_rank_results_in_batches(agent, bm25_results, batch_size=bs, verbose=False, enable_thinking=enable_thinking)
+        if data in BRIGHT:
+            base_dir = '/network/scratch/l/le.zhang/DeepRerank'
+            bm25_results = get_hits_from_run_bright(base_dir, data)
+        else:
+            bm25_results = bm25_retrieve(data, top_k_retrieve=100)
+
+        rerank_results = process_rank_results_in_batches(
+            agent, 
+            bm25_results, 
+            batch_size=bs, 
+            verbose=False, 
+            enable_thinking=args.enable_thinking
+        )
         all_metrics, _ = eval_rerank(data, rerank_results)
 
         all_results[data] = {
@@ -107,33 +146,20 @@ if __name__ == '__main__':
             json.dump(all_results, f, indent=4)
 
 
-    # for data in ['mrtydi-ar', 'mrtydi-bn', 'mrtydi-fi', 'mrtydi-id', 'mrtydi-ja', 'mrtydi-ko', 'mrtydi-ru', 'mrtydi-sw', 'mrtydi-te', 'mrtydi-th']:
-    #     print('#' * 20)
-    #     print(f'Evaluation on {data}')
-    #     print('#' * 20)
+if __name__ == '__main__':
+    import os
+    from utils import get_hits_from_run_bright
+    os.environ['VLLM_WORKER_MULTIPROC_METHOD'] = 'spawn'
+    args = parse_args()
 
-    #     # Retrieve passages using pyserini BM25.
-    #     try:
-    #         searcher = LuceneSearcher.from_prebuilt_index(THE_INDEX[data])
-    #         topics = get_topics(THE_TOPICS[data] if data != 'dl20' else 'dl20')
-    #         qrels = get_qrels(THE_TOPICS[data])
-    #         rank_results = run_retriever(topics, searcher, qrels, k=100)
-    #         rank_results = rank_results[:100]
+    if args.mrtydi:
+        dataset = ['mrtydi-ar', 'mrtydi-bn', 'mrtydi-fi', 'mrtydi-id', 'mrtydi-ja', 'mrtydi-ko', 'mrtydi-ru', 'mrtydi-sw', 'mrtydi-te', 'mrtydi-th']
+    elif args.bright:
+        dataset = BRIGHT
+    else:
+        dataset = ['dl19', 'dl20', 'covid', 'nfc', 'dbpedia', 'scifact', 'signal', 'news', 'robust04']
 
-    #     except:
-    #         print(f'Failed to retrieve passages for {data}')
-    #         continue
-
-    #     # Run sliding window permutation generation
-    #     new_results = []
-    #     for item in tqdm(rank_results):
-    #         new_item = sliding_windows(item, rank_start=0, rank_end=100, window_size=20, step=10,
-    #                                 model_name='gpt-3.5-turbo', api_key=openai_key)
-    #         new_results.append(new_item)
-
-    #     # Evaluate nDCG@10
-    #     from trec_eval import EvalFunction
-
-    #     temp_file = tempfile.NamedTemporaryFile(delete=False).name
-    #     EvalFunction.write_file(new_results, temp_file)
-    #     EvalFunction.main(THE_TOPICS[data], temp_file)
+    run_evaluation(args, dataset)
+    
+    # Uncomment to run mrtydi evaluation
+    # run_mrtydi_evaluation(args)
