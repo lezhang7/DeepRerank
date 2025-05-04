@@ -14,6 +14,5 @@ module load cudatoolkit/12.6.0
 module load miniconda/3
 conda init
 conda activate ir
-export SILICONFLOW_API_KEY=sk-uajwikgqatjbhvqocvktutqsbmprxidjahoaptemahtkmttm
 # python run_evaluation.py --model_name le723z/v7-s100 --skip_existing --bright
 python run_evaluation.py --model_name Qwen/Qwen3-32B --skip_existing --bright --enable_thinking
